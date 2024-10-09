@@ -31,3 +31,17 @@ class Review(models.Model):
 
     def __str__(self) -> str: 
         return self.content[:20]
+    
+
+class Request(models.Model): 
+    name = models.CharField('Имя', max_length=100) 
+    phone = models.CharField('Телефон', max_length=18) 
+    email = models.EmailField('Email')
+    opened = models.BooleanField('Открыта', default=True)
+
+    class Meta: 
+        verbose_name = 'Заявка'
+        verbose_name_plural = 'Заявки'
+
+    def __str__(self) -> str: 
+        return f'{self.opened} | {self.name}, {self.phone}'
