@@ -3,6 +3,7 @@ import uuid
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
+import os
 
 
 class Branch(models.Model): 
@@ -21,7 +22,7 @@ class Branch(models.Model):
 class Speciality(models.Model): 
     name = models.CharField('Название', max_length=80)
     description = models.TextField('Описание')
-    icon = models.ImageField('Иконка', upload_to='specialities', null=True)
+    icon = models.FileField('Иконка', upload_to='specialities', null=True)
     
     class Meta: 
         ordering = ['name']
@@ -32,6 +33,12 @@ class Speciality(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
+        file_extension = os.path.splitext(self.icon.name)[1].lower()
+
+        if file_extension == '.svg': 
+            super(Speciality, self).save(*args, **kwargs)
+            return 
+
         name = str(uuid.uuid1())
         img = Image.open(self.icon)
         img_io = BytesIO()
@@ -45,7 +52,6 @@ class Speciality(models.Model):
             charset=None,
         )
         self.icon.save(f"{name}.webp", img_file, save=False)
-
         super(Speciality, self).save(*args, **kwargs)
 
 
@@ -71,7 +77,7 @@ class Doctor(models.Model):
     hire_year = models.SmallIntegerField('Год начала работы')
     experience = models.SmallIntegerField('Стаж', null=True)
     description = models.TextField('Описание', null=True, blank=True) 
-    photo = models.ImageField('Фото', upload_to='doctors', null=True)
+    photo = models.FileField('Фото', upload_to='doctors', null=True)
     branch = models.ForeignKey(verbose_name='Филиал', to=Branch, on_delete=models.CASCADE)
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
 
@@ -81,3 +87,25 @@ class Doctor(models.Model):
 
     def __str__(self) -> str: 
         return f'{self.first_name} {self.last_name} {self.patronymic if self.patronymic else ""}'
+    
+    def save(self, *args, **kwargs):
+        file_extension = os.path.splitext(self.photo.name)[1].lower()
+
+        if file_extension == '.svg': 
+            super(Doctor, self).save(*args, **kwargs)
+            return 
+
+        name = str(uuid.uuid1())
+        img = Image.open(self.photo)
+        img_io = BytesIO()
+        img.save(img_io, format="WebP")
+        img_file = InMemoryUploadedFile(
+            file=img_io, 
+            field_name=None, 
+            name=f"{name}.webp", 
+            content_type="image/webp", 
+            size=img_io.tell(), 
+            charset=None,
+        )
+        self.photo.save(f"{name}.webp", img_file, save=False)
+        super(Doctor, self).save(*args, **kwargs)
