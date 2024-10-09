@@ -12,17 +12,22 @@ class Article(models.Model):
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 
+    def __str__(self) -> str: 
+        return self.title
+
 
 class Review(models.Model): 
     rate = models.SmallIntegerField('Оценка', validators=[
-        MinValueValidator(0), 
+        MinValueValidator(1), 
         MaxValueValidator(5)
     ])
     username = models.CharField(max_length=50)
     content = models.TextField('Содержание')
-    created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
+    created_at = models.DateTimeField('Дата и время публикации')
 
     class Meta: 
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-        
+
+    def __str__(self) -> str: 
+        return self.content[:20]
