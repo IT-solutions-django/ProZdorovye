@@ -1,0 +1,699 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="https://osteomeddv-2024-09.web.app/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Центр современной остеопатии и мануальной медицины</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"
+      type="text/javascript"
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@300..800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="{% static 'js/uhpv/jquery.js' %}"></script>
+    <script src="{% static 'js/uhpv/uhpv-full.min.js' %}"></script>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  </head>
+  <body>
+    <div class="" id="specialButton">
+      <img
+        src="{% static 'images/eye.svg' %}"
+        alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
+        title="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
+      />
+      Для слабовидящих
+    </div>
+    <div class="section section--header">
+      <div class="header container">
+        <div class="header__logo">
+          <img
+            class="header__logo-image"
+            src="{% static 'images/logo-header.svg' %}"
+          />
+        </div>
+        <button class="header__hamburger" aria-label="Toggle menu">
+          <img class="header__hamburger--menu" src="{% static 'images/burger.svg' %}" alt="" />
+          <img class="header__hamburger--close" src="{% static 'images/close.svg' %}" alt="" />
+        </button>
+        <div class="header__nav">
+          <div class="nav__links">
+            <a href="index.html#" class="nav__link">Услуги</a>
+            <a href="index.html#" class="nav__link">Специалисты</a>
+            <a href="index.html#" class="nav__link">Цены</a>
+            <a href="index.html#" class="nav__link">Контакты</a>
+          </div>
+          <div class="nav__cta">
+            <button class="button-osta button-osta--small">
+              Записаться на прием
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section section--hero">
+      <div class="promo container">
+        <div class="promo__info">
+          <div class="promo__title">
+            Путь
+            <br />
+            к здоровью <br />начинается
+            <br />
+            <span class="promo__title promo__title--highlight">здесь</span>
+          </div>
+          <div class="promo__description">
+            Опытные врачи и современные методы лечения
+            <br />
+            для поддержания вашего здоровья и благополучия
+          </div>
+        </div>
+        <div class="promo__actions">
+          <div class="button-osta">Записаться на прием</div>
+          <div class="button-osta button-osta--secondary">Задать вопрос</div>
+        </div>
+      </div>
+
+      <div class="service-slider container embla" id="service-list-slider">
+        <div class="embla__container">
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">
+                Остеопатия<br />Массаж<br />Мануальная терапия
+              </div>
+              <div class="service-slider__item-subtitle">
+                Восстановление подвижности и снятие напряжения
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/osteo.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Пилатес<br />Йога</div>
+              <div class="service-slider__item-subtitle">
+                Укрепление тела и гармонизация духа через движение
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/yoga.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">
+                Игло- <br />
+                рефлексотерапия
+              </div>
+              <div class="service-slider__item-subtitle">
+                Древняя методика лечения с доказанной эффективностью
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/igl.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">
+                Нутрициология<br />Диетология
+              </div>
+              <div class="service-slider__item-subtitle">
+                Подбор питания для улучшения самочувствия
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/nutri.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Гомеопатия</div>
+              <div class="service-slider__item-subtitle">
+                Мягкое воздействие для восстановления баланса в организме
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/gomeo.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Педиатрия</div>
+              <div class="service-slider__item-subtitle">
+                Забота о здоровье вашего ребенка
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Pediatrics.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Неврология</div>
+              <div class="service-slider__item-subtitle">
+                Диагностика и лечение заболеваний нервной системы
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Neurology.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Гастроэнтерология</div>
+              <div class="service-slider__item-subtitle">
+                Помощь при проблемах с пищеварением
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Gastroenterology.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Кардиология</div>
+              <div class="service-slider__item-subtitle">
+                Забота о здоровье сердца
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Cardiology.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">
+                Прием врача-терапевта
+              </div>
+              <div class="service-slider__item-subtitle">
+                Комплексное обследование и первичная помощь
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Therapist.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Эндокринология</div>
+              <div class="service-slider__item-subtitle">
+                Контроль гормонального баланса и обмена веществ
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Endocrinology.svg"
+            />
+          </a>
+
+          <a href="index.html#" class="service-slider__item embla__slide">
+            <div class="service-slider__item-info">
+              <div class="service-slider__item-title">Психология</div>
+              <div class="service-slider__item-subtitle">
+                Поддержка и помощь в стрессовых ситуациях
+              </div>
+            </div>
+            <img
+              class="service-slider__item-icon"
+              src="assets/images/service/Psychology.svg"
+            />
+          </a>
+        </div>
+
+        <button class="embla__button embla__button--prev" type="button">
+          <img src="{% static 'images/left.svg' %}" alt="" />
+        </button>
+        <button class="embla__button embla__button--next" type="button">
+          <img src="{% static 'images/right.svg' %}" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="section section--stat">
+      <div class="stats-list container">
+        <div class="stats-item">
+          <div class="stats-item__number">2 500+</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Пациентов, прошедших успешное лечение в нашей клинике
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">15+</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Лет опыта работы<br />
+            наших специалистов
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">40+</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Специалистов<br />
+            в штате клиники
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">94%</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Пациентов приходят по рекомендациям
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">2</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Филиала с удобным<br />
+            местоположением
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section--clinic-info">
+      <div class="clinic-info container">
+        <div class="clinic-description">
+          <div class="clinic-description__title">О Клинике</div>
+          <div class="clinic-description__text">
+            Мы – многопрофильная медицинская клиника, предоставляющая широкий
+            спектр услуг для поддержания здоровья и благополучия. Наша команда
+            специалистов использует современные методы диагностики и лечения,
+            обеспечивая индивидуальный подход и высокое качество медицинской
+            помощи.
+          </div>
+          <!-- Thumbnails carousel -->
+          <div class="clinic-image__thumbs embla" id="thumbCarousel">
+            <div class="embla__container">
+              <div class="embla__slide">
+                <img
+                  class="clinic-image__thumbs-image clinic-image__thumbs-image--active"
+                  src="assets/images/clinic/1.jpg"
+                />
+              </div>
+              <div class="embla__slide">
+                <img
+                  class="clinic-image__thumbs-image"
+                  src="assets/images/clinic/2.jpg"
+                />
+              </div>
+              <div class="embla__slide">
+                <img
+                  class="clinic-image__thumbs-image"
+                  src="assets/images/clinic/3.jpg"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main image carousel -->
+        <div class="clinic-image embla" id="mainCarousel">
+          <div class="embla__container">
+            <div class="embla__slide">
+              <img class="clinic-image" src="assets/images/clinic/1.jpg" />
+            </div>
+            <div class="embla__slide">
+              <img class="clinic-image" src="assets/images/clinic/2.jpg" />
+            </div>
+            <div class="embla__slide">
+              <img class="clinic-image" src="assets/images/clinic/3.jpg" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clinic-benefits container">
+        <div class="benefit">
+          <img class="benefit__icon" src="{% static 'images/diamont.svg' %}" />
+          <div class="benefit__title">Индивидуальный подход</div>
+        </div>
+        <div class="benefit">
+          <img class="benefit__icon" src="{% static 'images/sert.svg' %}" />
+          <div class="benefit__title">Высокая квалификация специалистов</div>
+        </div>
+        <div class="benefit">
+          <img class="benefit__icon" src="{% static 'images/lamp.svg' %}" />
+          <div class="benefit__title">Использование современных технологий</div>
+        </div>
+      </div>
+      <div class="clinic-services container">
+        <div class="clinic-services__title">Услуги клиники</div>
+        <div class="clinic-services__list">
+          <a href="index.html#" class="service-button">Остеопатия</a>
+          <a href="index.html#" class="service-button">Иглорефлексотерапия</a>
+          <a href="index.html#" class="service-button">Йога</a>
+          <a href="index.html#" class="service-button">Кинезиология</a>
+          <a href="index.html#" class="service-button">ЛФК</a>
+          <a href="index.html#" class="service-button">Мануальная терапия</a>
+          <a href="index.html#" class="service-button">Массаж</a>
+          <a href="index.html#" class="service-button">Пилатес</a>
+          <a href="index.html#" class="service-button">Психология</a>
+          <a href="index.html#" class="service-button">Терапия</a>
+          <a href="index.html#" class="service-button">Эндокринология</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section--booking">
+      <div class="booking-section container">
+        <div class="booking-description">
+          <div class="booking-description__title">Онлайн-запись</div>
+          <div class="booking-description__text">
+            Запишитесь на прием в удобное для вас время и узнайте стоимость
+            услуг заранее. Быстрая онлайн-запись без ожидания!
+          </div>
+        </div>
+        <button class="button-osta button-osta--secondary">
+          Записаться на прием
+        </button>
+      </div>
+    </div>
+    <div class="section section--doctors">
+      <div class="specialists-section container">
+        <div class="specialists-section__header">Наши специалисты</div>
+        <div class="specialists-section__categories">
+          <div class="categories-list" id="categoryButtons"></div>
+        </div>
+        <div class="specialists-list" id="specialistsList"></div>
+        <div class="button-osta">Все специалисты</div>
+      </div>
+    </div>
+    <div class="section section--reviews">
+      <div class="reviews-section container">
+        <div class="reviews-header">Отзывы</div>
+        <div class="reviews-list">
+          <div class="review-card">
+            <div class="review-card__rating">
+              <img
+                class="review-card__rating-image"
+                src="{% static 'images/star.svg' %}"
+                alt="5.0 рейтинг"
+              />
+              <div class="review-card__rating-score">5.0</div>
+              <div class="review-card__rating-status">Отлично</div>
+            </div>
+            <div class="review-card__text">
+              Мне понравился персонал, все приветливые и заботливые. Оксана
+              Анатольевна Шевченко - однозначно, мастер своего дела. Во время
+              приема она подробно все объясняла, комментировала свои действия.
+              Видно, что она любит то, что делает. После сеанса я вышла
+              отдохнувшая, как будто неделю отдыхала в отпуске.
+            </div>
+            <div class="review-card__date">Приём был в августе 2024</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card__rating">
+              <img
+                class="review-card__rating-image"
+                src="{% static 'images/star.svg' %}"
+                alt="5.0 рейтинг"
+              />
+              <div class="review-card__rating-score">5.0</div>
+              <div class="review-card__rating-status">Отлично</div>
+            </div>
+            <div class="review-card__text">
+              Главные плюсы: результат, высокий профессионализм врачей, приятный
+              сервис - это и внимательный персонал, это доброжелательность всех
+              сотрудников, уют в клинике, и даже есть кафе с вкусняшками
+              полезными. Мне там очень приятно было находиться.
+            </div>
+            <div class="review-card__date">Приём был в августе 2024</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card__rating">
+              <img
+                class="review-card__rating-image"
+                src="{% static 'images/star.svg' %}"
+                alt="5.0 рейтинг"
+              />
+              <div class="review-card__rating-score">5.0</div>
+              <div class="review-card__rating-status">Отлично</div>
+            </div>
+            <div class="review-card__text">
+              Очень грамотные специалисты, врачи высшей категории. Очень уютная
+              атмосфера. Крутой детский уголок.
+            </div>
+            <div class="review-card__date">Приём был в августе 2024</div>
+          </div>
+          <div class="review-card">
+            <div class="review-card__rating">
+              <img
+                class="review-card__rating-image"
+                src="{% static 'images/star.svg' %}"
+                alt="5.0 рейтинг"
+              />
+              <div class="review-card__rating-score">5.0</div>
+              <div class="review-card__rating-status">Отлично</div>
+            </div>
+            <div class="review-card__text">
+              Центр очень комфортный и красивый, вежливые и компетентные
+              администраторы, компетентный, замечательный врач.
+            </div>
+            <div class="review-card__date">Приём был в августе 2024</div>
+          </div>
+        </div>
+        <div class="reviews-footer">
+          <div class="reviews-footer__all-reviews">Все отзывы</div>
+          <div class="reviews-footer__see-all-list">
+            <a href="index.html#" class="reviews-footer__see-all-item">
+              <img src="{% static 'images/doctor.svg' %}" />
+            </a>
+            <a href="index.html#" class="reviews-footer__see-all-item">
+              <img src="{% static 'images/2gis.svg' %}" />
+            </a>
+            <a href="index.html#" class="reviews-footer__see-all-item">
+              <img src="{% static 'images/ya.svg' %}" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section--blog">
+      <div class="blog container">
+        <div class="blog__header">О вашем здоровье</div>
+        <div class="blog__content">
+          <a class="article" href="index.html#">
+            <img
+              class="article__image"
+              src="assets/images/blog-1.png"
+              alt="Остеопат"
+            />
+            <div class="article__title">C чем работает остеопат?</div>
+            <div class="article__text">
+              <p>
+                Существует мнение, что остеопат работает только с
+                опорно-двигательным аппаратом — костями, суставами, мышцами,
+                фасциями, связками. На самом деле врач остеопат может
+                воздействовать на любую структуру организма человека — сосуды,
+                нервы, гладкую мускулатуру и паренхиму внутренних органов,
+                мозговые оболочки, восстанавливая не только анатомическое
+                положение, но и внутренний ритм тканей и синхронизацию работы
+                всего организма.
+              </p>
+            </div>
+            <div class="article__date">12 сен 2024</div>
+          </a>
+
+          <a class="article" href="index.html#">
+            <img
+              class="article__image"
+              src="assets/images/blog-2.png"
+              alt="Психолог"
+            />
+            <div class="article__title">Чем может помочь психолог?</div>
+            <div class="article__text">
+              <p>
+                Во-первых, поддержать и успокоить человека в тяжелой кризисной
+                ситуации – болезни. Во-вторых, помочь осознать и как следствие
+                изменить бессознательные мотивации человека, препятствующие его
+                выздоровлению.
+              </p>
+              <p>
+                В-третьих, помочь осознать внутренние конфликты, влияющие на
+                мотивационную сферу.
+              </p>
+              <p>
+                В-четвертых, помочь изменить отношение к болезни, не позволить
+                болезни захватить всю внутреннюю и внешнюю жизнь человека.
+              </p>
+            </div>
+
+            <div class="article__date">15 сен 2024</div>
+          </a>
+
+          <a class="article" href="index.html#">
+            <img
+              class="article__image"
+              src="assets/images/blog-3.png"
+              alt="Микрокинезитерапия"
+            />
+            <div class="article__title">Что такое микрокинезитерапия?</div>
+            <div class="article__text">
+              <p>
+                Это уникальный метод лечения, разработанный французскими
+                остеопатами, физиотерапевтами Д.Грожаном и П.Бенини. Задача
+                микрокинезитерапии — найти в организме человека повреждения,
+                определить причины их возникновения и произвести лечебное
+                воздействие так, чтобы включились механизмы самовосстановления и
+                самокоррекции. Поиск и коррекция нарушений осуществляется
+                терапевтом при помощи специфической микропальпации.
+              </p>
+            </div>
+
+            <div class="article__date">15 сен 2024</div>
+          </a>
+        </div>
+        <div class="blog__footer">
+          <div class="button-osta">Все статьи</div>
+        </div>
+      </div>
+    </div>
+    <div class="section section--contact">
+      <div id="map"></div>
+
+      <div class="contacts container">
+        <div class="contacts-card">
+          <div class="contacts-card__header">Контакты</div>
+          <div class="contacts-card__content">
+            <div class="contacts-card__info">
+              <div class="contact-details">
+                <div class="contact-details__address">Некрасовская 90</div>
+                <div class="contact-details__phone">+7 (423) 207-70-55</div>
+              </div>
+              <div class="contact-details">
+                <div class="contact-details__address">
+                  Майора Филипова 11 корпус 2
+                </div>
+                <div class="contact-details__phone">+7 (914) 967-75-52</div>
+              </div>
+              <div class="form">
+                <div class="form__title">Подберем процедуру под ваш запрос</div>
+
+                <div class="form__field">
+                  <input
+                    type="text"
+                    id="name"
+                    class="form__input"
+                    placeholder=" "
+                  />
+                  <label for="name" class="form__label">Имя</label>
+                </div>
+                <div class="form__row">
+                  <div class="form__field">
+                    <input
+                      type="text"
+                      id="phone"
+                      class="form__input"
+                      placeholder=" "
+                    />
+                    <label for="phone" class="form__label">Телефон</label>
+                  </div>
+
+                  <div class="form__field">
+                    <input
+                      type="email"
+                      id="email"
+                      class="form__input"
+                      placeholder=" "
+                    />
+                    <label for="email" class="form__label">E-mail</label>
+                  </div>
+                </div>
+                <button class="form__button button-osta">
+                  Заказать звонок
+                </button>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="https://t.me/your-telegram-link" target="_blank">
+                <img src="{% static 'images/tg.svg' %}" alt="Telegram" />
+              </a>
+              <a href="https://wa.me/your-whatsapp-number" target="_blank">
+                <img src="{% static 'images/whatsapp.svg' %}" alt="WhatsApp" />
+              </a>
+              <a href="https://vk.com/your-vk-link" target="_blank">
+                <img src="{% static 'images/vk.svg' %}" alt="VKontakte" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section--footer">
+      <div class="footer container">
+        <div class="footer__left">
+          <div class="footer__services">
+            <div class="footer__links">
+              <a class="footer__link" href="index.html#">Услуги</a>
+              <a class="footer__link" href="index.html#">Специалисты</a>
+              <a class="footer__link" href="index.html#">Цены</a>
+              <a class="footer__link" href="index.html#">Контакты</a>
+            </div>
+            <div class="footer__logo">
+              <img
+                class="footer__logo-image"
+                src="{% static 'images/logo-footer.svg' %}"
+                alt="Logo"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="footer__right">
+          <div class="footer__info">
+            <button class="button-osta button-osta--small" href="#">
+              Записаться на прием
+            </button>
+            <div class="footer__copyright">© 2024 osteomeddv.ru</div>
+          </div>
+          <div class="social-links">
+            <a href="https://t.me/your-telegram-link" target="_blank">
+              <img src="{% static 'images/tg.svg' %}" alt="Telegram" />
+            </a>
+            <a href="https://wa.me/your-whatsapp-number" target="_blank">
+              <img src="{% static 'images/whatsapp.svg' %}" alt="WhatsApp" />
+            </a>
+            <a href="https://vk.com/your-vk-link" target="_blank">
+              <img src="{% static 'images/vk.svg' %}" alt="VKontakte" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
