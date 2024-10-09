@@ -87,6 +87,23 @@
 
       <div class="service-slider container embla" id="service-list-slider">
         <div class="embla__container">
+          {% for speciality in specialities %}
+            <a href="index.html#" class="service-slider__item embla__slide">
+              <div class="service-slider__item-info">
+                <div class="service-slider__item-title">
+                  {{ speciality.name }}
+                </div>
+                <div class="service-slider__item-subtitle">
+                  {{ speciality.description }}
+                </div>
+              </div>
+              <img
+                class="service-slider__item-icon"
+                src="{% if speciality.icon %}{{ speciality.icon.url }}{% endif %}"
+              />
+            </a>
+          {% endfor %}
+
           <a href="index.html#" class="service-slider__item embla__slide">
             <div class="service-slider__item-info">
               <div class="service-slider__item-title">
@@ -373,17 +390,9 @@
       <div class="clinic-services container">
         <div class="clinic-services__title">Услуги клиники</div>
         <div class="clinic-services__list">
-          <a href="index.html#" class="service-button">Остеопатия</a>
-          <a href="index.html#" class="service-button">Иглорефлексотерапия</a>
-          <a href="index.html#" class="service-button">Йога</a>
-          <a href="index.html#" class="service-button">Кинезиология</a>
-          <a href="index.html#" class="service-button">ЛФК</a>
-          <a href="index.html#" class="service-button">Мануальная терапия</a>
-          <a href="index.html#" class="service-button">Массаж</a>
-          <a href="index.html#" class="service-button">Пилатес</a>
-          <a href="index.html#" class="service-button">Психология</a>
-          <a href="index.html#" class="service-button">Терапия</a>
-          <a href="index.html#" class="service-button">Эндокринология</a>
+          {% for speciality in specialities %}
+            <a href="index.html#" class="service-button">{{ speciality.name }}</a>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -416,75 +425,23 @@
       <div class="reviews-section container">
         <div class="reviews-header">Отзывы</div>
         <div class="reviews-list">
-          <div class="review-card">
-            <div class="review-card__rating">
-              <img
-                class="review-card__rating-image"
-                src="{% static 'images/star.svg' %}"
-                alt="5.0 рейтинг"
-              />
-              <div class="review-card__rating-score">5.0</div>
-              <div class="review-card__rating-status">Отлично</div>
+          {% for review in reviews %}
+            <div class="review-card">
+              <div class="review-card__rating">
+                <img
+                  class="review-card__rating-image"
+                  src="{% static 'images/star.svg' %}"
+                  alt="5.0 рейтинг"
+                />
+                <div class="review-card__rating-score">{{ review.rate }}</div>
+                <div class="review-card__rating-status">Отлично</div>
+              </div>
+              <div class="review-card__text">
+                {{ review.content }}
+              </div>
+              <div class="review-card__date">Приём был {{ review.created_at|date:"d.m.Y" }}</div>
             </div>
-            <div class="review-card__text">
-              Мне понравился персонал, все приветливые и заботливые. Оксана
-              Анатольевна Шевченко - однозначно, мастер своего дела. Во время
-              приема она подробно все объясняла, комментировала свои действия.
-              Видно, что она любит то, что делает. После сеанса я вышла
-              отдохнувшая, как будто неделю отдыхала в отпуске.
-            </div>
-            <div class="review-card__date">Приём был в августе 2024</div>
-          </div>
-          <div class="review-card">
-            <div class="review-card__rating">
-              <img
-                class="review-card__rating-image"
-                src="{% static 'images/star.svg' %}"
-                alt="5.0 рейтинг"
-              />
-              <div class="review-card__rating-score">5.0</div>
-              <div class="review-card__rating-status">Отлично</div>
-            </div>
-            <div class="review-card__text">
-              Главные плюсы: результат, высокий профессионализм врачей, приятный
-              сервис - это и внимательный персонал, это доброжелательность всех
-              сотрудников, уют в клинике, и даже есть кафе с вкусняшками
-              полезными. Мне там очень приятно было находиться.
-            </div>
-            <div class="review-card__date">Приём был в августе 2024</div>
-          </div>
-          <div class="review-card">
-            <div class="review-card__rating">
-              <img
-                class="review-card__rating-image"
-                src="{% static 'images/star.svg' %}"
-                alt="5.0 рейтинг"
-              />
-              <div class="review-card__rating-score">5.0</div>
-              <div class="review-card__rating-status">Отлично</div>
-            </div>
-            <div class="review-card__text">
-              Очень грамотные специалисты, врачи высшей категории. Очень уютная
-              атмосфера. Крутой детский уголок.
-            </div>
-            <div class="review-card__date">Приём был в августе 2024</div>
-          </div>
-          <div class="review-card">
-            <div class="review-card__rating">
-              <img
-                class="review-card__rating-image"
-                src="{% static 'images/star.svg' %}"
-                alt="5.0 рейтинг"
-              />
-              <div class="review-card__rating-score">5.0</div>
-              <div class="review-card__rating-status">Отлично</div>
-            </div>
-            <div class="review-card__text">
-              Центр очень комфортный и красивый, вежливые и компетентные
-              администраторы, компетентный, замечательный врач.
-            </div>
-            <div class="review-card__date">Приём был в августе 2024</div>
-          </div>
+          {% endfor %}
         </div>
         <div class="reviews-footer">
           <div class="reviews-footer__all-reviews">Все отзывы</div>
@@ -507,76 +464,22 @@
       <div class="blog container">
         <div class="blog__header">О вашем здоровье</div>
         <div class="blog__content">
-          <a class="article" href="index.html#">
-            <img
-              class="article__image"
-              src="assets/images/blog-1.png"
-              alt="Остеопат"
-            />
-            <div class="article__title">C чем работает остеопат?</div>
-            <div class="article__text">
-              <p>
-                Существует мнение, что остеопат работает только с
-                опорно-двигательным аппаратом — костями, суставами, мышцами,
-                фасциями, связками. На самом деле врач остеопат может
-                воздействовать на любую структуру организма человека — сосуды,
-                нервы, гладкую мускулатуру и паренхиму внутренних органов,
-                мозговые оболочки, восстанавливая не только анатомическое
-                положение, но и внутренний ритм тканей и синхронизацию работы
-                всего организма.
-              </p>
-            </div>
-            <div class="article__date">12 сен 2024</div>
-          </a>
-
-          <a class="article" href="index.html#">
-            <img
-              class="article__image"
-              src="assets/images/blog-2.png"
-              alt="Психолог"
-            />
-            <div class="article__title">Чем может помочь психолог?</div>
-            <div class="article__text">
-              <p>
-                Во-первых, поддержать и успокоить человека в тяжелой кризисной
-                ситуации – болезни. Во-вторых, помочь осознать и как следствие
-                изменить бессознательные мотивации человека, препятствующие его
-                выздоровлению.
-              </p>
-              <p>
-                В-третьих, помочь осознать внутренние конфликты, влияющие на
-                мотивационную сферу.
-              </p>
-              <p>
-                В-четвертых, помочь изменить отношение к болезни, не позволить
-                болезни захватить всю внутреннюю и внешнюю жизнь человека.
-              </p>
-            </div>
-
-            <div class="article__date">15 сен 2024</div>
-          </a>
-
-          <a class="article" href="index.html#">
-            <img
-              class="article__image"
-              src="assets/images/blog-3.png"
-              alt="Микрокинезитерапия"
-            />
-            <div class="article__title">Что такое микрокинезитерапия?</div>
-            <div class="article__text">
-              <p>
-                Это уникальный метод лечения, разработанный французскими
-                остеопатами, физиотерапевтами Д.Грожаном и П.Бенини. Задача
-                микрокинезитерапии — найти в организме человека повреждения,
-                определить причины их возникновения и произвести лечебное
-                воздействие так, чтобы включились механизмы самовосстановления и
-                самокоррекции. Поиск и коррекция нарушений осуществляется
-                терапевтом при помощи специфической микропальпации.
-              </p>
-            </div>
-
-            <div class="article__date">15 сен 2024</div>
-          </a>
+          {% for article in articles %}
+            <a class="article" href="index.html#">
+              <img
+                class="article__image"
+                src="{{ article.photo.url }}"
+                alt="Остеопат"
+              />
+              <div class="article__title">{{ article }}</div>
+              <div class="article__text">
+                <p>
+                  {{ article.content }}
+                </p>
+              </div>
+              <div class="article__date">{{ article.created_at|date:"d.m.Y" }}</div>
+            </a>
+          {% endfor %}
         </div>
         <div class="blog__footer">
           <div class="button-osta">Все статьи</div>
@@ -591,16 +494,12 @@
           <div class="contacts-card__header">Контакты</div>
           <div class="contacts-card__content">
             <div class="contacts-card__info">
-              <div class="contact-details">
-                <div class="contact-details__address">Некрасовская 90</div>
-                <div class="contact-details__phone">+7 (423) 207-70-55</div>
-              </div>
-              <div class="contact-details">
-                <div class="contact-details__address">
-                  Майора Филипова 11 корпус 2
+              {% for branch in branches %}
+                <div class="contact-details">
+                  <div class="contact-details__address">{{ branch.address }}</div>
+                  <div class="contact-details__phone">{{ branch.phone }}</div>
                 </div>
-                <div class="contact-details__phone">+7 (914) 967-75-52</div>
-              </div>
+              {% endfor %}
               <div class="form">
                 <div class="form__title">Подберем процедуру под ваш запрос</div>
 

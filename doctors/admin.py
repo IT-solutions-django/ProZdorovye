@@ -10,8 +10,8 @@ class BranchAdmin(admin.ModelAdmin):
 
 @admin.register(Speciality)
 class SpecialityAdmin(admin.ModelAdmin): 
-    list_display = ['name']
-    search_fields = ['name']
+    list_display = ['name', 'description', 'icon']
+    search_fields = ['name', 'description']
 
 
 @admin.register(ServiceType)

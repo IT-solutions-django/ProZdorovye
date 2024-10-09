@@ -1,4 +1,8 @@
 from django.db import models
+import uuid
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 
 class Branch(models.Model): 
@@ -16,13 +20,33 @@ class Branch(models.Model):
 
 class Speciality(models.Model): 
     name = models.CharField('Название', max_length=80)
-
+    description = models.TextField('Описание')
+    icon = models.ImageField('Иконка', upload_to='specialities', null=True)
+    
     class Meta: 
+        ordering = ['name']
         verbose_name = 'Специализация'
         verbose_name_plural = 'Специализации'
 
     def __str__(self) -> str: 
         return self.name
+
+    def save(self, *args, **kwargs):
+        name = str(uuid.uuid1())
+        img = Image.open(self.icon)
+        img_io = BytesIO()
+        img.save(img_io, format="WebP")
+        img_file = InMemoryUploadedFile(
+            file=img_io, 
+            field_name=None, 
+            name=f"{name}.webp", 
+            content_type="image/webp", 
+            size=img_io.tell(), 
+            charset=None,
+        )
+        self.icon.save(f"{name}.webp", img_file, save=False)
+
+        super(Speciality, self).save(*args, **kwargs)
 
 
 class ServiceType(models.Model): 
