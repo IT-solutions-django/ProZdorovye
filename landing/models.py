@@ -37,7 +37,7 @@ class Request(models.Model):
     name = models.CharField('Имя', max_length=100) 
     phone = models.CharField('Телефон', max_length=18) 
     email = models.EmailField('Email')
-    opened = models.BooleanField('Открыта', default=True)
+    is_open = models.BooleanField('Открыта', default=True)
 
     class Meta: 
         verbose_name = 'Заявка'

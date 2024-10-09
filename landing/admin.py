@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article, Review
+from .models import Article, Review, Request
 
 
 @admin.register(Article)
@@ -12,4 +12,9 @@ class ArticleAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin): 
     list_display = ['rate', 'username', 'content', 'created_at']
     search_fields = ['title', 'content']
-    
+
+
+@admin.register(Request)
+class RequestAdmin(admin.ModelAdmin): 
+    list_display = ['name', 'phone', 'email', 'is_open']
+    search_fields = ['name', 'email']
