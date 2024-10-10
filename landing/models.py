@@ -1,12 +1,17 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+import uuid
+from PIL import Image
+from io import BytesIO
+from django.core.files.uploadedfile import InMemoryUploadedFile
+import os
 
 
 class Article(models.Model): 
     title = models.CharField('Название', max_length=100) 
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
-    photo = models.ImageField('Фотография', upload_to='articles', null=True, blank=True)
+    photo = models.FileField('Фотография', upload_to='articles', null=True, blank=True)
 
     class Meta: 
         verbose_name = 'Статья'
@@ -14,6 +19,28 @@ class Article(models.Model):
 
     def __str__(self) -> str: 
         return self.title
+    
+    def save(self, *args, **kwargs):
+        file_extension = os.path.splitext(self.photo.name)[1].lower()
+
+        if file_extension == '.svg': 
+            super(Article, self).save(*args, **kwargs)
+            return 
+
+        name = str(uuid.uuid1())
+        img = Image.open(self.photo)
+        img_io = BytesIO()
+        img.save(img_io, format="WebP")
+        img_file = InMemoryUploadedFile(
+            file=img_io, 
+            field_name=None, 
+            name=f"{name}.webp", 
+            content_type="image/webp", 
+            size=img_io.tell(), 
+            charset=None,
+        )
+        self.photo.save(f"{name}.webp", img_file, save=False)
+        super(Article, self).save(*args, **kwargs)
 
 
 class Review(models.Model): 
@@ -44,4 +71,4 @@ class Request(models.Model):
         verbose_name_plural = 'Заявки'
 
     def __str__(self) -> str: 
-        return f'{self.opened} | {self.name}, {self.phone}'
+        return f'{self.is_open} | {self.name}, {self.phone}'

@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from doctors.models import Branch, Speciality, Doctor
 from .models import Review, Article
+from .forms import RequestForm
+
+
+class MainView(View): 
+    def get(self, request): 
+        return redirect('landing:home')
 
 
 class HomeView(View): 
-    template_name = 'landing/main.html' 
+    template_name = 'landing/home.html' 
 
     def get(self, request): 
         branches = Branch.objects.all()
@@ -13,6 +19,7 @@ class HomeView(View):
         reviews = Review.objects.all()
         doctors = Doctor.objects.all()
         articles = Article.objects.all()
+        form = RequestForm()
 
         context = {
             'branches': branches,
@@ -20,6 +27,21 @@ class HomeView(View):
             'reviews': reviews,
             'doctors': doctors,
             'articles': articles,
+            'form': form,
         }
 
         return render(request, self.template_name, context)
+    
+    def post(self, request): 
+        form: RequestForm = RequestForm(request.POST) 
+        if form.is_valid(): 
+            new_request = form.save() 
+            return redirect('landing:request_saved')
+        return render(request, 'template_name.html', {'form': form})
+
+
+class RequestSavedView(View): 
+    template_name = 'landing/request_saved.html' 
+
+    def get(self, request): 
+        return render(request, self.template_name)

@@ -324,7 +324,7 @@
     <div class="section section--contact">
       <div id="map"></div>
 
-      <div class="contacts container">
+      <!-- <div class="contacts container">
         <div class="contacts-card">
           <div class="contacts-card__header">Контакты</div>
           <div class="contacts-card__content">
@@ -371,6 +371,59 @@
                 <button class="form__button button-osta">
                   Заказать звонок
                 </button>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="https://t.me/your-telegram-link" target="_blank">
+                <img src="{% static 'images/tg.svg' %}" alt="Telegram" />
+              </a>
+              <a href="https://wa.me/your-whatsapp-number" target="_blank">
+                <img src="{% static 'images/whatsapp.svg' %}" alt="WhatsApp" />
+              </a>
+              <a href="https://vk.com/your-vk-link" target="_blank">
+                <img src="{% static 'images/vk.svg' %}" alt="VKontakte" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      
+
+      <div class="contacts container">
+        <div class="contacts-card">
+          <div class="contacts-card__header">Контакты</div>
+          <div class="contacts-card__content">
+            <div class="contacts-card__info">
+              {% for branch in branches %}
+                <div class="contact-details">
+                  <div class="contact-details__address">{{ branch.address }}</div>
+                  <div class="contact-details__phone">{{ branch.phone }}</div>
+                </div>
+              {% endfor %}
+              <div class="form">
+                <div class="form__title">Подберем процедуру под ваш запрос</div>
+
+                  <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="form__field">
+                        {{ form.name }}
+                        <label for="{{ form.name.auto_id }}" class="form__label">{{ form.name.label }}</label>
+                    </div>
+                    <div class="form__row">
+                        <div class="form__field">
+                            {{ form.phone }}
+                            <label for="{{ form.phone.auto_id }}" class="form__label">{{ form.phone.label }}</label>
+                        </div>
+                        <div class="form__field">
+                            {{ form.email }}
+                            <label for="{{ form.email.auto_id }}" class="form__label">{{ form.email.label }}</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="form__button button-osta">
+                        Заказать звонок
+                    </button>
+                </form>
               </div>
             </div>
             <div class="social-links">
