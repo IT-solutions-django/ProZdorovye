@@ -20,3 +20,34 @@
 
 - **doctors** - Управление врачами, специализациями, услугами и филиалами медицинского центра 
 - **landing** - Управление информацией, связаной с главной страницей: отзывами, статьями и заявками
+
+
+## Установка и запуск 
+
+1. Клонируйте репозиторий:
+
+``` 
+git clone https://github.com/IT-solutions-django/ProZdorovye.git
+cd ProZdorovye
+```
+
+2. Создайте виртуальное окружение и установите зависимости 
+
+```
+python -m venv venv
+venv/Scripts/Activate 
+pip install -r requirements.txt
+```
+
+3. Создайте и примените миграции
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+4. Запустите локальный сервер
+
+```
+python manage.py runserver
+```
