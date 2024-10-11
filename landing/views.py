@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from doctors.models import Branch, Speciality, Doctor
-from .models import Review, Article
+from reviews.models import Review
+from .models import Article
 from .forms import RequestForm
 
 
