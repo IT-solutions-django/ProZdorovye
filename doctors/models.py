@@ -89,7 +89,7 @@ class Doctor(models.Model):
         return f'{self.first_name} {self.last_name} {self.patronymic if self.patronymic else ""}'
     
     def save(self, *args, **kwargs):
-        name = str(uuid.uuid1())
+        name = os.path.splitext(self.photo.name)[0].lower()
         img = Image.open(self.photo)
         img_io = BytesIO()
         img.save(img_io, format="WebP")

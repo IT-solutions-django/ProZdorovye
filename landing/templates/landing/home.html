@@ -301,12 +301,14 @@
         <div class="blog__content">
           {% for article in articles %}
             <a class="article" href="index.html#">
-              <img
-                class="article__image"
-                src="{{ article.photo.url }}"
-                alt="Остеопат"
-              />
-              <div class="article__title">{{ article }}</div>
+              {% if article.photos.all %}
+                  <img
+                      class="article__image"
+                      src="{{ article.photos.all.0.image.url }}"
+                      alt="Остеопат"
+                  />
+              {% endif %}
+              <div class="article__title">{{ article.title }}</div>
               <div class="article__text">
                 <p>
                   {{ article.content }}
