@@ -77,7 +77,7 @@ class Doctor(models.Model):
     hire_year = models.SmallIntegerField('Год начала работы')
     experience = models.SmallIntegerField('Стаж', null=True)
     description = models.TextField('Описание', null=True, blank=True) 
-    photo = models.FileField('Фото', upload_to='doctors', null=True)
+    photo = models.ImageField('Фото', upload_to='doctors', null=True)
     branch = models.ForeignKey(verbose_name='Филиал', to=Branch, on_delete=models.CASCADE)
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
 
@@ -89,12 +89,6 @@ class Doctor(models.Model):
         return f'{self.first_name} {self.last_name} {self.patronymic if self.patronymic else ""}'
     
     def save(self, *args, **kwargs):
-        file_extension = os.path.splitext(self.photo.name)[1].lower()
-
-        if file_extension == '.svg': 
-            super(Doctor, self).save(*args, **kwargs)
-            return 
-
         name = str(uuid.uuid1())
         img = Image.open(self.photo)
         img_io = BytesIO()

@@ -11,7 +11,7 @@ class Article(models.Model):
     title = models.CharField('Название', max_length=100) 
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
-    photo = models.FileField('Фотография', upload_to='articles', null=True, blank=True)
+    photo = models.ImageField('Фотография', upload_to='articles', null=True, blank=True)
 
     class Meta: 
         verbose_name = 'Статья'
@@ -21,12 +21,6 @@ class Article(models.Model):
         return self.title
     
     def save(self, *args, **kwargs):
-        file_extension = os.path.splitext(self.photo.name)[1].lower()
-
-        if file_extension == '.svg': 
-            super(Article, self).save(*args, **kwargs)
-            return 
-
         name = str(uuid.uuid1())
         img = Image.open(self.photo)
         img_io = BytesIO()
