@@ -7,7 +7,6 @@ class Review(models.Model):
         MinValueValidator(1), 
         MaxValueValidator(5)
     ])
-    username = models.CharField(max_length=50)
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации')
 
