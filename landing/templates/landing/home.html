@@ -252,7 +252,8 @@
         <div class="specialists-section__categories">
           <div class="categories-list" id="categoryButtons"></div>
         </div>
-        <div class="specialists-list" id="specialistsList"></div>
+        <div class="specialists-list" id="specialistsList">
+        </div>
         <div class="button-osta">Все специалисты</div>
       </div>
     </div>
@@ -260,7 +261,7 @@
       <div class="reviews-section container">
         <div class="reviews-header">Отзывы</div>
         <div class="reviews-list">
-          {% for review in reviews|slice:":3" %}
+          {% for review in reviews|slice:":4" %}
             <div class="review-card">
               <div class="review-card__rating">
                 <img

@@ -5,13 +5,13 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
 
 
-class Photo(models.Model):
+class ArticlePhoto(models.Model):
     image = models.ImageField('Изображение', upload_to='articles', null=True, blank=True)
     created_at = models.DateTimeField('Дата загрузки', auto_now_add=True)
 
     class Meta:
-        verbose_name = 'Фото'
-        verbose_name_plural = 'Фото'
+        verbose_name = 'Фото для статьи'
+        verbose_name_plural = 'Фото для статей'
 
     def __str__(self):
         return self.image.name
@@ -30,14 +30,14 @@ class Photo(models.Model):
             charset=None,
         )
         self.image.save(f"{name}.webp", img_file, save=False)
-        super(Photo, self).save(*args, **kwargs)
+        super(ArticlePhoto, self).save(*args, **kwargs)
 
 
 class Article(models.Model): 
     title = models.CharField('Название', max_length=100) 
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
-    photos = models.ManyToManyField(Photo, verbose_name='Фотографии', blank=True)
+    photos = models.ManyToManyField(ArticlePhoto, verbose_name='Фотографии', blank=True)
 
     class Meta: 
         verbose_name = 'Статья'

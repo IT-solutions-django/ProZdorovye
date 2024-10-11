@@ -6,6 +6,34 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
 
 
+class SpecialityPhoto(models.Model):
+    image = models.ImageField('Изображение', upload_to='articles', null=True, blank=True)
+    created_at = models.DateTimeField('Дата загрузки', auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Фото специализации'
+        verbose_name_plural = 'Фото специализации'
+
+    def __str__(self):
+        return self.image.name
+
+    def save(self, *args, **kwargs):
+        name = os.path.splitext(self.image.name)[0].lower()
+        img = Image.open(self.image)
+        img_io = BytesIO()
+        img.save(img_io, format="WebP")
+        img_file = InMemoryUploadedFile(
+            file=img_io,
+            field_name=None,
+            name=f"{name}.webp",
+            content_type="image/webp",
+            size=img_io.tell(),
+            charset=None,
+        )
+        self.image.save(f"{name}.webp", img_file, save=False)
+        super(SpecialityPhoto, self).save(*args, **kwargs)
+
+
 class Branch(models.Model): 
     name = models.CharField('Название', max_length=100)
     address = models.CharField('Адрес', max_length=100) 
@@ -23,6 +51,7 @@ class Speciality(models.Model):
     name = models.CharField('Название', max_length=80)
     description = models.TextField('Описание')
     icon = models.FileField('Иконка', upload_to='specialities', null=True)
+    photos = models.ManyToManyField(SpecialityPhoto, verbose_name='Фотографии', blank=True)
     
     class Meta: 
         ordering = ['name']
