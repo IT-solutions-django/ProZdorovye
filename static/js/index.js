@@ -3278,7 +3278,7 @@ Ue(Ye, {
   fullscreen: !0,
   download: !1
 });
-async function fetchData() {
+async function fetchDoctorsAndCategories() {
   try {
     const specialitiesResponse = await fetch(`${window.location.origin}/doctors/api/specialities`);
     if (!specialitiesResponse.ok) {
@@ -3344,7 +3344,7 @@ async function fetchData() {
     console.error('There was a problem with the fetch operation:', error);
   }
 }
-fetchData();
+fetchDoctorsAndCategories();
 
 
 
