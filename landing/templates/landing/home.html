@@ -8,258 +8,267 @@
 
 
 {% block script %}
+<script type="module" src="{% static 'js/main.js' %}"></script>
 <link rel="modulepreload" href="{% static 'js/footer.js' %}">
 <link rel="modulepreload" href="{% static 'js/doctors.js' %}">
 <link rel="modulepreload" href="{% static 'js/booking.js' %}">
-<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
 <link rel="modulepreload" href="{% static 'js/contact.js' %}">
 <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 {% endblock %}
 
 
-{% block content %}
-<div id="header"></div>
-<div class="section section--hero">
-  <div class="promo container">
-    <div class="promo__info">
-      <div class="promo__title">
-        Путь
-        <br />
-        к здоровью <br />начинается
-        <br />
-        <span class="promo__title promo__title--highlight">здесь</span>
-      </div>
-      <div class="promo__description">
-        Опытные врачи и современные методы лечения
-        <br />
-        для поддержания вашего здоровья и благополучия
-      </div>
-    </div>
-    <div class="promo__actions">
-      <div class="button-osta">Записаться на прием</div>
-      <div class="button-osta button-osta--secondary">Задать вопрос</div>
-    </div>
-  </div>
+{% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+    <div id="header"></div>
 
-  <div class="service-slider container embla" id="service-list-slider">
-    <div class="embla__container">
-      {% for speciality in specialities %}
-        <a href="index.html#" class="service-slider__item embla__slide">
-          <div class="service-slider__item-info">
-            <div class="service-slider__item-title">
-              {{ speciality.name }}
-            </div>
-            <div class="service-slider__item-subtitle">
-              {{ speciality.description }}
-            </div>
+    <div class="section section--hero">
+      <div class="promo container">
+        <div class="promo__info">
+          <div class="promo__title">
+            Путь
+            <br />
+            к здоровью <br />начинается
+            <br />
+            <span class="promo__title promo__title--highlight">здесь</span>
           </div>
-          <img
-            class="service-slider__item-icon"
-            src="{% if speciality.icon %}{{ speciality.icon.url }}{% endif %}"
-          />
-        </a>
-      {% endfor %}
-    </div>
+          <div class="promo__description">
+            Опытные врачи и современные методы лечения
+            <br />
+            для поддержания вашего здоровья и благополучия
+          </div>
+        </div>
+        <div class="promo__actions">
+          <a href="index.html#" class="button-osta">Записаться на прием</a>
+          <a href="index.html#" class="button-osta button-osta--secondary"
+            >Задать вопрос</a
+          >
+        </div>
+      </div>
 
-    <button class="embla__button embla__button--prev" type="button">
-      <img src="{% static 'images/left.svg' %}" alt="" />
-    </button>
-    <button class="embla__button embla__button--next" type="button">
-      <img src="{% static 'images/right.svg' %}" alt="" />
-    </button>
-  </div>
-</div>
-<div class="section section--stat">
-  <div class="stats-list container">
-    <div class="stats-item">
-      <div class="stats-item__number">2 500+</div>
-      <div class="stats-item__divider"></div>
-      <div class="stats-item__description">
-        Пациентов, прошедших успешное лечение в нашей клинике
-      </div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-item__number">15+</div>
-      <div class="stats-item__divider"></div>
-      <div class="stats-item__description">
-        Лет опыта работы<br />
-        наших специалистов
-      </div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-item__number">40+</div>
-      <div class="stats-item__divider"></div>
-      <div class="stats-item__description">
-        Специалистов<br />
-        в штате клиники
-      </div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-item__number">94%</div>
-      <div class="stats-item__divider"></div>
-      <div class="stats-item__description">
-        Пациентов приходят по рекомендациям
-      </div>
-    </div>
-    <div class="stats-item">
-      <div class="stats-item__number">2</div>
-      <div class="stats-item__divider"></div>
-      <div class="stats-item__description">
-        Филиала с удобным<br />
-        местоположением
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section section--clinic-info">
-  <div class="clinic-info container">
-    <div class="clinic-description">
-      <div class="clinic-description__title">О Клинике</div>
-      <div class="clinic-description__text">
-        Мы – многопрофильная медицинская клиника, предоставляющая широкий
-        спектр услуг для поддержания здоровья и благополучия. Наша команда
-        специалистов использует современные методы диагностики и лечения,
-        обеспечивая индивидуальный подход и высокое качество медицинской
-        помощи.
-      </div>
-      <!-- Thumbnails carousel -->
-      <div class="clinic-image__thumbs embla" id="thumbCarousel">
+      <div class="service-slider container embla" id="service-list-slider">
         <div class="embla__container">
-          <div class="embla__slide">
-            <img
-              class="clinic-image__thumbs-image clinic-image__thumbs-image--active"
-              src="{% static 'images/clinic/1.jpg' %}"
-            />
-          </div>
-          <div class="embla__slide">
-            <img
-              class="clinic-image__thumbs-image"
-              src="{% static 'images/clinic/2.jpg' %}"
-            />
-          </div>
-          <div class="embla__slide">
-            <img
-              class="clinic-image__thumbs-image"
-              src="{% static 'images/clinic/3.jpg' %}"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Main image carousel -->
-    <div class="clinic-image embla" id="mainCarousel">
-      <div class="embla__container">
-        <div class="embla__slide">
-          <img class="clinic-image" src="{% static 'images/clinic/1.jpg' %}" />
-        </div>
-        <div class="embla__slide">
-          <img class="clinic-image" src="{% static 'images/clinic/2.jpg' %}" />
-        </div>
-        <div class="embla__slide">
-          <img class="clinic-image" src="{% static 'images/clinic/3.jpg' %}" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="clinic-benefits container">
-    <div class="benefit">
-      <img class="benefit__icon" src="{% static 'images/diamont.svg' %}" />
-      <div class="benefit__title">Индивидуальный подход</div>
-    </div>
-    <div class="benefit">
-      <img class="benefit__icon" src="{% static 'images/sert.svg' %}" />
-      <div class="benefit__title">Высокая квалификация специалистов</div>
-    </div>
-    <div class="benefit">
-      <img class="benefit__icon" src="{% static 'images/lamp.svg' %}" />
-      <div class="benefit__title">Использование современных технологий</div>
-    </div>
-  </div>
-  <div class="clinic-services container">
-    <div class="clinic-services__title">Услуги клиники</div>
-    <div class="clinic-services__list">
-      {% for speciality in specialities %}
-        <a href="index.html#" class="service-button">{{ speciality.name }}</a>
-      {% endfor %}
-    </div>
-  </div>
-</div>
-
-<div id="booking"></div>
-<div id="doctors"></div>
-<div class="section section--reviews">
-  <div class="reviews-section container">
-    <div class="reviews-header">Отзывы</div>
-    <div class="reviews-list">
-      {% for review in reviews|slice:":4" %}
-        <div class="review-card">
-          <div class="review-card__rating">
-            <img
-              class="review-card__rating-image"
-              src="{% static 'images/star.svg' %}"
-              alt="5.0 рейтинг"
-            />
-            <div class="review-card__rating-score">{{ review.rate }}</div>
-            <div class="review-card__rating-status">Отлично</div>
-          </div>
-          <div class="review-card__text">
-            {{ review.content }}
-          </div>
-          <div class="review-card__date">Приём был {{ review.created_at|date:"d.m.Y" }}</div>
-        </div>
-      {% endfor %}
-    </div>
-    <div class="reviews-footer">
-      <div class="reviews-footer__all-reviews">Все отзывы</div>
-      <div class="reviews-footer__see-all-list">
-        <a href="index.html#" class="reviews-footer__see-all-item">
-          <img src="{% static 'images/doctor.svg' %}" />
-        </a>
-        <a href="index.html#" class="reviews-footer__see-all-item">
-          <img src="{% static 'images/2gis.svg' %}" />
-        </a>
-        <a href="index.html#" class="reviews-footer__see-all-item">
-          <img src="{% static 'images/ya.svg' %}" />
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="section section--blog">
-  <div class="blog container">
-    <div class="blog__header">О вашем здоровье</div>
-    <div class="blog__content">
-      {% for article in articles %}
-        <a class="article" href="index.html#">
-          {% if article.photos.all %}
+          {% for speciality in specialities %} 
+            <a href="index.html#" class="service-slider__item embla__slide">
+              <div class="service-slider__item-info">
+                <div class="service-slider__item-title">
+                  {{ speciality.name }}
+                </div>
+                <div class="service-slider__item-subtitle">
+                  {{ speciality.description }}
+                </div>
+              </div>
               <img
-                  class="article__image"
-                  src="{{ article.photos.all.0.image.url }}"
-                  alt="Фото"
+                class="service-slider__item-icon"
+                src="{{ speciality.icon.url }}"
               />
-          {% endif %}
-          <div class="article__title">{{ article.title }}</div>
-          <div class="article__text">
-            <p>
-              {{ article.content }}
-            </p>
+            </a>
+          {% endfor %}
+        </div>
+
+        <button class="embla__button embla__button--prev" type="button">
+          <img src="assets/images/left.svg" alt="" />
+        </button>
+        <button class="embla__button embla__button--next" type="button">
+          <img src="assets/images/right.svg" alt="" />
+        </button>
+      </div>
+    </div>
+    <div class="section section--stat">
+      <div class="stats-list container">
+        <div class="stats-item">
+          <div class="stats-item__number">2 500+</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Пациентов, прошедших успешное лечение в нашей клинике
           </div>
-          <div class="article__date">{{ article.created_at|date:"d.m.Y" }}</div>
-        </a>
-      {% endfor %}
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">15+</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Лет опыта работы<br />
+            наших специалистов
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">40+</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Специалистов<br />
+            в штате клиники
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">94%</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Пациентов приходят по рекомендациям
+          </div>
+        </div>
+        <div class="stats-item">
+          <div class="stats-item__number">2</div>
+          <div class="stats-item__divider"></div>
+          <div class="stats-item__description">
+            Филиала с удобным<br />
+            местоположением
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="blog__footer">
-      <div class="button-osta">Все статьи</div>
+
+    <div class="section section--clinic-info">
+      <div class="clinic-info container">
+        <div class="clinic-description">
+          <div class="clinic-description__title">О Клинике</div>
+          <div class="clinic-description__text">
+            Мы – многопрофильная медицинская клиника, предоставляющая широкий
+            спектр услуг для поддержания здоровья и благополучия. Наша команда
+            специалистов использует современные методы диагностики и лечения,
+            обеспечивая индивидуальный подход и высокое качество медицинской
+            помощи.
+          </div>
+          <!-- Thumbnails carousel -->
+          <div class="clinic-image__thumbs embla" id="thumbCarousel">
+            <div class="embla__container">
+              <div class="embla__slide">
+                <img
+                  class="clinic-image__thumbs-image clinic-image__thumbs-image--active"
+                  src="{% static 'images/clinic/1.jpg' %}"
+                />
+              </div>
+              <div class="embla__slide">
+                <img
+                  class="clinic-image__thumbs-image"
+                  src="{% static 'images/clinic/2.jpg' %}"
+                />
+              </div>
+              <div class="embla__slide">
+                <img
+                  class="clinic-image__thumbs-image"
+                  src="{% static 'images/clinic/3.jpg' %}"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main image carousel -->
+        <div class="clinic-image embla" id="mainCarousel">
+          <div class="embla__container">
+            <div class="embla__slide">
+              <img class="clinic-image" src="{% static 'images/clinic/1.jpg' %}" />
+            </div>
+            <div class="embla__slide">
+              <img class="clinic-image" src="{% static 'images/clinic/2.jpg' %}" />
+            </div>
+            <div class="embla__slide">
+              <img class="clinic-image" src="{% static 'images/clinic/3.jpg' %}" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clinic-benefits container">
+        <div class="benefit">
+          <img class="benefit__icon" src="{% static 'images/diamont.svg' %}" />
+          <div class="benefit__title">Индивидуальный подход</div>
+        </div>
+        <div class="benefit">
+          <img class="benefit__icon" src="{% static 'images/sert.svg' %}" />
+          <div class="benefit__title">Высокая квалификация специалистов</div>
+        </div>
+        <div class="benefit">
+          <img class="benefit__icon" src="{% static 'images/lamp.svg' %}" />
+          <div class="benefit__title">Использование современных технологий</div>
+        </div>
+      </div>
+      <div class="clinic-services container">
+        <div class="clinic-services__title">Услуги клиники</div>
+        <div class="clinic-services__list">
+          {% for speciality in specialities %}
+            <a href="{{ speciality.get_absolute_url }}" class="service-button">{{ speciality.name }}</a>
+          {% endfor %}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    <div id="booking"></div>
 
-<div id="contact"></div>
+    <div id="doctors"></div>
+    <div class="section section--reviews">
+      <div class="reviews-section container">
+        <div class="reviews-header">Отзывы</div>
+        <div class="reviews-list">
+          {% for review in reviews|slice:"4" %}
+            <div class="review-card">
+              <div class="review-card__rating">
+                <img
+                  class="review-card__rating-image"
+                  src="{% static 'images/star.svg' %}"
+                  alt="5.0 рейтинг"
+                />
+                <div class="review-card__rating-score">{{ review.rate }}</div>
+                <div class="review-card__rating-status">Отлично</div>
+              </div>
+              <div class="review-card__text">
+                {{ review.content }}
+              </div>
+              <div class="review-card__date">Приём был {{ review.created_at|date:"d.m.Y" }}</div>
+            </div>
+          {% endfor %}
+        </div>
+         
+        <div class="reviews-footer">
+          <div class="reviews-footer__all-reviews">Все отзывы</div>
+          <div class="reviews-footer__see-all-list">
+            <a href="index.html#" class="reviews-footer__see-all-item">
+              <img src="{% static 'images/doctor.svg' %}" />
+            </a>
+            <a href="index.html#" class="reviews-footer__see-all-item">
+              <img src="{% static 'images/2gis.svg' %}" />
+            </a>
+            <a href="index.html#" class="reviews-footer__see-all-item">
+              <img src="{% static 'images/ya.svg' %}" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div id="footer"></div>
+    <div class="section section--blog">
+      <div class="blog container">
+        <div class="blog__header">О вашем здоровье</div>
+        <div class="blog__content">
+          {% for article in articles %}
+            <a class="article" href="">
+              {% if article.photos.all %}
+                <img
+                    class="article__image"
+                    src="{{ article.photos.all.0.image.url }}"
+                    alt="Фото"
+                />
+              {% endif %}
+              <div class="article__title">{{ article.title }}</div>
+              <div class="article__text">
+                <p>
+                  {{ article.content }}
+                </p>
+              </div>
+              <div class="article__date">{{ article.created_at|date:"d.m.Y" }}</div>
+            </a>
+          {% endfor %}
+        </div>
+        <div class="blog__footer">
+          <div class="button-osta">Все статьи</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact"></div>
+
+    <div id="footer"></div>
+
+    <!-- Import the printDoctors function and call it -->
+
 
 {% endblock %}

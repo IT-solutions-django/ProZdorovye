@@ -1401,10 +1401,10 @@ function An(t, n="Все направления", i=!0, o=!0) {
         <div class="specialists-list__container ${o ? "embla__container" : ""}"></div>
         ${o ? `
           <button class="embla__button embla__button--prev" type="button">
-            <img src="./assets/images/left.svg" alt="" />
+            <img src="${window.location.origin}/static/images/left.svg" alt="" />
           </button>
           <button class="embla__button embla__button--next" type="button">
-            <img src="./assets/images/right.svg" alt="" />
+            <img src="${window.location.origin}/static/images/right.svg" alt="" />
           </button>
         ` : ""}
       </div>

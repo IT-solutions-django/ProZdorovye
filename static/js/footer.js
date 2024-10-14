@@ -69,7 +69,7 @@
             <div class="footer__logo">
               <img
                 class="footer__logo-image"
-                src="./assets/images/logo-footer.svg"
+                src="${window.location.origin}/static/images/logo-footer.svg"
                 alt="Logo"
               />
             </div>
@@ -84,13 +84,13 @@
           </div>
           <div class="social-links">
             <a href="https://t.me/your-telegram-link" target="_blank">
-              <img src="./assets/images/tg.svg" alt="Telegram" />
+              <img src="${window.location.origin}/static/images/tg.svg" alt="Telegram" />
             </a>
             <a href="https://wa.me/your-whatsapp-number" target="_blank">
-              <img src="./assets/images/whatsapp.svg" alt="WhatsApp" />
+              <img src="${window.location.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
             </a>
             <a href="https://vk.com/your-vk-link" target="_blank">
-              <img src="./assets/images/vk.svg" alt="VKontakte" />
+              <img src="${window.location.origin}/static/images/vk.svg" alt="VKontakte" />
             </a>
           </div>
         </div>
