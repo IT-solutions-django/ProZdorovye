@@ -19,16 +19,16 @@ class SpecialitiesAPIView(View):
             'specialities': specialities
         })
     
+
 class DoctorsAPIView(View): 
     def get(self, request): 
-        doctors = Doctor.objects.all()
         doctors = [
             {
                 'name': f'{doctor.first_name} {doctor.last_name} {doctor.patronymic}', 
                 'categories': [s.name for s in doctor.specialities.all()], 
                 'image': doctor.photo.url,
             } 
-            for doctor in doctors
+            for doctor in Doctor.objects.all()
         ]
         return JsonResponse({
             'doctors': doctors

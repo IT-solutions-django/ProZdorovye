@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %}
+Центр современной остеопатии и мануальной медицины
+{% endblock %} 
+
+{% block script %} 
+<script type="module" src="{% static 'js/price.js' %}"></script>
+<link rel="modulepreload" href="{% static 'js/footer.js' %}">
+<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock script %} 
+
+{% block content %} 
+<div class="price-page">
+    <div id="header"></div>
+    <div class="section section--inpage">
+      <div class="container price">
+        <div class="price__header">Услуги и цены</div>
+        <div class="directions"></div>
+
+        <div class="services"></div>
+
+        <a href="price.html#" class="button-osta button-osta--secondary price__download-all"
+          >Скачать все .xlsx</a
+        >
+      </div>
+    </div>
+    <div id="ask-form"></div>
+    <div id="footer"></div>
+  </div>
+{% endblock %}

@@ -27,6 +27,7 @@ urlpatterns = [
     path('doctors/', include('doctors.urls', namespace='doctors')),
     path('services/', include('services.urls', namespace='services')),
     path('home/', include('landing.urls', namespace='landing')),
+    path('prices/', include('prices.urls', namespace='prices')),
 
     path('', MainView.as_view())
 ]

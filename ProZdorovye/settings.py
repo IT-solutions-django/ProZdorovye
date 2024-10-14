@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'landing',
     'doctors',
     'reviews',
-    'services'
+    'services', 
+    'prices',
 ]
 
 MIDDLEWARE = [
