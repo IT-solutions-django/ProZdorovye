@@ -164,3 +164,7 @@ cython_debug/
 media/articles/*
 media/doctors/*
 media/specialities/*
+
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir
