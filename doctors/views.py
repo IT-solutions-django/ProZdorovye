@@ -1,8 +1,14 @@
 from django.shortcuts import render
 from django.views import View
-from django.core import serializers
 from django.http import JsonResponse
 from .models import Speciality, Doctor
+
+
+class DoctorsView(View): 
+    template_name = 'doctors/doctors.html'
+
+    def get(self, request): 
+        return render(request, self.template_name)
 
 
 class SpecialitiesAPIView(View): 
