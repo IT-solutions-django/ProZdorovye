@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+
+{% block title %}
+Центр современной остеопатии и мануальной медицины
+{% endblock %}
+
+
+{% block script %}
+<script type="module" src="{% static 'js/doctors2.js' %}"></script>
+<link rel="modulepreload" href="{% static 'js/footer.js' %}">
+<link rel="modulepreload" href="{% static 'js/booking.js' %}">
+<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="doctor-page">
+    <div id="header"></div>
+
+    <div class="section section--inpage">
+      <div class="container doctor">
+        <div class="doctor__header">{{ doctor.last_name }} {{ doctor.first_name }} {{ doctor.patronymic }}</div>
+        <div class="doctor-card">
+          <div class="doctor-card__info">
+            <div class="doctor-card__specialization">
+            {% for speciality in doctor.specialities.all %}
+                {{ speciality.name }}
+                <br />
+            {% endfor %}
+              Стаж работы: с {{ doctor.hire_year }} г.
+            </div>
+            <div class="doctor-card__details">
+                <p>
+                    {{ doctor.description }}
+                </p>
+            </div>
+            <a
+              href="https://prodoctorov.ru/vladivostok/vrach/162916-shevchenko/"
+              target="_blank"
+              class="doctor-card__rating"
+            >
+              <img
+                class="doctor-card__image"
+                src="{% static 'images/doctor.svg' %}"
+              />
+            </a>
+            <div class="doctor-card__services">
+              <div class="doctor-card__services-title">Услуги и цены</div>
+              {% for speciality in doctor.specialities.all %}
+                {% for service in speciality.services.all %}
+                    <div class="doctor-card__service">
+                        <div class="doctor-card__service-name">{{ service.name }}</div>
+                        <div class="doctor-card__service-price">{{ service.price }} ₽</div>
+                        <a class="doctor-card__service-book" href="doctor.html#">
+                          Записаться на прием
+                        </a>
+                    </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+          </div>
+          <div class="doctor-card__image-container">
+            <img
+              class="doctor-card__main-image"
+              src="{{ doctor.photo.url }}"
+              alt="Фото доктора"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="booking"></div>
+    <div id="ask-form"></div>
+
+    <div id="footer"></div>
+  </div>
+{% endblock %}

@@ -39,7 +39,7 @@
             <a href="${window.location.origin}/services/osteopatiya" class="nav__link">Услуги</a>
             <a href="${window.location.origin}/doctors" class="nav__link">Специалисты</a>
             <a href="${window.location.origin}/prices" class="nav__link">Цены</a>
-            <a href="/contacts.html" class="nav__link">Контакты</a>
+            <a href="${window.location.origin}/contacts" class="nav__link">Контакты</a>
           </div>
           <div class="bvi-open" id="specialButton">
             <img
