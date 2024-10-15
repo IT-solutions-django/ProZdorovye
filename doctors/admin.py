@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Branch, Speciality, Doctor, SpecialityPhoto
+from .models import Doctor 
+from landing.models import Branch 
+from services.models import Speciality, SpecialityPhoto
 
 
 @admin.register(Branch)

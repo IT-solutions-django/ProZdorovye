@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class PricesConfig(AppConfig):
+class ArticlesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'prices'
-    verbose_name = 'Цены'
+    name = 'articles'
+    verbose_name = 'Статьи'

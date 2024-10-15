@@ -1,0 +1,65 @@
+{% block title %}
+{% endblock %}
+
+{% block script %}
+<script type="module" crossorigin src="{% static 'js/footer.js' %}"></script>
+<script type="module" crossorigin src="{% static 'booking.js' %}"></script>
+<script type="module" crossorigin src="{% static 'ask-form.js' %}"></script>
+{% endblock %} 
+
+{% block content %} 
+<div class="blog-item-page">
+    <div id="header"></div>
+
+    <div class="section section--inpage">
+      <div class="container blog-item">
+        <div class="blog-item__header">C чем работает остеопат?</div>
+
+        <div class="content">
+          <div class="content__main">
+            <img src="assets/images/article-img.png" class="content__img"> 
+            <div class="content__intro">
+              Остеопатия — это современное медицинское направление, основанное
+              на комплексном подходе к здоровью человека
+            </div>
+            <div class="content__description">
+              Остеопатия — это современное медицинское направление, основанное
+              на комплексном подходе к здоровью человека.
+              Специалисты-остеопаты рассматривают организм как единое целое,
+              где все системы взаимосвязаны, и стремятся восстановить баланс
+              между ними. Основной метод лечения — это мануальная терапия,
+              которая мягко воздействует на мышцы, суставы и ткани для
+              улучшения их подвижности, снижения боли и стимуляции процессов
+              самовосстановления организма. Остеопатия эффективна при болях в
+              спине, головных болях, нарушениях осанки, проблемах с суставами
+              и при лечении последствий травм. Также она применяется в
+              педиатрии, акушерстве и при лечении хронических заболеваний.
+            </div>
+          </div>
+          <div class="directions">
+            <div class="directions__title">Больше статей</div>
+            <div class="directions__list">
+              <a href="blog-item.html#" class="directions__button">Остеопатия</a>
+              <a href="blog-item.html#" class="directions__button">Иглорефлексотерапия</a>
+              <a href="blog-item.html#" class="directions__button">Йога</a>
+              <a href="blog-item.html#" class="directions__button">Кинезиология</a>
+              <a href="blog-item.html#" class="directions__button">ЛФК</a>
+              <a href="blog-item.html#" class="directions__button">Мануальная терапия</a>
+              <a href="blog-item.html#" class="directions__button">Массаж</a>
+              <a href="blog-item.html#" class="directions__button">Пилатес</a>
+              <a href="blog-item.html#" class="directions__button">Психология</a>
+              <a href="blog-item.html#" class="directions__button">Терапия</a>
+              <a href="blog-item.html#" class="directions__button">Эндокринология</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="doctors"></div>
+    <div id="booking"></div>
+    <div id="ask-form"></div>
+
+    <div id="footer"></div>
+  </div>
+{% endblock %}

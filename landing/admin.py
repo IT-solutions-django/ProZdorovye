@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Article, Request, ArticlePhoto
+from .models import Request 
+from articles.models import Article, ArticlePhoto
 
 
 @admin.register(ArticlePhoto)
@@ -11,6 +12,7 @@ class PhotoAdmin(admin.ModelAdmin):
 class ArticleAdmin(admin.ModelAdmin): 
     list_display = ['title', 'content', 'created_at']
     search_fields = ['title', 'content']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(Request)

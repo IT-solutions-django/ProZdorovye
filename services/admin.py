@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ServiceType
+from prices.models import ServiceType
 
 
 @admin.register(ServiceType)

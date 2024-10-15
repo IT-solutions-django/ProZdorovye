@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import View 
-from services.models import ServiceType
+from .models import ServiceType
 
 
 class PricesView(View): 
