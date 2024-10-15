@@ -1,0 +1,89 @@
+{% extends 'base.html' %} 
+{% load static  %} 
+
+{% block title %}
+Центр современной остеопатии и мануальной медицины
+{% endblock %}
+
+{% block script %}
+<script type="module" src="{% static 'js/service.js' %}"></script>
+<link rel="modulepreload" href="{% static 'js/footer.js' %}">
+<link rel="modulepreload" href="{% static 'js/doctors.js' %}">
+<link rel="modulepreload" href="{% static 'js/booking.js' %}">
+<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="service-page">
+    <div id="header"></div>
+
+    <div class="section section--inpage">
+      <div class="container service">
+        <div class="service__header">{{ speciality.name }}</div>
+
+        <div class="content">
+          <div class="content__main">
+            <div class="content__intro">
+              {{ speciality.intro }}
+            </div>
+            <div class="content__description">
+              {{ speciality.description }}
+            </div>
+            <div class="content__indications">
+              <div class="content__indications-title">Основные показания</div>
+              <div class="content__indications-item">
+                Боли в спине и шее — остеопатия помогает при остеохондрозе,
+                грыжах межпозвоночных дисков, мышечных спазмах.
+              </div>
+              <div class="content__indications-item">
+                Головные боли и мигрени — мануальная терапия может уменьшить
+                частоту и интенсивность головных болей, связанных с
+                напряжением мышц или нарушением кровообращения.
+              </div>
+              <div class="content__indications-item">
+                Нарушения осанки — остеопаты работают с исправлением осанки,
+                что помогает предотвратить хронические боли и дискомфорт.
+              </div>
+              <div class="content__indications-item">
+                Заболевания суставов — остеопатия эффективна при артрозе,
+                артрите, ограничении подвижности суставов и после травм.
+              </div>
+              <div class="content__indications-item">
+                Травмы и их последствия — реабилитация после травм мягких
+                тканей, растяжений, вывихов, переломов.
+              </div>
+            </div>
+          </div>
+          <div class="directions">
+            <div class="directions__title">Все направления</div>
+            <div class="directions__list">
+              <a
+                href="{{ s.get_absolute_url }}"
+                class="directions__button directions__button--active"
+                >{{ speciality.name }}</a
+              >
+              {% for s in rest_specialities %}
+                <a href="{{ s.get_absolute_url }}" class="directions__button">{{ s.name }}</a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section section--inpage">
+      <div class="container service">
+          <div class="service-gallery">
+            {% for photo in speciality.photos.all %}
+              <img class="service-gallery__item" src="{{ photo.image.url }}" />
+            {% endfor %}
+            </div>
+      </div>
+    </div>
+    <div id="doctors"></div>
+    <div id="booking"></div>
+    <div id="ask-form"></div>
+
+    <div id="footer"></div>
+  </div>
+{% endblock %} 

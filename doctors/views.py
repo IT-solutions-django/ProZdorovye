@@ -1,9 +1,26 @@
 from django.shortcuts import render
 from django.views import View
-from django.core import serializers
 from django.http import JsonResponse
 from .models import Speciality, Doctor
 
+
+class DoctorView(View): 
+    template_name = 'doctors/doctor.html'
+
+    def get(self, request, doctor_id: int): 
+        doctor = Doctor.objects.get(pk=doctor_id)
+        context = {
+            'doctor': doctor,
+        }
+        return render(request, self.template_name, context)
+
+
+class DoctorsView(View): 
+    template_name = 'doctors/doctors.html'
+
+    def get(self, request): 
+        return render(request, self.template_name)
+    
 
 class SpecialitiesAPIView(View): 
     def get(self, request): 
@@ -13,16 +30,16 @@ class SpecialitiesAPIView(View):
             'specialities': specialities
         })
     
+
 class DoctorsAPIView(View): 
     def get(self, request): 
-        doctors = Doctor.objects.all()
         doctors = [
             {
                 'name': f'{doctor.first_name} {doctor.last_name} {doctor.patronymic}', 
                 'categories': [s.name for s in doctor.specialities.all()], 
                 'image': doctor.photo.url,
             } 
-            for doctor in doctors
+            for doctor in Doctor.objects.all()
         ]
         return JsonResponse({
             'doctors': doctors

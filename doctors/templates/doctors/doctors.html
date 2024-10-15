@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+
+{% block title %}
+Центр современной остеопатии и мануальной медицины
+{% endblock %}
+
+
+{% block script %}
+<script type="module" src="{% static 'js/doctors2.js' %}"></script>
+<link rel="modulepreload" href="{% static 'js/footer.js' %}">
+<link rel="modulepreload" href="{% static 'js/doctors.js' %}">
+<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
+<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="doctors-page">
+    <div id="header"></div>
+    <div id="doctors"></div>
+    <div id="ask-form"></div>
+    <div id="footer"></div>
+  </div>
+{% endblock %}

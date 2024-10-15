@@ -25,6 +25,9 @@ from landing.views import MainView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('doctors/', include('doctors.urls', namespace='doctors')),
+    path('services/', include('services.urls', namespace='services')),
+    path('prices/', include('prices.urls', namespace='prices')),
+
     path('', include('landing.urls', namespace='landing')),
 
     path('', MainView.as_view())

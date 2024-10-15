@@ -46,3 +46,10 @@ class RequestSavedView(View):
 
     def get(self, request): 
         return render(request, self.template_name)
+    
+
+class ContactsView(View): 
+    template_name = 'landing/contacts.html' 
+
+    def get(self, request): 
+        return render(request, self.template_name)

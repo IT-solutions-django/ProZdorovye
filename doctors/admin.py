@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Branch, Speciality, ServiceType, Doctor
+from .models import Branch, Speciality, Doctor, SpecialityPhoto
 
 
 @admin.register(Branch)
@@ -12,12 +12,12 @@ class BranchAdmin(admin.ModelAdmin):
 class SpecialityAdmin(admin.ModelAdmin): 
     list_display = ['name', 'description', 'icon']
     search_fields = ['name', 'description']
+    prepopulated_fields = {'slug': ('name',)}
 
 
-@admin.register(ServiceType)
-class ServiceTypeAdmin(admin.ModelAdmin): 
-    list_display = ['name', 'price', 'speciality']
-    search_fields = ['name']
+@admin.register(SpecialityPhoto)
+class SpecialityPhotoAdmin(admin.ModelAdmin): 
+    list_display = ['pk', 'image']
 
 
 @admin.register(Doctor)

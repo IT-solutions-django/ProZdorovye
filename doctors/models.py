@@ -5,6 +5,8 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
 
+from django.urls import reverse
+
 
 class SpecialityPhoto(models.Model):
     image = models.ImageField('Изображение', upload_to='articles', null=True, blank=True)
@@ -52,6 +54,7 @@ class Speciality(models.Model):
     description = models.TextField('Описание')
     icon = models.FileField('Иконка', upload_to='specialities', null=True)
     photos = models.ManyToManyField(SpecialityPhoto, verbose_name='Фотографии', blank=True)
+    slug = models.SlugField('Слаг')
     
     class Meta: 
         ordering = ['name']
@@ -83,18 +86,8 @@ class Speciality(models.Model):
         self.icon.save(f"{name}.webp", img_file, save=False)
         super(Speciality, self).save(*args, **kwargs)
 
-
-class ServiceType(models.Model): 
-    name = models.CharField('Название', max_length=50)
-    price = models.DecimalField('Цена', decimal_places=2, max_digits=8)
-    speciality = models.ForeignKey(verbose_name='Специализация', to=Speciality, on_delete=models.CASCADE)
-
-    class Meta: 
-        verbose_name = 'Тип услуги'
-        verbose_name_plural = 'Типы услуг'
-    
-    def __str__(self) -> str: 
-        return f'{self.speciality} | {self.name} {self.price}р'
+    def get_absolute_url(self): 
+        return reverse('services:speciality', args=[self.slug])
 
 
 class Doctor(models.Model): 
