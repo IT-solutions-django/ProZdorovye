@@ -166,7 +166,7 @@ p {
 
 .section--hero {
     padding: 90px 0;
-    background: #eef7fb url(/assets/images/hero-bg-main.png) no-repeat center -330px;
+    background: #eef7fb url(../images/hero-bg-main.png) no-repeat center -330px;
     background-size: auto
 }
 
