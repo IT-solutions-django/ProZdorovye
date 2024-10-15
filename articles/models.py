@@ -3,10 +3,12 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
+from django.urls import reverse
 
 
 class Article(models.Model): 
     title = models.CharField('Название', max_length=100) 
+    intro = models.CharField('Введение', max_length=250, null=True)
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
     image = models.ImageField('Фото', upload_to='articles', null=True)
@@ -34,3 +36,6 @@ class Article(models.Model):
         )
         self.image.save(f"{name}.webp", img_file, save=False)
         super(Article, self).save(*args, **kwargs)
+
+    def get_absolute_url(self) -> str: 
+        return reverse('articles:article', args=[self.slug])

@@ -49,7 +49,7 @@
       <div class="service-slider container embla" id="service-list-slider">
         <div class="embla__container">
           {% for speciality in specialities %} 
-            <a href="index.html#" class="service-slider__item embla__slide">
+            <a href="{{ speciality.get_absolute_url }}" class="service-slider__item embla__slide">
               <div class="service-slider__item-info">
                 <div class="service-slider__item-title">
                   {{ speciality.name }}
@@ -240,11 +240,11 @@
         <div class="blog__header">О вашем здоровье</div>
         <div class="blog__content">
           {% for article in articles %}
-            <a class="article" href="">
-              {% if article.photos.all %}
+            <a class="article" href="{{ article.get_absolute_url }}">
+              {% if article.image %}
                 <img
                     class="article__image"
-                    src="{{ article.photos.all.0.image.url }}"
+                    src="{{ article.image.url }}"
                     alt="Фото"
                 />
               {% endif %}
