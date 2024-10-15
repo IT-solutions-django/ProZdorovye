@@ -1,10 +1,15 @@
+{% extends 'base.html' %} 
+{% load static %}
+
 {% block title %}
+Статьи
 {% endblock %}
 
 {% block script %}
 <script type="module" crossorigin src="{% static 'js/footer.js' %}"></script>
-<script type="module" crossorigin src="{% static 'booking.js' %}"></script>
-<script type="module" crossorigin src="{% static 'ask-form.js' %}"></script>
+<script type="module" crossorigin src="{% static 'js/booking.js' %}"></script>
+<script type="module" crossorigin src="{% static 'js/ask-form.js' %}"></script>
+<link rel="stylesheet" crossorigin href="{% static 'css/footer.css' %}">
 {% endblock %} 
 
 {% block content %} 
@@ -13,7 +18,7 @@
 
     <div class="section section--inpage">
       <div class="container blog-item">
-        <div class="blog-item__header">C чем работает остеопат?</div>
+        <div class="blog-item__header">{{ article.title }}</div>
 
         <div class="content">
           <div class="content__main">

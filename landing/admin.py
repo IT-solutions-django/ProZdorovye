@@ -1,21 +1,20 @@
 from django.contrib import admin
-from .models import Request 
-from articles.models import Article, ArticlePhoto
-
-
-@admin.register(ArticlePhoto)
-class PhotoAdmin(admin.ModelAdmin): 
-    list_display = ['image', 'created_at']
-
-
-@admin.register(Article)
-class ArticleAdmin(admin.ModelAdmin): 
-    list_display = ['title', 'content', 'created_at']
-    search_fields = ['title', 'content']
-    prepopulated_fields = {'slug': ('title',)}
+from .models import Request, Branch, Question
 
 
 @admin.register(Request)
 class RequestAdmin(admin.ModelAdmin): 
     list_display = ['name', 'phone', 'email', 'is_open']
     search_fields = ['name', 'email']
+
+
+@admin.register(Branch)
+class BranchAdmin(admin.ModelAdmin): 
+    list_display = ['name', 'address', 'phone']
+    search_fields = ['name', 'address']
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin): 
+    list_display = ['name', 'phone', 'email', 'text', 'is_open']
+    search_fields = ['name', 'address', 'text']
