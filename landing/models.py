@@ -30,3 +30,18 @@ class Branch(models.Model):
 
     def __str__(self) -> str: 
         return self.address
+    
+
+class Question(models.Model): 
+    name = models.CharField('Имя', max_length=100) 
+    phone = models.CharField('Телефон', max_length=18) 
+    email = models.EmailField('Email')
+    text = models.CharField('Текст', max_length=250)
+    is_open = models.BooleanField('Открыта', default=True)
+
+    class Meta: 
+        verbose_name = 'Вопрос'
+        verbose_name_plural = 'Вопросы'
+
+    def __str__(self) -> str: 
+        return f'{self.is_open} | {self.name}, {self.phone}'

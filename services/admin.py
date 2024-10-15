@@ -1,8 +1,22 @@
 from django.contrib import admin
-from prices.models import ServiceType
+from .models import Symptom, Speciality, SpecialityPhoto
 
 
-@admin.register(ServiceType)
-class ServiceTypeAdmin(admin.ModelAdmin): 
-    list_display = ['name', 'price', 'speciality']
-    search_fields = ['name']
+@admin.register(Speciality)
+class SpecialityAdmin(admin.ModelAdmin): 
+    list_display = ['pk', 'name', 'description', 'icon']
+    search_fields = ['name', 'description']
+    prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(SpecialityPhoto)
+class SpecialityPhotoAdmin(admin.ModelAdmin): 
+    list_display = ['pk', 'image']
+
+
+@admin.register(Symptom)
+class SymptopAdmin(admin.ModelAdmin): 
+    list_display = ['text']
+    search_fields = ['text']
+
+

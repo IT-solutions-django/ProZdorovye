@@ -3,9 +3,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
-
 from django.urls import reverse
-
 
 
 class SpecialityPhoto(models.Model):
@@ -36,9 +34,10 @@ class SpecialityPhoto(models.Model):
         super(SpecialityPhoto, self).save(*args, **kwargs)
 
 
-
 class Speciality(models.Model): 
     name = models.CharField('Название', max_length=80)
+    intro = models.CharField('Очень короткое описание', max_length=150)
+    short_description = models.CharField('Короткое описание', max_length=500)
     description = models.TextField('Описание')
     icon = models.FileField('Иконка', upload_to='specialities', null=True)
     photos = models.ManyToManyField(SpecialityPhoto, verbose_name='Фотографии', blank=True)
@@ -52,29 +51,14 @@ class Speciality(models.Model):
     def __str__(self) -> str: 
         return self.name
 
-    def save(self, *args, **kwargs):
-        file_extension = os.path.splitext(self.icon.name)[1].lower()
-
-        name = os.path.splitext(self.image.name)[0].lower()
-
-        if file_extension == '.svg': 
-            super(Speciality, self).save(*args, **kwargs)
-            return 
-
-        img = Image.open(self.icon)
-        img_io = BytesIO()
-        img.save(img_io, format="WebP")
-        img_file = InMemoryUploadedFile(
-            file=img_io, 
-            field_name=None, 
-            name=f"{name}.webp", 
-            content_type="image/webp", 
-            size=img_io.tell(), 
-            charset=None,
-        )
-        self.icon.save(f"{name}.webp", img_file, save=False)
-        super(Speciality, self).save(*args, **kwargs)
-
     def get_absolute_url(self): 
         return reverse('services:speciality', args=[self.slug])
     
+
+class Symptom(models.Model): 
+    text = models.CharField('Текст', max_length=500)
+    speciality = models.ForeignKey(verbose_name='Специализация', to=Speciality, on_delete=models.CASCADE, related_name='symptoms')
+
+    class Meta: 
+        verbose_name = 'Симптом'
+        verbose_name_plural = 'Симптомы'

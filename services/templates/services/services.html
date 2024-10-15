@@ -32,27 +32,11 @@
             </div>
             <div class="content__indications">
               <div class="content__indications-title">Основные показания</div>
-              <div class="content__indications-item">
-                Боли в спине и шее — остеопатия помогает при остеохондрозе,
-                грыжах межпозвоночных дисков, мышечных спазмах.
-              </div>
-              <div class="content__indications-item">
-                Головные боли и мигрени — мануальная терапия может уменьшить
-                частоту и интенсивность головных болей, связанных с
-                напряжением мышц или нарушением кровообращения.
-              </div>
-              <div class="content__indications-item">
-                Нарушения осанки — остеопаты работают с исправлением осанки,
-                что помогает предотвратить хронические боли и дискомфорт.
-              </div>
-              <div class="content__indications-item">
-                Заболевания суставов — остеопатия эффективна при артрозе,
-                артрите, ограничении подвижности суставов и после травм.
-              </div>
-              <div class="content__indications-item">
-                Травмы и их последствия — реабилитация после травм мягких
-                тканей, растяжений, вывихов, переломов.
-              </div>
+              {% for symptom in speciality.symptoms.all %}
+                <div class="content__indications-item">
+                  {{ symptom.text }}
+                </div>
+              {% endfor %}
             </div>
           </div>
           <div class="directions">
