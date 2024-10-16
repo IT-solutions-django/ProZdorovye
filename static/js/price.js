@@ -3,7 +3,7 @@ let services = []; // Массив услуг
 
 async function fetchDirections() {
   try {
-    const response = await fetch(`${window.origin}/doctors/api/specialities/`);
+    const response = await fetch(`${window.origin}/services/api/specialities/`);
     const data = await response.json();
 
     directions = data;

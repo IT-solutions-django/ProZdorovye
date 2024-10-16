@@ -22,13 +22,6 @@ class DoctorsView(View):
         return render(request, self.template_name)
     
 
-class SpecialitiesAPIView(View): 
-    def get(self, request): 
-        specialities = Speciality.objects.all()
-        specialities = [speciality.name for speciality in specialities]
-        return JsonResponse(specialities, safe=False)
-    
-
 class DoctorsAPIView(View): 
     def get(self, request): 
         doctors = [

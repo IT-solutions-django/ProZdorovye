@@ -55,7 +55,7 @@ export async function printDoctors(
 
   let categories_from_ajax;
   try {
-    const response = await fetch(`${window.location.origin}/doctors/api/specialities`); 
+    const response = await fetch(`${window.location.origin}/services/api/specialities`); 
     if (!response.ok) {
       throw new Error('Ошибка');
     }

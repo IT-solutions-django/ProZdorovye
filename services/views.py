@@ -16,3 +16,9 @@ class ServicesView(View):
         }
         return render(request, self.template_name, context)
 
+
+class SpecialitiesAPIView(View): 
+    def get(self, request): 
+        specialities = Speciality.objects.all()
+        specialities = [speciality.name for speciality in specialities]
+        return JsonResponse(specialities, safe=False)
