@@ -1,18 +1,21 @@
 {% extends 'base.html' %} 
 {% load static  %} 
 
+
 {% block title %}
 Центр современной остеопатии и мануальной медицины
 {% endblock %}
 
+
 {% block script %}
-<script type="module" src="{% static 'js/service.js' %}"></script>
-<link rel="modulepreload" href="{% static 'js/footer.js' %}">
-<link rel="modulepreload" href="{% static 'js/doctors.js' %}">
-<link rel="modulepreload" href="{% static 'js/booking.js' %}">
-<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
-<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<script type="module" src="{% static 'js/header.js' %}"></script>
+<script type="module" src="{% static 'js/main.js' %}"></script>
+<script type="module" src="{% static 'js/doctors.js' %}"></script>
+<script type="module" src="{% static 'js/booking.js' %}"></script>
+<script type="module" src="{% static 'js/ask-form.js' %}"></script>
+<script type="module" src="{% static 'js/footer.js' %}"></script>
 {% endblock %}
+
 
 {% block content %}
 <div class="service-page">
@@ -70,4 +73,16 @@
 
     <div id="footer"></div>
   </div>
+
+  <script type="module">
+    import { printDoctors } from "{% static 'js/doctors.js' %}";
+
+    document.addEventListener("DOMContentLoaded", function () {
+      printDoctors(
+        "Специалисты по направлению Остеопатия",
+        "Остеопатия",
+        false
+      );
+    });
+  </script>
 {% endblock %} 

@@ -1,4 +1,4 @@
-var e=`    <section class="section section--questions">
+var askForm =  `    <section class="section section--questions">
       <div class="questions container">
         <h2 class="questions__title">Остались вопросы?</h2>
         <p class="questions__description">
@@ -40,4 +40,7 @@ var e=`    <section class="section section--questions">
           <button class="form__button button-osta">Отправить</button>
         </form>
       </div>
-    </section>`;document.querySelector("#ask-form").innerHTML=e;
+    </section>`
+
+
+    document.querySelector("#ask-form").innerHTML = askForm;
