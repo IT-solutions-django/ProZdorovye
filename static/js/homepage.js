@@ -1,4 +1,4 @@
-import EmblaCarousel from "embla-carousel";
+// import EmblaCarousel from "embla-carousel";
 
 var screenWidth = window.innerWidth;
 

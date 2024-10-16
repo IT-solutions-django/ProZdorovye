@@ -1,79 +1,32 @@
-// Массив направлений
-const directions = [
-    "Все направления",
-    "Остеопатия",
-    "Иглорефлексотерапия",
-    "Йога",
-    "Кинезиология",
-    "АФК",
-    "Мануальная терапия",
-    "Массаж",
-    "Пилатес",
-    "Психология",
-    "Терапия",
-    "Эндокринология",
-    "Нутрициология диетология",
-  ];
-  
-  // Массив услуг с ID
-  const services = [
-    {
-      id: 1,
-      name: "Первичный прием",
-      direction: "Остеопатия",
-      duration: 60,
-      price: 3000,
-      doctor: "Шевченко Оксана Анатольевна",
-    },
-    {
-      id: 2,
-      name: "Вторичный прием",
-      direction: "Остеопатия",
-      duration: 60,
-      price: 2500,
-          doctor: "Шевченко Оксана Анатольевна",
-    },
-    {
-      id: 3,
-      name: "Йога",
-      direction: "Йога",
-      duration: 60,
-      price: 2500,
-          doctor: "Шевченко Оксана Анатольевна",
-    },
-    {
-      id: 4,
-      name: "Йога",
-      direction: "Йога",
-      duration: 90,
-      price: 3000,
-          doctor: "Шевченко Оксана Анатольевна",
-    },
-    {
-      id: 5,
-      name: "Коррекция 3 в 1",
-      direction: "Кинезиология",
-      duration: 120,
-      price: 2500,
-      doctor: "Шевченко Оксана Анатольевна",
-    },
-    {
-      id: 6,
-      name: "Невролог",
-      direction: "Терапия",
-      duration: 30,
-      price: 3000,
-      doctor: "Шевченко Оксана Анатольевна",
-    },
-    {
-      id: 7,
-      name: "Остеопатия Выезд",
-      direction: "Остеопатия",
-      duration: 60,
-      price: 2500,
-          doctor: "Шевченко Оксана Анатольевна",
-    },
-  ];
+let directions = []; // Масив направлений
+let services = []; // Массив услуг
+
+async function fetchDirections() {
+  try {
+    const response = await fetch(`${window.origin}/doctors/api/specialities/`);
+    const data = await response.json();
+
+    directions = data;
+    directions.unshift('Все направления');
+    renderDirections(directions);
+  }
+  catch (error) {
+    console.error('Ошибка при загрузке данных:', error);
+  }
+}
+
+async function fetchServices() {
+  try {
+    const response = await fetch(`${window.origin}/prices/api/prices/`);
+    const data = await response.json();
+
+    services = data;
+    renderServices(services);
+  }
+  catch (error) {
+    console.error('Ошибка при загрузке данных:', error);
+  }
+}
   
   // Функция для отрисовки направлений
   function renderDirections() {
@@ -134,10 +87,8 @@ const directions = [
   
   // Инициализация
   document.addEventListener("DOMContentLoaded", () => {
-    // Отрисовываем направления
-    renderDirections();
+    fetchDirections();
   
     // Отрисовываем все услуги при загрузке страницы
-    renderServices(services);
+    fetchServices();
   });
-  

@@ -3,6 +3,8 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
+
+from django.urls import reverse
 from landing.models import Branch 
 from services.models import Speciality
 
@@ -42,3 +44,6 @@ class Doctor(models.Model):
         )
         self.photo.save(f"{name}.webp", img_file, save=False)
         super(Doctor, self).save(*args, **kwargs)
+
+    def get_absolute_url(self) -> str: 
+        return reverse('doctors:doctor', args=[self.pk])

@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View 
 from doctors.models import Speciality
@@ -14,3 +15,4 @@ class ServicesView(View):
             'rest_specialities': specialities,
         }
         return render(request, self.template_name, context)
+

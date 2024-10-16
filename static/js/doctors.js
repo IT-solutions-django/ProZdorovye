@@ -1,6 +1,6 @@
 // import EmblaCarousel from "embla-carousel";
 
-export function printDoctors(
+export async function printDoctors(
   currentTitle,
   currentCategory = "Все направления",
   filtersIsShown = true,
@@ -40,56 +40,31 @@ export function printDoctors(
 
   document.querySelector("#doctors").innerHTML = doctors;
 
-  const categories = [
-    "Все направления",
-    "Остеопатия",
-    "Иглорефлексотерапия",
-    "Йога",
-    "Кинезиология",
-    "АФК",
-    "Мануальная терапия",
-    "Массаж",
-    "Пилатес",
-    "Психология",
-    "Терапия",
-    "Эндокринология",
-    "Нутрициология диетология"
-  ];
+  let specialists_from_ajax;
+  try {
+    const response = await fetch(`${window.location.origin}/doctors/api/doctors`); 
+    if (!response.ok) {
+      throw new Error('Ошибка');
+    }
+    specialists_from_ajax = await response.json();
+    console.log(specialists_from_ajax)
+  } catch (error) {
+    console.error('Ошибка:', error);
+  }
+  const specialists = specialists_from_ajax;
 
-  const specialists = [
-    {
-      id: 1,
-      name: "Ким Игорь Климентович",
-      role: "Остеопат, мануальный терапевт, микрокинезитерапевт",
-      experience: 1994,
-      categories: ["Остеопатия", "Мануальная терапия"],
-      image: "./assets/images/doctors/1.png",
-    },
-    {
-      id: 2,
-      name: "Шевченко Оксана Анатольевна",
-      role: "Врач остеопат",
-      experience: 1994,
-      categories: ["Остеопатия"],
-      image: "./assets/images/doctors/2.png",
-    },
-    {
-      id: 3,
-      name: "Яковлева Марина Анатольевна",
-      role: "Остеопат, мануальный терапевт, микрокинезитерапевт",
-      experience: 1994,
-      categories: ["Остеопатия", "Мануальная терапия"],
-      image: "./assets/images/doctors/3.png",
-    },
-    {
-      id: 4,
-      name: "Шевченко Оксана Анатольевна",
-      role: "Врач остеопат",
-      experience: 1994,
-      categories: ["Остеопатия"],
-      image: "./assets/images/doctors/2.png",
-    },
-  ];
+  let categories_from_ajax;
+  try {
+    const response = await fetch(`${window.location.origin}/doctors/api/specialities`); 
+    if (!response.ok) {
+      throw new Error('Ошибка');
+    }
+    categories_from_ajax = await response.json();
+  } catch (error) {
+    console.error('Ошибка:', error);
+  }
+  const categories = categories_from_ajax;
+  categories.unshift('Все направления');
 
   function renderCategories() {
     const categoryButtons = document.getElementById("categoryButtons");
@@ -121,7 +96,7 @@ export function printDoctors(
     specialistsListContainer.innerHTML = filteredSpecialists
       .map(
         (specialist) => `
-      <a href="/doctor.html" class="specialist-card">
+      <a href="${specialist.url}" class="specialist-card">
         <div class="specialist-card__image">
           <img src="${specialist.image}" alt="${specialist.name}" />
         </div>
@@ -192,6 +167,9 @@ export function printDoctors(
       });
     });
   }
+
+  // console.log(specialists);
+  // console.log(categories);
 
   renderCategories();
   renderSpecialists(currentCategory);
