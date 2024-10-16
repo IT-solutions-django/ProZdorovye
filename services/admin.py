@@ -17,16 +17,3 @@ class SpecialityAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [SpecialityPhotoInline, SymptomInline]
-
-
-@admin.register(SpecialityPhoto)
-class SpecialityPhotoAdmin(admin.ModelAdmin): 
-    list_display = ['pk', 'image']
-
-
-@admin.register(Symptom)
-class SymptomAdmin(admin.ModelAdmin): 
-    list_display = ['text']
-    search_fields = ['text']
-
-

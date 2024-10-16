@@ -5,7 +5,6 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
 
 from django.urls import reverse
-from landing.models import Branch 
 from services.models import Speciality
 
 
@@ -13,13 +12,9 @@ class Doctor(models.Model):
     first_name = models.CharField('Имя', max_length=50)
     last_name = models.CharField('Фамилия', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50, null=True, blank=True)
-    phone = models.CharField('Телефон', max_length=20, unique=True, null=True, blank=True)
-    email = models.EmailField('Электронная почта', unique=True, null=True, blank=True) 
     hire_year = models.SmallIntegerField('Год начала работы')
-    experience = models.SmallIntegerField('Стаж', null=True)
     description = models.TextField('Описание', null=True, blank=True) 
     photo = models.ImageField('Фото', upload_to='doctors', null=True)
-    branch = models.ForeignKey(verbose_name='Филиал', to=Branch, on_delete=models.CASCADE)
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
 
     class Meta: 

@@ -1,17 +1,11 @@
 from django.contrib import admin
-from .models import Request, Branch, Question
+from .models import Request, Question
 
 
 @admin.register(Request)
 class RequestAdmin(admin.ModelAdmin): 
     list_display = ['name', 'phone', 'email', 'is_open']
     search_fields = ['name', 'email']
-
-
-@admin.register(Branch)
-class BranchAdmin(admin.ModelAdmin): 
-    list_display = ['name', 'address', 'phone']
-    search_fields = ['name', 'address']
 
 
 @admin.register(Question)

@@ -79,8 +79,8 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       printDoctors(
-        "Специалисты по направлению Остеопатия",
-        "Остеопатия",
+        "Специалисты по направлению {{ speciality.name }}",
+        "{{ speciality.name }}",
         false
       );
     });
