@@ -25,10 +25,10 @@ export function printDoctors(
             useSlider
               ? `
             <button class="embla__button embla__button--prev" type="button">
-              <img src="./assets/images/left.svg" alt="" />
+              <img src="${window.origin}/static/images/left.svg" alt="" />
             </button>
             <button class="embla__button embla__button--next" type="button">
-              <img src="./assets/images/right.svg" alt="" />
+              <img src="${window.origin}/static/images/right.svg" alt="" />
             </button>
           `
               : ""
