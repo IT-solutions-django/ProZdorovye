@@ -24,7 +24,7 @@ class Question(models.Model):
     phone = models.CharField('Телефон', max_length=18) 
     email = models.EmailField('Email')
     text = models.CharField('Текст', max_length=250)
-    is_open = models.BooleanField('Открыта', default=True)
+    is_open = models.BooleanField('Открыта', default=False)
 
     class Meta: 
         verbose_name = 'Вопрос'

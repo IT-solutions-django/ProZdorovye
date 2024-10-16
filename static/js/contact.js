@@ -1,3 +1,17 @@
+async function fetchContactFormHtml() {
+  try {
+    const response = await fetch(`${window.origin}/api/request_form_html/`);
+    const data = await response.json();
+
+    const form_html = data;
+    return form_html;
+  }
+  catch (error) {
+    console.error('Ошибка при загрузке данных:', error);
+  }
+}
+
+const form_html = await fetchContactFormHtml();
 var screenWidth = window.innerWidth;
 var contacts = `   <div class="section section--contact">
       <div id="map"></div>
@@ -17,43 +31,7 @@ var contacts = `   <div class="section section--contact">
                 </div>
                 <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
               </div>
-              <div class="form">
-                <div class="form__title">Подберем процедуру под ваш запрос</div>
-
-                <div class="form__field">
-                  <input
-                    type="text"
-                    id="name"
-                    class="form__input"
-                    placeholder=" "
-                  />
-                  <label for="name" class="form__label">Имя</label>
-                </div>
-                <div class="form__row">
-                  <div class="form__field">
-                    <input
-                      type="text"
-                      id="phone"
-                      class="form__input"
-                      placeholder=" "
-                    />
-                    <label for="phone" class="form__label">Телефон</label>
-                  </div>
-
-                  <div class="form__field">
-                    <input
-                      type="email"
-                      id="email"
-                      class="form__input"
-                      placeholder=" "
-                    />
-                    <label for="email" class="form__label">E-mail</label>
-                  </div>
-                </div>
-                <button class="form__button button-osta">
-                  Заказать звонок
-                </button>
-              </div>
+              ${form_html}
             </div>
             <div class="social-links">
               <a href="https://t.me/your-telegram-link" target="_blank">
@@ -70,6 +48,8 @@ var contacts = `   <div class="section section--contact">
         </div>
       </div>
     </div>`;
+
+console.log(form_html)
 
 document.querySelector("#contact").innerHTML = contacts;
 

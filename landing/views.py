@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from doctors.models import Speciality, Doctor
@@ -51,3 +52,11 @@ class ContactsView(View):
 
     def get(self, request): 
         return render(request, self.template_name)
+    
+
+class RequestFormHtmlApi(View): 
+    def get(self, request): 
+        form = RequestForm()
+        print(form)
+        form_html = render(request, 'landing/forms/request_form.html', {'form': form}).content.decode('utf-8')
+        return JsonResponse(form_html, safe=False)

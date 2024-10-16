@@ -47,7 +47,6 @@ export async function printDoctors(
       throw new Error('Ошибка');
     }
     specialists_from_ajax = await response.json();
-    console.log(specialists_from_ajax)
   } catch (error) {
     console.error('Ошибка:', error);
   }
