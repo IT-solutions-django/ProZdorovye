@@ -18,9 +18,17 @@
 
 {% block content %}
 <div class="doctors-page">
-    <div id="header"></div>
-    <div id="doctors"></div>
-    <div id="ask-form"></div>
-    <div id="footer"></div>
-  </div>
+  <div id="header"></div>
+  <div id="doctors"></div>
+  <div id="ask-form"></div>
+  <div id="footer"></div>
+</div>
+
+<script type="module">
+  import { printDoctors } from "{% static 'js/doctors.js' %}";
+
+  document.addEventListener("DOMContentLoaded", function () {
+    printDoctors("Наши специалисты", "Все направления", true, false);
+  });
+</script>
 {% endblock %}

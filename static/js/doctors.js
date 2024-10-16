@@ -1,4 +1,4 @@
-import EmblaCarousel from "embla-carousel";
+// import EmblaCarousel from "embla-carousel";
 
 export function printDoctors(
   currentTitle,
