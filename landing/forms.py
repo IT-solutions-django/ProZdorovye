@@ -21,7 +21,7 @@ class RequestForm(forms.ModelForm):
 class QuestionForm(forms.ModelForm): 
     class Meta:
         model = Question
-        fields = ['name', 'phone', 'email', 'text', 'is_open']
+        fields = ['name', 'phone', 'email', 'text']
         labels = {
             'name': 'Имя',
             'phone': 'Телефон',
@@ -32,5 +32,5 @@ class QuestionForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form__input'}),
             'phone': forms.TextInput(attrs={'class': 'form__input'}),
             'email': forms.EmailInput(attrs={'class': 'form__input'}),
-            'text': forms.EmailInput(attrs={'class': 'Сообщение'}),
+            'text': forms.Textarea(attrs={'class': 'form__input'}),
         }

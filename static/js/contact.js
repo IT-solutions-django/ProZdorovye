@@ -49,8 +49,6 @@ var contacts = `   <div class="section section--contact">
       </div>
     </div>`;
 
-console.log(form_html)
-
 document.querySelector("#contact").innerHTML = contacts;
 
 function printYaMap() {

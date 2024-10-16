@@ -4,7 +4,7 @@ from django.views import View
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
-from .forms import RequestForm
+from .forms import RequestForm, QuestionForm
 
 
 class MainView(View): 
@@ -57,6 +57,12 @@ class ContactsView(View):
 class RequestFormHtmlApi(View): 
     def get(self, request): 
         form = RequestForm()
-        print(form)
         form_html = render(request, 'landing/forms/request_form.html', {'form': form}).content.decode('utf-8')
+        return JsonResponse(form_html, safe=False)
+    
+
+class QuestionFormHtmlApi(View): 
+    def get(self, request): 
+        form = QuestionForm()
+        form_html = render(request, 'landing/forms/question_form.html', {'form': form}).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
