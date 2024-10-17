@@ -168,3 +168,5 @@ media/specialities/*
 celerybeat-schedule.bak
 celerybeat-schedule.dat
 celerybeat-schedule.dir
+
+postgres_data/
