@@ -167,9 +167,6 @@ export async function printDoctors(
     });
   }
 
-  // console.log(specialists);
-  // console.log(categories);
-
   renderCategories();
   renderSpecialists(currentCategory);
   addCategoryEventListeners();

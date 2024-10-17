@@ -7,9 +7,11 @@ var booking = ` <div class="section section--booking">
             услуг заранее. Быстрая онлайн-запись без ожидания!
           </div>
         </div>
-        <button class="button-osta button-osta--secondary">
-          Записаться на прием
-        </button>
+        <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333">
+          <button class="button-osta button-osta--secondary">
+            Записаться на прием
+          </button>
+        </a>
       </div>
     </div>`;
 

@@ -1,6 +1,6 @@
 var header = ` <div class="section section--header">
       <div class="header container">
-        <a href="/" class="header__logo">
+        <a href="${window.origin}" class="header__logo">
           <img
             class="header__logo-image"
             src="${window.origin}/static/images/logo-header.svg"
@@ -34,9 +34,11 @@ var header = ` <div class="section section--header">
             Для слабовидящих
           </div>
           <div class="nav__cta">
-            <button class="button-osta button-osta--small">
-              Записаться на прием
-            </button>
+            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333">
+              <button class="button-osta button-osta--small">
+                Записаться на прием
+              </button>
+            </a>
           </div>
         </div>
       </div>
