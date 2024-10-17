@@ -1,9 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
-from doctors.models import Branch, Speciality, Doctor
+from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
-from .forms import RequestForm
+from .forms import RequestForm, QuestionForm
 
 
 class MainView(View): 
@@ -15,7 +16,6 @@ class HomeView(View):
     template_name = 'landing/home.html' 
 
     def get(self, request): 
-        branches = Branch.objects.all()
         speclialities = Speciality.objects.all()
         reviews = Review.objects.all()
         doctors = Doctor.objects.all()
@@ -23,7 +23,6 @@ class HomeView(View):
         form = RequestForm()
 
         context = {
-            'branches': branches,
             'specialities': speclialities,
             'reviews': reviews,
             'doctors': doctors,
@@ -53,3 +52,17 @@ class ContactsView(View):
 
     def get(self, request): 
         return render(request, self.template_name)
+    
+
+class RequestFormHtmlApi(View): 
+    def get(self, request): 
+        form = RequestForm()
+        form_html = render(request, 'landing/forms/request_form.html', {'form': form}).content.decode('utf-8')
+        return JsonResponse(form_html, safe=False)
+    
+
+class QuestionFormHtmlApi(View): 
+    def get(self, request): 
+        form = QuestionForm()
+        form_html = render(request, 'landing/forms/question_form.html', {'form': form}).content.decode('utf-8')
+        return JsonResponse(form_html, safe=False)

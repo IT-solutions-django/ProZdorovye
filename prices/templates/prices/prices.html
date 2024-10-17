@@ -6,10 +6,11 @@
 {% endblock %} 
 
 {% block script %} 
+<script type="module" src="{% static 'js/main.js' %}"></script>
+<script type="module" src="{% static 'js/header.js' %}"></script>
 <script type="module" src="{% static 'js/price.js' %}"></script>
-<link rel="modulepreload" href="{% static 'js/footer.js' %}">
-<link rel="modulepreload" href="{% static 'js/ask-form.js' %}">
-<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<script type="module" src="{% static 'js/ask-form.js' %}"></script>
+<script type="module" src="{% static 'js/footer.js' %}"></script>
 {% endblock script %} 
 
 {% block content %} 

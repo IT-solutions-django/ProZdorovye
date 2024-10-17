@@ -9,11 +9,12 @@
 
 {% block script %}
 <script type="module" src="{% static 'js/main.js' %}"></script>
-<link rel="modulepreload" href="{% static 'js/footer.js' %}">
-<link rel="modulepreload" href="{% static 'js/doctors.js' %}">
-<link rel="modulepreload" href="{% static 'js/booking.js' %}">
-<link rel="modulepreload" href="{% static 'js/contact.js' %}">
-<link rel="stylesheet" href="{% static 'css/footer.css' %}">
+<script type="module" src="{% static 'js/header.js' %}"></script>
+<script type="module" src="{% static 'js/doctors.js' %}"></script>
+<script type="module" src="{% static 'js/booking.js' %}"></script>
+<script type="module" src="{% static 'js/contact.js' %}"></script>
+<script type="module" src="{% static 'js/footer.js' %}"></script>
+<script type="module" src="{% static 'js/homepage.js' %}"></script>
 {% endblock %}
 
 
@@ -268,7 +269,13 @@
 
     <div id="footer"></div>
 
-    <!-- Import the printDoctors function and call it -->
+    <script type="module">
+      import { printDoctors } from "{% static 'js/doctors.js' %}";
+    
+      document.addEventListener("DOMContentLoaded", function () {
+        printDoctors("Наши специалисты", "Все направления");
+      });
+    </script>
 
 
 {% endblock %}

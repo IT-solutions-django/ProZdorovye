@@ -19,25 +19,12 @@ class Request(models.Model):
         return f'{self.is_open} | {self.name}, {self.phone}'
     
 
-class Branch(models.Model): 
-    name = models.CharField('Название', max_length=100)
-    address = models.CharField('Адрес', max_length=100) 
-    phone = models.CharField('Номер телефона', max_length=18)
-
-    class Meta: 
-        verbose_name = 'Филиал'
-        verbose_name_plural = 'Филиалы'
-
-    def __str__(self) -> str: 
-        return self.address
-    
-
 class Question(models.Model): 
     name = models.CharField('Имя', max_length=100) 
     phone = models.CharField('Телефон', max_length=18) 
     email = models.EmailField('Email')
     text = models.CharField('Текст', max_length=250)
-    is_open = models.BooleanField('Открыта', default=True)
+    is_open = models.BooleanField('Открыта', default=False)
 
     class Meta: 
         verbose_name = 'Вопрос'

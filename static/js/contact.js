@@ -1,4 +1,19 @@
-var l=window.innerWidth,n=`   <div class="section section--contact">
+async function fetchContactFormHtml() {
+  try {
+    const response = await fetch(`${window.origin}/api/request_form_html/`);
+    const data = await response.json();
+
+    const form_html = data;
+    return form_html;
+  }
+  catch (error) {
+    console.error('Ошибка при загрузке данных:', error);
+  }
+}
+
+const form_html = await fetchContactFormHtml();
+var screenWidth = window.innerWidth;
+var contacts = `   <div class="section section--contact">
       <div id="map"></div>
 
       <div class="contacts container">
@@ -16,56 +31,104 @@ var l=window.innerWidth,n=`   <div class="section section--contact">
                 </div>
                 <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
               </div>
-              <div class="form">
-                <div class="form__title">Подберем процедуру под ваш запрос</div>
-
-                <div class="form__field">
-                  <input
-                    type="text"
-                    id="name"
-                    class="form__input"
-                    placeholder=" "
-                  />
-                  <label for="name" class="form__label">Имя</label>
-                </div>
-                <div class="form__row">
-                  <div class="form__field">
-                    <input
-                      type="text"
-                      id="phone"
-                      class="form__input"
-                      placeholder=" "
-                    />
-                    <label for="phone" class="form__label">Телефон</label>
-                  </div>
-
-                  <div class="form__field">
-                    <input
-                      type="email"
-                      id="email"
-                      class="form__input"
-                      placeholder=" "
-                    />
-                    <label for="email" class="form__label">E-mail</label>
-                  </div>
-                </div>
-                <button class="form__button button-osta">
-                  Заказать звонок
-                </button>
-              </div>
+              ${form_html}
             </div>
             <div class="social-links">
               <a href="https://t.me/your-telegram-link" target="_blank">
-                <img src="${window.location.origin}/static/images/tg.svg" alt="Telegram" />
+                <img src="${window.origin}/static/images/tg.svg" alt="Telegram" />
               </a>
               <a href="https://wa.me/your-whatsapp-number" target="_blank">
-                <img src="${window.location.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
+                <img src="${window.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
               </a>
               <a href="https://vk.com/your-vk-link" target="_blank">
-                <img src="${window.location.origin}/static/images/vk.svg" alt="VKontakte" />
+                <img src="${window.origin}/static/images/vk.svg" alt="VKontakte" />
               </a>
             </div>
           </div>
         </div>
       </div>
-    </div>`;document.querySelector("#contact").innerHTML=n;function d(){ymaps.ready(a);function a(){var e,s;l>1200?(e=12,s=[43.149473,131.815747]):(e=11,s=[43.150813,131.931514]);var t=new ymaps.Map("map",{center:s,zoom:e,controls:[]});t.behaviors.disable("scrollZoom");var i=new ymaps.control.ZoomControl({options:{position:{right:10,top:50},size:"small"}});t.controls.add(i);var o=new ymaps.Placemark([43.172179,131.950981],{hintContent:"улица Майора Филипова, 11к2",balloonContent:"улица Майора Филипова, 11к2"},{iconLayout:"default#image",iconImageHref:"./assets/images/pin.svg",iconImageSize:[30,42],iconImageOffset:[-15,-42]}),c=new ymaps.Placemark([43.129446,131.912048],{hintContent:"Некрасовская улица, 90",balloonContent:"Некрасовская улица, 90"},{iconLayout:"default#image",iconImageHref:"./assets/images/pin.svg",iconImageSize:[30,42],iconImageOffset:[-15,-42]});t.geoObjects.add(o),t.geoObjects.add(c)}}function r(){const a=document.createElement("script");a.src="https://api-maps.yandex.ru/2.1/?lang=ru_RU",a.type="text/javascript",a.onload=function(){d()},document.head.appendChild(a)}r();
+    </div>`;
+
+document.querySelector("#contact").innerHTML = contacts;
+
+function printYaMap() {
+  ymaps.ready(init);
+
+  function init() {
+    var zoomLevel;
+    var center;
+
+    if (screenWidth > 1200) {
+      zoomLevel = 12;
+      center = [43.149473, 131.815747];
+    } else {
+      zoomLevel = 11; // Зум для мобильных устройств
+      center = [43.150813, 131.931514];
+    }
+
+    // Инициализация карты
+    var myMap = new ymaps.Map("map", {
+      center: center, // Центр карты между двумя точками
+      zoom: zoomLevel, // Масштаб карты
+      controls: [], // Отключаем все контроллы
+    });
+
+    // Отключаем возможность масштабирования карты с помощью скролла мыши
+    myMap.behaviors.disable("scrollZoom");
+
+    // Добавляем только контролы для управления масштабом (плюс и минус)
+    var zoomControl = new ymaps.control.ZoomControl({
+      options: {
+        position: { right: 10, top: 50 }, // Переносим контрол вправо
+        size: "small", // Устанавливаем размер кнопок
+      },
+    });
+    myMap.controls.add(zoomControl);
+
+    // Создание пина 1
+    var placemark1 = new ymaps.Placemark(
+      [43.172179, 131.950981],
+      {
+        hintContent: "улица Майора Филипова, 11к2",
+        balloonContent: "улица Майора Филипова, 11к2",
+      },
+      {
+        iconLayout: "default#image",
+        iconImageHref: `${window.origin}/static/images/pin.svg`, // Путь к вашему SVG файлу для первого пина
+        iconImageSize: [30, 42], // Размер иконки
+        iconImageOffset: [-15, -42], // Смещение иконки
+      }
+    );
+
+    // Создание пина 2
+    var placemark2 = new ymaps.Placemark(
+      [43.129446, 131.912048],
+      {
+        hintContent: "Некрасовская улица, 90",
+        balloonContent: "Некрасовская улица, 90",
+      },
+      {
+        iconLayout: "default#image",
+        iconImageHref: `${window.origin}/static/images/pin.svg`, // Путь к вашему SVG файлу для второго пина
+        iconImageSize: [30, 42], // Размер иконки
+        iconImageOffset: [-15, -42], // Смещение иконки
+      }
+    );
+
+    // Добавляем метки на карту
+    myMap.geoObjects.add(placemark1);
+    myMap.geoObjects.add(placemark2);
+  }
+}
+
+function loadYandexMapsScript() {
+  const script = document.createElement("script");
+  script.src = "https://api-maps.yandex.ru/2.1/?lang=ru_RU";
+  script.type = "text/javascript";
+  script.onload = function () {
+    printYaMap();
+  };
+  document.head.appendChild(script);
+}
+
+loadYandexMapsScript();

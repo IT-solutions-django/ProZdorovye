@@ -1,4 +1,4 @@
-var o=` <div class="section section--booking">
+var booking = ` <div class="section section--booking">
       <div class="booking-section container">
         <div class="booking-description">
           <div class="booking-description__title">Онлайн-запись</div>
@@ -11,4 +11,8 @@ var o=` <div class="section section--booking">
           Записаться на прием
         </button>
       </div>
-    </div>`;document.querySelector("#booking").innerHTML=o;
+    </div>`;
+
+document.querySelector("#booking").innerHTML = booking;
+
+ 

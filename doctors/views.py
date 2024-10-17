@@ -22,25 +22,18 @@ class DoctorsView(View):
         return render(request, self.template_name)
     
 
-class SpecialitiesAPIView(View): 
-    def get(self, request): 
-        specialities = Speciality.objects.all()
-        specialities = [speciality.name for speciality in specialities]
-        return JsonResponse({
-            'specialities': specialities
-        })
-    
-
 class DoctorsAPIView(View): 
     def get(self, request): 
         doctors = [
             {
+                'id': doctor.pk,
                 'name': f'{doctor.first_name} {doctor.last_name} {doctor.patronymic}', 
+                'role': ", ".join([s.name for s in doctor.specialities.all()]),
+                'url': doctor.get_absolute_url(),
+                'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
                 'image': doctor.photo.url,
             } 
             for doctor in Doctor.objects.all()
         ]
-        return JsonResponse({
-            'doctors': doctors
-        })
+        return JsonResponse(doctors, safe=False)
