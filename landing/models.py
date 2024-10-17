@@ -8,7 +8,7 @@ import os
 class Request(models.Model): 
     name = models.CharField('Имя', max_length=100) 
     phone = models.CharField('Телефон', max_length=18) 
-    email = models.EmailField('Email')
+    email = models.EmailField('Email', null=True, blank=True)
     is_open = models.BooleanField('Открыта', default=True)
 
     class Meta: 
@@ -22,9 +22,9 @@ class Request(models.Model):
 class Question(models.Model): 
     name = models.CharField('Имя', max_length=100) 
     phone = models.CharField('Телефон', max_length=18) 
-    email = models.EmailField('Email')
-    text = models.CharField('Текст', max_length=250)
-    is_open = models.BooleanField('Открыта', default=False)
+    email = models.EmailField('Email', null=True, blank=True)
+    text = models.CharField('Текст', max_length=250, null=True, blank=True)
+    is_open = models.BooleanField('Открыта', default=True)
 
     class Meta: 
         verbose_name = 'Вопрос'
