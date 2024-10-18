@@ -103,7 +103,7 @@ export async function printDoctors(
           <div class="specialist-card__name">${specialist.name}</div>
           <div class="specialist-card__role">${specialist.role}</div>
           <div class="specialist-card__experience">Стаж c ${specialist.experience} г.</div>
-          <button class="specialist-card__btn" data-id="${specialist.id}">Записаться</button>
+          <button class="specialist-card__btn">Записаться</button>
         </div>
       </a>
     `
@@ -141,13 +141,6 @@ export async function printDoctors(
       emblaApi.on("select", setButtonStates);
       emblaApi.on("init", setButtonStates);
     }
-
-    document.querySelectorAll(".specialist-card__btn").forEach((button) => {
-      button.addEventListener("click", (e) => {
-        const doctorId = e.target.getAttribute("data-id");
-        alert(`переход на запись к доктору id ${doctorId}`);
-      });
-    });
   }
 
   function updateActiveCategory(clickedButton) {

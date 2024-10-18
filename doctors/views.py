@@ -33,6 +33,7 @@ class DoctorsAPIView(View):
                 'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
                 'image': doctor.photo.url,
+                'prodoctorov_profile': doctor.prodoctorov_profile,
             } 
             for doctor in Doctor.objects.all()
         ]

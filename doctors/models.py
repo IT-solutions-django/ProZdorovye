@@ -16,6 +16,7 @@ class Doctor(models.Model):
     description = models.TextField('Описание', null=True, blank=True) 
     photo = models.ImageField('Фото', upload_to='doctors', null=True)
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
+    prodoctorov_profile = models.TextField('Ссылка на профиль в ПроДокторов')
 
     class Meta: 
         verbose_name = 'Врач'
