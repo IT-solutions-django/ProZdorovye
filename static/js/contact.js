@@ -150,7 +150,7 @@ const toastHtml = `
   </div>
 </div>
 `;
-const form = document.querySelector('form');
+const form = document.querySelector('#contactForm');
 form.addEventListener('submit', async function (event) {
   event.preventDefault();
 
@@ -186,4 +186,5 @@ form.addEventListener('submit', async function (event) {
     }
   } catch (error) {
     console.error('Ошибка запроса:', error);
-  }});
+  }
+});
