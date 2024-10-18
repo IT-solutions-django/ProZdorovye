@@ -25,10 +25,8 @@
         <div class="doctor-card">
           <div class="doctor-card__info">
             <div class="doctor-card__specialization">
-            {% for speciality in doctor.specialities.all %}
-                {{ speciality.name }}
-                <br />
-            {% endfor %}
+              {{ role }}
+              <br/>
               Стаж работы: с {{ doctor.hire_year }} г.
             </div>
             <div class="doctor-card__details">

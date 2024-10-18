@@ -1,4 +1,5 @@
-// import EmblaCarousel from "embla-carousel";
+import { getRoleForDirections } from './speciality_mapper.js';
+
 
 export async function printDoctors(
   currentTitle,
@@ -93,20 +94,23 @@ export async function printDoctors(
           );
 
     specialistsListContainer.innerHTML = filteredSpecialists
-      .map(
-        (specialist) => `
-      <a href="${specialist.url}" class="specialist-card">
-        <div class="specialist-card__image">
-          <img src="${specialist.image}" alt="${specialist.name}" />
-        </div>
-        <div class="specialist-card__info">
-          <div class="specialist-card__name">${specialist.name}</div>
-          <div class="specialist-card__role">${specialist.role}</div>
-          <div class="specialist-card__experience">Стаж c ${specialist.experience} г.</div>
-          <button class="specialist-card__btn">Записаться</button>
-        </div>
-      </a>
-    `
+      .map((specialist) => {
+        const role = getRoleForDirections(specialist.categories);
+
+        return `
+        <a href="${specialist.url}" class="specialist-card">
+          <div class="specialist-card__image">
+            <img src="${specialist.image}" alt="${specialist.name}" />
+          </div>
+          <div class="specialist-card__info">
+            <div class="specialist-card__name">${specialist.name}</div>
+            <div class="specialist-card__role">${role}</div>
+            <div class="specialist-card__experience">Стаж c ${specialist.experience} г.</div>
+            <button class="specialist-card__btn">Записаться</button>
+          </div>
+        </a>
+      `
+      }
       )
       .join("");
 

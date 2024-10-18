@@ -9,8 +9,21 @@ class DoctorView(View):
 
     def get(self, request, doctor_id: int): 
         doctor = Doctor.objects.get(pk=doctor_id)
+
+        mapper = {
+            "Остеопатия": "Врач-остеопат",
+            "Мануальная терапия": "Мануальный терапевт",
+            "Йога": "Инструктор йоги",
+        }
+        role = ", ".join(
+            mapper.get(speciality.name) 
+            for speciality in doctor.specialities.all() 
+            if mapper.get(speciality.name) is not None
+        ).lower().capitalize()
+
         context = {
             'doctor': doctor,
+            'role': role
         }
         return render(request, self.template_name, context)
 
@@ -28,7 +41,6 @@ class DoctorsAPIView(View):
             {
                 'id': doctor.pk,
                 'name': f'{doctor.first_name} {doctor.last_name} {doctor.patronymic}', 
-                'role': ", ".join([s.name for s in doctor.specialities.all()]),
                 'url': doctor.get_absolute_url(),
                 'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
