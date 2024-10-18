@@ -1,6 +1,7 @@
+// Получение HTML-кода формы 
 async function fetchContactFormHtml() {
   try {
-    const response = await fetch(`${window.origin}/api/request_form_html/`);
+    const response = await fetch(`${window.origin}/api/get_request_form_html/`);
     const data = await response.json();
 
     const form_html = data;
@@ -132,3 +133,57 @@ function loadYandexMapsScript() {
 }
 
 loadYandexMapsScript();
+
+// Обработка отправки формы
+const toastHtml = `
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="toastRequestSent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="${window.origin}/static/images/favicon-16x16.png" class="rounded me-2" alt="...">
+      <strong class="me-auto">Форма была отправлена!</strong>
+      <small>только что</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      С вами свяжутся в ближайшее время
+    </div>
+  </div>
+</div>
+`;
+const form = document.querySelector('form');
+form.addEventListener('submit', async function (event) {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+  const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+  try {
+    const response = await fetch(`${window.origin}/api/save_request/`, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'X-CSRFToken': csrfToken, 
+      }
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+
+      // Вставляем HTML тоста в DOM
+      document.body.insertAdjacentHTML('beforeend', toastHtml);
+
+      const toastElement = document.getElementById('toastRequestSent');
+      const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
+      toastBootstrap.show();
+
+      toastElement.addEventListener('hidden.bs.toast', () => {
+        toastElement.remove();
+      });
+
+      form.reset();
+    } else {
+      alert('Ошибка при отправке формы. Попробуйте снова.');
+    }
+  } catch (error) {
+    console.error('Ошибка запроса:', error);
+  }});
