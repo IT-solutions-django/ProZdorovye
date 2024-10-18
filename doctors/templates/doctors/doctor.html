@@ -48,16 +48,14 @@
             </a>
             <div class="doctor-card__services">
               <div class="doctor-card__services-title">Услуги и цены</div>
-              {% for speciality in doctor.specialities.all %}
-                {% for service in speciality.services.all %}
-                    <div class="doctor-card__service">
-                        <div class="doctor-card__service-name">{{ service.name }}</div>
-                        <div class="doctor-card__service-price">{{ service.price }} ₽</div>
-                        <a class="doctor-card__service-book" href="doctor.html#">
-                          Записаться на прием
-                        </a>
-                    </div>
-                {% endfor %}
+              {% for service in doctor.services.all %}
+                <div class="doctor-card__service">
+                    <div class="doctor-card__service-name">{{ service.name }}</div>
+                    <div class="doctor-card__service-price">{{ service.price }} ₽</div>
+                    <a class="doctor-card__service-book" href="{{ doctor.prodoctorov_profile }}">
+                      Записаться на прием
+                    </a>
+                </div>
               {% endfor %}
             </div>
           </div>
