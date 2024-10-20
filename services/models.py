@@ -26,6 +26,18 @@ class Speciality(models.Model):
         return reverse('services:speciality', args=[self.slug])
     
 
+class Profession(models.Model): 
+    name = models.CharField('Название', max_length=80)
+    speciality = models.OneToOneField(verbose_name='Профессия', to=Speciality, on_delete=models.CASCADE, related_name='profession')
+
+    class Meta: 
+        verbose_name = 'Профессия'
+        verbose_name_plural = 'Профессии'
+
+    def __str__(self) -> str: 
+        return self.name
+    
+
 class SpecialityPhoto(models.Model):
     image = models.ImageField('Изображение', upload_to='articles', null=True, blank=True)
     speciality = models.ForeignKey(verbose_name='Специализация', to=Speciality, on_delete=models.CASCADE, related_name='photos', null=True)
