@@ -14,7 +14,7 @@ async function fetchContactFormHtml() {
 
 const form_html = await fetchContactFormHtml();
 var screenWidth = window.innerWidth;
-var contacts = `   <div class="section section--contact">
+var contacts = `   <div id="sectionContact" class="section section--contact">
       <div id="map"></div>
 
       <div class="contacts container">
