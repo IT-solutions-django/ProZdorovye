@@ -78,7 +78,7 @@ async function fetchServices() {
           <div class="services__item" data-id="${service.id}">
             <div class="services__name">${service.name}, ${service.doctor},   ${service.duration} мин</div>
             <div class="services__price">${service.price} ₽</div>
-            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" class="services__button" target="_blank">Записаться на прием</a>
+            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
           </div>
         `;
       servicesContainer.innerHTML += serviceItem;
