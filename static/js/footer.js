@@ -21,7 +21,7 @@ var footer = `    <div class="section section--footer">
         </div>
         <div class="footer__right">
           <div class="footer__info">
-            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333">
+            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank">
               <button class="button-osta button-osta--small" href="#">
                 Записаться на прием
               </button>
