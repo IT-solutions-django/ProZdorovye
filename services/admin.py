@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Symptom, Speciality, SpecialityPhoto
+from .models import Symptom, Speciality, SpecialityPhoto, Profession
 
 
 class SymptomInline(admin.TabularInline): 
@@ -17,3 +17,9 @@ class SpecialityAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [SpecialityPhotoInline, SymptomInline]
+
+
+@admin.register(Profession)
+class ProfessionAdmin(admin.ModelAdmin): 
+    list_display = ['name', 'speciality']
+    search_fields = ['name']

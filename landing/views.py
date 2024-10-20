@@ -32,12 +32,23 @@ class HomeView(View):
 
         return render(request, self.template_name, context)
     
+
+class SaveRequestView(View): 
     def post(self, request): 
-        form: RequestForm = RequestForm(request.POST) 
+        form = RequestForm(request.POST) 
         if form.is_valid(): 
             new_request = form.save() 
-            return redirect('landing:request_saved')
-        return render(request, 'template_name.html', {'form': form})
+            return JsonResponse({'status': 'ok'})
+        return JsonResponse({'status': 'error'})
+    
+
+class SaveQuestionView(View): 
+    def post(self, request): 
+        form = QuestionForm(request.POST) 
+        if form.is_valid(): 
+            new_question = form.save() 
+            return JsonResponse({'status': 'ok'})
+        return JsonResponse({'status': 'error'})
 
 
 class RequestSavedView(View): 

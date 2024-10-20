@@ -9,8 +9,15 @@ class DoctorView(View):
 
     def get(self, request, doctor_id: int): 
         doctor = Doctor.objects.get(pk=doctor_id)
+
+        profession = ', '.join(
+            speciality.profession.name 
+            for speciality in doctor.specialities.all()
+        ).lower().capitalize()
+
         context = {
             'doctor': doctor,
+            'profession': profession
         }
         return render(request, self.template_name, context)
 
@@ -28,11 +35,11 @@ class DoctorsAPIView(View):
             {
                 'id': doctor.pk,
                 'name': f'{doctor.first_name} {doctor.last_name} {doctor.patronymic}', 
-                'role': ", ".join([s.name for s in doctor.specialities.all()]),
                 'url': doctor.get_absolute_url(),
                 'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
                 'image': doctor.photo.url,
+                'prodoctorov_profile': doctor.prodoctorov_profile,
             } 
             for doctor in Doctor.objects.all()
         ]

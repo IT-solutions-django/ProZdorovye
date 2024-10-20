@@ -20,7 +20,7 @@ def update_reviews_task(self) -> None:
             organization_id=organization_id,
         )
     except UpdateReviewError as e: 
-        print('Ошибка при загрузке отзывов')
+        raise self.retry(exc=e, countdown=10)
     except EmptyReviewList as e: 
         raise self.retry(exc=e, countdown=10)
     
