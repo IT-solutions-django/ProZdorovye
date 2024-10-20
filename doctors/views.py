@@ -10,20 +10,14 @@ class DoctorView(View):
     def get(self, request, doctor_id: int): 
         doctor = Doctor.objects.get(pk=doctor_id)
 
-        mapper = {
-            "Остеопатия": "Врач-остеопат",
-            "Мануальная терапия": "Мануальный терапевт",
-            "Йога": "Инструктор йоги",
-        }
-        role = ", ".join(
-            mapper.get(speciality.name) 
-            for speciality in doctor.specialities.all() 
-            if mapper.get(speciality.name) is not None
+        profession = ', '.join(
+            speciality.profession.name 
+            for speciality in doctor.specialities.all()
         ).lower().capitalize()
 
         context = {
             'doctor': doctor,
-            'role': role
+            'profession': profession
         }
         return render(request, self.template_name, context)
 
