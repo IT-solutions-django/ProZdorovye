@@ -31,5 +31,4 @@ class ProfessionsMapperAPIView(View):
             speciality.name: speciality.profession.name 
             for speciality in specialities
         }
-        print(professions_mapper)
         return JsonResponse(professions_mapper, safe=False)

@@ -24,6 +24,10 @@ var askForm =  `    <section class="section section--questions">
 
 
 document.querySelector("#ask-form").innerHTML = askForm;
+var phoneInput = document.getElementById('questionForm').querySelector('#id_phone');
+var phoneMask = IMask(phoneInput, {
+  mask: '+{7} (000) 000 00 00' 
+});
 
 
 // Обработка отправки формы

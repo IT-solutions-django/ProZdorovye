@@ -14,7 +14,7 @@ async function fetchContactFormHtml() {
 
 const form_html = await fetchContactFormHtml();
 var screenWidth = window.innerWidth;
-var contacts = `   <div class="section section--contact">
+var contacts = `   <div id="sectionContact" class="section section--contact">
       <div id="map"></div>
 
       <div class="contacts container">
@@ -51,6 +51,11 @@ var contacts = `   <div class="section section--contact">
     </div>`;
 
 document.querySelector("#contact").innerHTML = contacts;
+var phoneInput = document.getElementById('contactForm').querySelector('#id_phone');
+var phoneMask = IMask(phoneInput, {
+  mask: '+{7} (000) 000 00 00' 
+});
+
 
 function printYaMap() {
   ymaps.ready(init);

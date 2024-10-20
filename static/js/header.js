@@ -34,7 +34,7 @@ var header = ` <div class="section section--header">
             Для слабовидящих
           </div>
           <div class="nav__cta">
-            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333">
+            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank">
               <button class="button-osta button-osta--small">
                 Записаться на прием
               </button>
