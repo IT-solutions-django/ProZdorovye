@@ -1,9 +1,21 @@
-// Модуль для отображения специализации доктора по направлению его деятельности
-const directionToSpecialities = {
-    "Остеопатия": "Врач-остеопат",
-    "Мануальная терапия": "Мануальный терапевт",
-    "Йога": "Инструктор йоги",
-};
+let directionToSpecialities = {}; 
+
+function fetchDirectionToSpecialities() {
+    return fetch(`${window.origin}/services/api/profession_mapper/`) 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка сети при получении направлений');
+            }
+            return response.json();
+        })
+        .then(data => {
+            directionToSpecialities = data;
+        })
+        .catch(error => {
+            console.error('Ошибка при получении данных: ', error);
+        });
+}
+fetchDirectionToSpecialities();
 
 function getSpecialitiesForDirections(directions) {
     return directions
@@ -11,9 +23,14 @@ function getSpecialitiesForDirections(directions) {
         .filter(speciality => speciality !== null);
 }
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetchDirectionToSpecialities()
+});
+
+
 function getRoleForDirections(directions) {
     const specialities = getSpecialitiesForDirections(directions);
-        console.log(specialities);
 
         const role = specialities
         .map((speciality, index) => 
@@ -22,6 +39,7 @@ function getRoleForDirections(directions) {
                 : speciality.toLowerCase()
         )
         .join(", ");
+
         return role;
 }
 

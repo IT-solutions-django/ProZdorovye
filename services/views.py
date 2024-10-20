@@ -22,3 +22,14 @@ class SpecialitiesAPIView(View):
         specialities = Speciality.objects.all()
         specialities = [speciality.name for speciality in specialities]
         return JsonResponse(specialities, safe=False)
+    
+
+class ProfessionsMapperAPIView(View): 
+    def get(self, request): 
+        specialities = Speciality.objects.all()
+        professions_mapper = {
+            speciality.name: speciality.profession.name 
+            for speciality in specialities
+        }
+        print(professions_mapper)
+        return JsonResponse(professions_mapper, safe=False)
