@@ -3,6 +3,17 @@ from django.views import View
 from .models import Article 
 
 
+class ArticlesListView(View): 
+    template_name = 'articles/articles.html' 
+
+    def get(self, request): 
+        articles = Article.objects.all()
+        context = {
+            'articles': articles, 
+        }
+        return render(request, self.template_name, context)
+
+
 class ArticleView(View): 
     template_name = 'articles/article.html' 
 
