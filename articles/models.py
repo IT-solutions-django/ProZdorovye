@@ -4,6 +4,7 @@ from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
 from django.urls import reverse
+from services.models import Speciality
 
 
 class Article(models.Model): 
@@ -13,6 +14,7 @@ class Article(models.Model):
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
     image = models.ImageField('Фото', upload_to='articles', null=True)
     slug = models.SlugField('Слаг')
+    specialities = models.ManyToManyField(verbose_name='Теги', to=Speciality, related_name='articles', null=True)
 
     class Meta: 
         verbose_name = 'Статья'
