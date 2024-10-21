@@ -2,12 +2,13 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from django.core.mail import EmailMessage
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
 from ProZdorovye.settings import FEEDBACK_EMAIL
 from .forms import RequestForm, QuestionForm
-from django.core.mail import EmailMessage
+from .tasks import send_email_task
 
 
 class MainView(View): 
@@ -50,10 +51,7 @@ class SaveRequestView(View):
             if new_request.email:
                 message += f'\nE-mail: {new_request.email}'
             
-            email = EmailMessage(subject=subject,
-                                body=message, 
-                                to=(FEEDBACK_EMAIL,))
-            email.send()
+            send_email_task.delay(subject=subject, message=message)
 
             return JsonResponse({'status': 'ok'})
         return JsonResponse({'status': 'error'})
@@ -74,10 +72,8 @@ class SaveQuestionView(View):
                 message += f'\nE-mail: {new_question.email}'
             if new_question.text: 
                 message += f'\nСодержание: {new_question.text}'
-            email = EmailMessage(subject=subject,
-                                body=message, 
-                                to=(FEEDBACK_EMAIL,))
-            email.send()
+            
+            send_email_task.delay(subject=subject, message=message)
 
             return JsonResponse({'status': 'ok'})
         return JsonResponse({'status': 'error'})
