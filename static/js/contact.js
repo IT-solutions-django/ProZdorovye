@@ -123,9 +123,6 @@ var contacts = `   <div id="sectionContact" class="section section--contact">
               <a href="https://wa.me/your-whatsapp-number" target="_blank">
                 <img src="${window.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
               </a>
-              <a href="https://vk.com/your-vk-link" target="_blank">
-                <img src="${window.origin}/static/images/vk.svg" alt="VKontakte" />
-              </a>
             </div>
           </div>
         </div>
