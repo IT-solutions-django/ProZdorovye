@@ -72,7 +72,6 @@ function runClinicPhotoSlider() {
 function addReviewsSpoiler() {
   document.querySelectorAll(".review-card").forEach((card) => {
     const textElement = card.querySelector(".review-card__text");
-    console.log(textElement.scrollHeight);
     // Проверяем высоту блока с текстом
     if (textElement.scrollHeight > 215) {
       const toggleButton = document.createElement("button");
