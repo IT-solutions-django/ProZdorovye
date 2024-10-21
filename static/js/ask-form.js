@@ -1,3 +1,4 @@
+// Получение HTML-кода формы
 async function fetchQuestionFormHtml() {
   try {
     const response = await fetch(`${window.origin}/api/get_question_form_html/`);
@@ -10,7 +11,6 @@ async function fetchQuestionFormHtml() {
     console.error('Ошибка при загрузке данных:', error);
   }
 }
-
 const form_html = await fetchQuestionFormHtml();
 var askForm =  `    <section class="section section--questions">
       <div class="questions container">
@@ -21,14 +21,6 @@ var askForm =  `    <section class="section section--questions">
         ${form_html}
       </div>
     </section>`
-
-
-document.querySelector("#ask-form").innerHTML = askForm;
-var phoneInput = document.getElementById('questionForm').querySelector('#id_phone');
-var phoneMask = IMask(phoneInput, {
-  mask: '+{7} (000) 000 00 00' 
-});
-
 
 // Обработка отправки формы
 const toastHtml = `
@@ -46,6 +38,29 @@ const toastHtml = `
   </div>
 </div>
 `;
+
+// Маска для номера телефона
+document.querySelector("#ask-form").innerHTML = askForm;
+var phoneInput = document.getElementById('questionForm').querySelector('#id_phone');
+var phoneMask = IMask(phoneInput, {
+  mask: '+{7} (000) 000 00 00' 
+});
+
+// Валидация номера телефона
+function validatePhoneNumber() {
+  const digitsOnly = phoneInput.value.replace(/\D/g, '');
+
+  if (digitsOnly.length < 11) {
+    phoneInput.setCustomValidity("Необходимо минимум 11 цифр");
+    return false;
+  } else {
+    phoneInput.setCustomValidity("");
+    return true;
+  }
+}
+phoneInput.addEventListener("input", function () {
+  validatePhoneNumber();
+});
 
 // Обработка отправки формы
 const form = document.querySelector('#questionForm');

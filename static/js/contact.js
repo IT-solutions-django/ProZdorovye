@@ -1,62 +1,3 @@
-// Получение HTML-кода формы 
-async function fetchContactFormHtml() {
-  try {
-    const response = await fetch(`${window.origin}/api/get_request_form_html/`);
-    const data = await response.json();
-
-    const form_html = data;
-    return form_html;
-  }
-  catch (error) {
-    console.error('Ошибка при загрузке данных:', error);
-  }
-}
-
-const form_html = await fetchContactFormHtml();
-var screenWidth = window.innerWidth;
-var contacts = `   <div id="sectionContact" class="section section--contact">
-      <div id="map"></div>
-
-      <div class="contacts container">
-        <div class="contacts-card">
-          <div class="contacts-card__header">Контакты</div>
-          <div class="contacts-card__content">
-            <div class="contacts-card__info">
-              <div class="contact-details">
-                <div class="contact-details__address">Некрасовская 90</div>
-                <a href="tel:74232077055" class="contact-details__phone">+7 (423) 207-70-55</a>
-              </div>
-              <div class="contact-details">
-                <div class="contact-details__address">
-                  Майора Филипова 11 корпус 2
-                </div>
-                <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
-              </div>
-              ${form_html}
-            </div>
-            <div class="social-links">
-              <a href="https://t.me/your-telegram-link" target="_blank">
-                <img src="${window.origin}/static/images/tg.svg" alt="Telegram" />
-              </a>
-              <a href="https://wa.me/your-whatsapp-number" target="_blank">
-                <img src="${window.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
-              </a>
-              <a href="https://vk.com/your-vk-link" target="_blank">
-                <img src="${window.origin}/static/images/vk.svg" alt="VKontakte" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>`;
-
-document.querySelector("#contact").innerHTML = contacts;
-var phoneInput = document.getElementById('contactForm').querySelector('#id_phone');
-var phoneMask = IMask(phoneInput, {
-  mask: '+{7} (000) 000 00 00' 
-});
-
-
 function printYaMap() {
   ymaps.ready(init);
 
@@ -138,6 +79,81 @@ function loadYandexMapsScript() {
 }
 
 loadYandexMapsScript();
+
+
+// Получение HTML-кода формы 
+async function fetchContactFormHtml() {
+  try {
+    const response = await fetch(`${window.origin}/api/get_request_form_html/`);
+    const data = await response.json();
+
+    const form_html = data;
+    return form_html;
+  }
+  catch (error) {
+    console.error('Ошибка при загрузке данных:', error);
+  }
+}
+const form_html = await fetchContactFormHtml();
+var screenWidth = window.innerWidth;
+var contacts = `   <div id="sectionContact" class="section section--contact">
+      <div id="map"></div>
+
+      <div class="contacts container">
+        <div class="contacts-card">
+          <div class="contacts-card__header">Контакты</div>
+          <div class="contacts-card__content">
+            <div class="contacts-card__info">
+              <div class="contact-details">
+                <div class="contact-details__address">Некрасовская 90</div>
+                <a href="tel:74232077055" class="contact-details__phone">+7 (423) 207-70-55</a>
+              </div>
+              <div class="contact-details">
+                <div class="contact-details__address">
+                  Майора Филипова 11 корпус 2
+                </div>
+                <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
+              </div>
+              ${form_html}
+            </div>
+            <div class="social-links">
+              <a href="https://t.me/your-telegram-link" target="_blank">
+                <img src="${window.origin}/static/images/tg.svg" alt="Telegram" />
+              </a>
+              <a href="https://wa.me/your-whatsapp-number" target="_blank">
+                <img src="${window.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
+              </a>
+              <a href="https://vk.com/your-vk-link" target="_blank">
+                <img src="${window.origin}/static/images/vk.svg" alt="VKontakte" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+// Маска для номера телефона
+document.querySelector("#contact").innerHTML = contacts;
+var phoneInput = document.getElementById('contactForm').querySelector('#id_phone');
+var phoneMask = IMask(phoneInput, {
+  mask: '+{7} (000) 000 00 00' 
+});
+
+// Валидация номера телефона
+function validatePhoneNumber() {
+  const digitsOnly = phoneInput.value.replace(/\D/g, '');
+
+  if (digitsOnly.length < 11) {
+    phoneInput.setCustomValidity("Необходимо минимум 11 цифр");
+    return false;
+  } else {
+    phoneInput.setCustomValidity("");
+    return true;
+  }
+}
+phoneInput.addEventListener("input", function () {
+  validatePhoneNumber();
+});
 
 // Обработка отправки формы
 const toastHtml = `
