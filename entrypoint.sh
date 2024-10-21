@@ -17,7 +17,7 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --noinput
 
-celery -A ProZdorovye worker -l info -P eventlet &
+celery -A ProZdorovye worker -l info &
 celery -A ProZdorovye beat -l info &
 celery -A ProZdorovye flower -l info &
 gunicorn ProZdorovye.wsgi:application --bind 0.0.0.0:8000 &
