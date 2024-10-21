@@ -1,3 +1,4 @@
+import re
 from django import forms 
 from .models import Request, Question
 
@@ -13,7 +14,7 @@ class RequestForm(forms.ModelForm):
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form__input'}),
-            'phone': forms.TextInput(attrs={'class': 'form__input'}),
+            'phone': forms.TextInput(attrs={'class': 'form__input', 'minlength': 18}),
             'email': forms.EmailInput(attrs={'class': 'form__input'}),
         }
 
@@ -30,7 +31,7 @@ class QuestionForm(forms.ModelForm):
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form__input'}),
-            'phone': forms.TextInput(attrs={'class': 'form__input'}),
+            'phone': forms.TextInput(attrs={'class': 'form__input', 'minlength': 18}),
             'email': forms.EmailInput(attrs={'class': 'form__input'}),
             'text': forms.Textarea(attrs={'class': 'form__input'}),
         }

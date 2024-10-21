@@ -1,3 +1,4 @@
+// Получение HTML-кода формы
 async function fetchQuestionFormHtml() {
   try {
     const response = await fetch(`${window.origin}/api/get_question_form_html/`);
@@ -10,7 +11,6 @@ async function fetchQuestionFormHtml() {
     console.error('Ошибка при загрузке данных:', error);
   }
 }
-
 const form_html = await fetchQuestionFormHtml();
 var askForm =  `    <section class="section section--questions">
       <div class="questions container">
@@ -22,18 +22,32 @@ var askForm =  `    <section class="section section--questions">
       </div>
     </section>`
 
-
+// Маска для номера телефона
 document.querySelector("#ask-form").innerHTML = askForm;
 var phoneInput = document.getElementById('questionForm').querySelector('#id_phone');
 var phoneMask = IMask(phoneInput, {
   mask: '+{7} (000) 000 00 00' 
 });
+// Валидация номера телефона
+function validatePhoneNumber() {
+  const digitsOnly = phoneInput.value.replace(/\D/g, '');
 
+  if (digitsOnly.length < 11) {
+    phoneInput.setCustomValidity("Необходимо минимум 11 цифр");
+    return false;
+  } else {
+    phoneInput.setCustomValidity("");
+    return true;
+  }
+}
+phoneInput.addEventListener("input", function () {
+  validatePhoneNumber();
+});
 
-// Обработка отправки формы
+// Работа с Bootstrap Toast
 const toastHtml = `
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="toastQuestionForm" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div id="toastQuestionSent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
       <img src="${window.origin}/static/images/favicon-16x16.png" class="rounded me-2" alt="...">
       <strong class="me-auto">Форма была отправлена!</strong>
@@ -46,6 +60,17 @@ const toastHtml = `
   </div>
 </div>
 `;
+function showToast() {
+  document.body.insertAdjacentHTML('beforeend', toastHtml);
+
+  const toastElement = document.getElementById('toastQuestionSent');
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
+  toastBootstrap.show();
+
+  toastElement.addEventListener('hidden.bs.toast', () => {
+    toastElement.remove();
+  });
+}
 
 // Обработка отправки формы
 const form = document.querySelector('#questionForm');
@@ -54,6 +79,9 @@ form.addEventListener('submit', async function (event) {
 
   const formData = new FormData(form);
   const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+  form.reset();
+  showToast();
 
   try {
     const response = await fetch(`${window.origin}/api/save_question/`, {
@@ -64,22 +92,7 @@ form.addEventListener('submit', async function (event) {
       }
     });
 
-    if (response.status === 200) {
-      const data = await response.json();
-
-      // Вставляем HTML тоста в DOM
-      document.body.insertAdjacentHTML('beforeend', toastHtml);
-
-      const toastElement = document.getElementById('toastQuestionForm');
-      const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
-      toastBootstrap.show();
-
-      toastElement.addEventListener('hidden.bs.toast', () => {
-        toastElement.remove();
-      });
-
-      form.reset();
-    } else {
+    if (!response.status === 200) {
       alert('Ошибка при отправке формы. Попробуйте снова.');
     }
   } catch (error) {
