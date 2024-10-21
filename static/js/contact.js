@@ -138,7 +138,6 @@ var phoneInput = document.getElementById('contactForm').querySelector('#id_phone
 var phoneMask = IMask(phoneInput, {
   mask: '+{7} (000) 000 00 00' 
 });
-
 // Валидация номера телефона
 function validatePhoneNumber() {
   const digitsOnly = phoneInput.value.replace(/\D/g, '');
@@ -155,7 +154,7 @@ phoneInput.addEventListener("input", function () {
   validatePhoneNumber();
 });
 
-// Обработка отправки формы
+// Работа с Bootstrap Toast
 const toastHtml = `
   <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="toastRequestSent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -171,6 +170,18 @@ const toastHtml = `
   </div>
 </div>
 `;
+function showToast() {
+  document.body.insertAdjacentHTML('beforeend', toastHtml);
+
+  const toastElement = document.getElementById('toastRequestSent');
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
+  toastBootstrap.show();
+
+  toastElement.addEventListener('hidden.bs.toast', () => {
+    toastElement.remove();
+  });
+}
+// Обработка отправки формы
 const form = document.querySelector('#contactForm');
 form.addEventListener('submit', async function (event) {
   event.preventDefault();
@@ -178,6 +189,9 @@ form.addEventListener('submit', async function (event) {
   const formData = new FormData(form);
   const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
 
+  form.reset();
+  showToast();
+  
   try {
     const response = await fetch(`${window.origin}/api/save_request/`, {
       method: 'POST',
@@ -186,23 +200,7 @@ form.addEventListener('submit', async function (event) {
         'X-CSRFToken': csrfToken, 
       }
     });
-
-    if (response.status === 200) {
-      const data = await response.json();
-
-      // Вставляем HTML тоста в DOM
-      document.body.insertAdjacentHTML('beforeend', toastHtml);
-
-      const toastElement = document.getElementById('toastRequestSent');
-      const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
-      toastBootstrap.show();
-
-      toastElement.addEventListener('hidden.bs.toast', () => {
-        toastElement.remove();
-      });
-
-      form.reset();
-    } else {
+    if (!response.status === 200) {
       alert('Ошибка при отправке формы. Попробуйте снова.');
     }
   } catch (error) {

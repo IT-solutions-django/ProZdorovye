@@ -1,10 +1,13 @@
+
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
+from ProZdorovye.settings import FEEDBACK_EMAIL
 from .forms import RequestForm, QuestionForm
+from django.core.mail import EmailMessage
 
 
 class MainView(View): 
@@ -38,6 +41,20 @@ class SaveRequestView(View):
         form = RequestForm(request.POST) 
         if form.is_valid(): 
             new_request = form.save() 
+            
+            subject = f'Контактные данные от {new_request.phone}'
+            message = (
+                f'Номер телефона: {new_request.phone}'
+                f'\nИмя: {new_request.name}'
+            )
+            if new_request.email:
+                message += f'\nE-mail: {new_request.email}'
+            
+            email = EmailMessage(subject=subject,
+                                body=message, 
+                                to=(FEEDBACK_EMAIL,))
+            email.send()
+
             return JsonResponse({'status': 'ok'})
         return JsonResponse({'status': 'error'})
     
@@ -47,6 +64,21 @@ class SaveQuestionView(View):
         form = QuestionForm(request.POST) 
         if form.is_valid(): 
             new_question = form.save() 
+
+            subject = f'Вопрос от {new_question.phone}'
+            message = (
+                f'Номер телефона: {new_question.phone}' 
+                f'\nИмя: {new_question.name}'
+            )
+            if new_question.email:
+                message += f'\nE-mail: {new_question.email}'
+            if new_question.text: 
+                message += f'\nСодержание: {new_question.text}'
+            email = EmailMessage(subject=subject,
+                                body=message, 
+                                to=(FEEDBACK_EMAIL,))
+            email.send()
+
             return JsonResponse({'status': 'ok'})
         return JsonResponse({'status': 'error'})
 
