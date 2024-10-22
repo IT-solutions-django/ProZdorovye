@@ -52,7 +52,7 @@ class SpecialityPhoto(models.Model):
         return self.image.name
 
     def save(self, *args, **kwargs):
-        name = os.path.splitext(self.image.name)[0].lower()
+        name = os.path.splitext(os.path.basename(self.image.name))[0].lower() 
         img = Image.open(self.image)
         img_io = BytesIO()
         img.save(img_io, format="WebP")
