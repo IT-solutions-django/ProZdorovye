@@ -14,7 +14,7 @@ class Article(models.Model):
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
     image = models.ImageField('Фото', upload_to='articles', null=True)
     slug = models.SlugField('Слаг')
-    specialities = models.ManyToManyField(verbose_name='Теги', to=Speciality, related_name='articles', null=True)
+    specialities = models.ManyToManyField(verbose_name='Теги', to=Speciality, related_name='articles')
 
     class Meta: 
         verbose_name = 'Статья'

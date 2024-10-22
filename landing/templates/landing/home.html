@@ -52,7 +52,7 @@
             <a href="{{ speciality.get_absolute_url }}" class="service-slider__item embla__slide">
               <div class="service-slider__item-info">
                 <div class="service-slider__item-title">
-                  {{ speciality.name }}
+                  {{ speciality.display_name|linebreaks }}
                 </div>
                 <div class="service-slider__item-subtitle">
                   {{ speciality.intro }}

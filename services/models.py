@@ -8,6 +8,7 @@ from django.urls import reverse
 
 class Speciality(models.Model): 
     name = models.CharField('Название', max_length=80)
+    display_name = models.TextField('Название для отображения')
     intro = models.CharField('Очень короткое описание', max_length=150)
     short_description = models.CharField('Короткое описание', max_length=500)
     description = models.TextField('Описание')

@@ -17,7 +17,7 @@ class ProfessionInline(admin.TabularInline):
 
 @admin.register(Speciality)
 class SpecialityAdmin(admin.ModelAdmin): 
-    list_display = ['pk', 'name', 'description', 'icon']
+    list_display = ['name', 'short_description', 'icon']
     search_fields = ['name', 'description']
     prepopulated_fields = {'slug': ('name',)}
     inlines = [SpecialityPhotoInline, SymptomInline, ProfessionInline]
