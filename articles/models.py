@@ -14,7 +14,7 @@ class Article(models.Model):
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
     image = models.ImageField('Фото', upload_to='articles', null=True)
     slug = models.SlugField('Слаг')
-    specialities = models.ManyToManyField(verbose_name='Теги', to=Speciality, related_name='articles', null=True)
+    specialities = models.ManyToManyField(verbose_name='Теги', to=Speciality, related_name='articles')
 
     class Meta: 
         verbose_name = 'Статья'
@@ -24,7 +24,7 @@ class Article(models.Model):
         return self.title
     
     def save(self, *args, **kwargs):
-        name = os.path.splitext(self.image.name)[0].lower()
+        name = os.path.splitext(os.path.basename(self.image.name))[0].lower() 
         img = Image.open(self.image)
         img_io = BytesIO()
         img.save(img_io, format="WebP")

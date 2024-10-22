@@ -31,7 +31,7 @@
             </div>
             <div class="doctor-card__details">
                 <p>
-                    {{ doctor.description }}
+                    {{ doctor.description|linebreaks }}
                 </p>
             </div>
             <a
@@ -50,7 +50,7 @@
                 <div class="doctor-card__service">
                     <div class="doctor-card__service-name">{{ service.name }}</div>
                     <div class="doctor-card__service-price">{{ service.price }} ₽</div>
-                    <a class="doctor-card__service-book" href="{{ doctor.prodoctorov_profile }}">
+                    <a class="doctor-card__service-book" target="_blank" href="{{ doctor.prodoctorov_profile }}">
                       Записаться на прием
                     </a>
                 </div>

@@ -8,6 +8,7 @@ from django.urls import reverse
 
 class Speciality(models.Model): 
     name = models.CharField('Название', max_length=80)
+    display_name = models.TextField('Название для отображения')
     intro = models.CharField('Очень короткое описание', max_length=150)
     short_description = models.CharField('Короткое описание', max_length=500)
     description = models.TextField('Описание')
@@ -51,7 +52,7 @@ class SpecialityPhoto(models.Model):
         return self.image.name
 
     def save(self, *args, **kwargs):
-        name = os.path.splitext(self.image.name)[0].lower()
+        name = os.path.splitext(os.path.basename(self.image.name))[0].lower() 
         img = Image.open(self.image)
         img_io = BytesIO()
         img.save(img_io, format="WebP")
