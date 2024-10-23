@@ -49,20 +49,22 @@
       <div class="service-slider container embla" id="service-list-slider">
         <div class="embla__container">
           {% for speciality in specialities %} 
-            <a href="{{ speciality.get_absolute_url }}" class="service-slider__item embla__slide">
-              <div class="service-slider__item-info">
-                <div class="service-slider__item-title">
-                  {{ speciality.display_name|linebreaks }}
+            {% if speciality.is_displayed %}
+              <a href="{{ speciality.get_absolute_url }}" class="service-slider__item embla__slide">
+                <div class="service-slider__item-info">
+                  <div class="service-slider__item-title">
+                    {{ speciality.display_name|linebreaks }}
+                  </div>
+                  <div class="service-slider__item-subtitle">
+                    {{ speciality.intro }}
+                  </div>
                 </div>
-                <div class="service-slider__item-subtitle">
-                  {{ speciality.intro }}
-                </div>
-              </div>
-              <img
-                class="service-slider__item-icon"
-                src="{{ speciality.icon.url }}"
-              />
-            </a>
+                <img
+                  class="service-slider__item-icon"
+                  src="{{ speciality.icon.url }}"
+                />
+              </a>
+            {% endif %}
           {% endfor %}
         </div>
 
