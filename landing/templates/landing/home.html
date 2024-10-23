@@ -239,7 +239,7 @@
       <div class="blog container">
         <div class="blog__header">О вашем здоровье</div>
         <div class="blog__content">
-          {% for article in articles %}
+          {% for article in articles|slice:"3" %}
             <a class="article" href="{{ article.get_absolute_url }}">
               {% if article.image %}
                 <img
