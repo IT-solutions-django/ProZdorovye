@@ -17,7 +17,7 @@ class Speciality(models.Model):
     is_displayed = models.BooleanField('Отображается ли на главной странице', default=True)
     
     class Meta: 
-        ordering = ['name']
+        ordering = ['pk']
         verbose_name = 'Специализация'
         verbose_name_plural = 'Специализации'
 
