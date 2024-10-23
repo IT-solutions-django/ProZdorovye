@@ -31,7 +31,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['http://*.91.210.169.78']
+CSRF_TRUSTED_ORIGINS = [
+    'http://*.91.210.169.78', 
+    'http://*.5.35.87.16',
+    ]
 
 
 # Application definition
@@ -97,6 +100,14 @@ DATABASES = {
     }
 }
 
+# Для локальной разработки
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
@@ -149,6 +160,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Redis 
 REDIS_HOST = 'redis' 
 REDIS_PORT = '6379' 
+
+# Для локальной разработки
+# REDIS_HOST = 'localhost' 
+# REDIS_PORT = '6379' 
 
 # Celery
 CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0' 
