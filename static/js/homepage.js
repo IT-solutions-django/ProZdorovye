@@ -69,5 +69,28 @@ function runClinicPhotoSlider() {
   });
 }
 
+function addReviewsSpoiler() {
+  document.querySelectorAll(".review-card").forEach((card) => {
+    const textElement = card.querySelector(".review-card__text");
+    // Проверяем высоту блока с текстом
+    if (textElement.scrollHeight > 215) {
+      const toggleButton = document.createElement("button");
+      toggleButton.classList.add("review-card__toggle", "active");
+      toggleButton.innerText = "Читать полностью";
+      toggleButton.addEventListener("click", function () {
+        if (textElement.classList.contains("expanded")) {
+          textElement.classList.remove("expanded");
+          toggleButton.innerText = "Читать полностью";
+        } else {
+          textElement.classList.add("expanded");
+          toggleButton.innerText = "Свернуть";
+        }
+      });
+      textElement.after(toggleButton);
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", addReviewsSpoiler);
+
 runServiceSlider();
 runClinicPhotoSlider();

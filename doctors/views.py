@@ -7,8 +7,8 @@ from .models import Speciality, Doctor
 class DoctorView(View): 
     template_name = 'doctors/doctor.html'
 
-    def get(self, request, doctor_id: int): 
-        doctor = Doctor.objects.get(pk=doctor_id)
+    def get(self, request, doctor_slug: str): 
+        doctor = Doctor.objects.get(slug=doctor_slug)
 
         profession = ', '.join(
             speciality.profession.name 

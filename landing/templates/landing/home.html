@@ -52,7 +52,7 @@
             <a href="{{ speciality.get_absolute_url }}" class="service-slider__item embla__slide">
               <div class="service-slider__item-info">
                 <div class="service-slider__item-title">
-                  {{ speciality.name }}
+                  {{ speciality.display_name|linebreaks }}
                 </div>
                 <div class="service-slider__item-subtitle">
                   {{ speciality.intro }}
@@ -259,7 +259,7 @@
           {% endfor %}
         </div>
         <div class="blog__footer">
-          <a href="{% url 'articles:article' article_slug='c-chem-rabotaet-osteopat' %}"><div class="button-osta">Все статьи</div></a>
+          <a href="{% url 'articles:articles_list' %}" class="blog__see-all button-osta">Все статьи</a>
         </div>
       </div>
     </div>

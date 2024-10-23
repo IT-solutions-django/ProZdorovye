@@ -3,7 +3,8 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
 import os
-
+from django.utils.text import slugify
+from unidecode import unidecode
 from django.urls import reverse
 from services.models import Speciality
 
@@ -17,29 +18,33 @@ class Doctor(models.Model):
     photo = models.ImageField('Фото', upload_to='doctors', null=True)
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
     prodoctorov_profile = models.TextField('Ссылка на профиль в ПроДокторов')
+    slug = models.SlugField('Слаг', max_length=100, blank=True)
 
     class Meta: 
         verbose_name = 'Врач'
         verbose_name_plural = 'Врачи'
 
     def __str__(self) -> str: 
-        return f'{self.first_name} {self.last_name} {self.patronymic if self.patronymic else ""}'
+        return f'{self.first_name} {self.last_name} {self.patronymic}'
     
     def save(self, *args, **kwargs):
-        name = os.path.splitext(self.photo.name)[0].lower()
+        initials = f"{self.first_name[0]}-{self.patronymic[0]}-{self.last_name}".lower()
+        self.slug = slugify(unidecode(initials))
+
+        photo_name = os.path.splitext(os.path.basename(self.photo.name))[0].lower()  
         img = Image.open(self.photo)
         img_io = BytesIO()
         img.save(img_io, format="WebP")
         img_file = InMemoryUploadedFile(
             file=img_io, 
             field_name=None, 
-            name=f"{name}.webp", 
+            name=f"{photo_name}.webp", 
             content_type="image/webp", 
             size=img_io.tell(), 
             charset=None,
         )
-        self.photo.save(f"{name}.webp", img_file, save=False)
+        self.photo.save(f"{photo_name}.webp", img_file, save=False)
         super(Doctor, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str: 
-        return reverse('doctors:doctor', args=[self.pk])
+        return reverse('doctors:doctor', args=[self.slug])
