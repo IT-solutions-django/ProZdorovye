@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
 {% load static %}
+{% load article_tags %}
 
 {% block title %}
 Центр современной остеопатии и мануальной медицины
@@ -27,7 +28,7 @@
               {{ article.intro }}
             </div>
             <div class="content__description">
-              {{ article.content|linebreaks }}
+              {{ article.content|markdown}}
             </div>
           </div>
           <div class="directions">
