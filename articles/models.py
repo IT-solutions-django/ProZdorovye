@@ -9,7 +9,7 @@ from services.models import Speciality
 
 class Article(models.Model): 
     title = models.CharField('Название', max_length=100) 
-    intro = models.CharField('Введение', max_length=250, null=True)
+    intro = models.TextField('Введение', max_length=250, null=True)
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
     image = models.ImageField('Фото', upload_to='articles', null=True)
