@@ -1,43 +1,19 @@
-{% extends 'base.html' %} 
-{% load static %} 
-
-
-{% block title %}
-Стоимость приема у специалистов медицинского центра ПроЗдоровье
-{% endblock %}
-
-{% block meta_title %}
-Стоимость приема у специалистов медицинского центра ПроЗдоровье
-{% endblock %}
-
-{% block description %}
-Смотрите актуальный прайс лист услуг медицинского центра ПроЗдоровье.🏥 Вы можете записаться онлайн на нашем сайте на любое удобное время
-{% endblock %}
-
-{% block meta_description %}
-Смотрите актуальный прайс лист услуг медицинского центра ПроЗдоровье.🏥 Вы можете записаться онлайн на нашем сайте на любое удобное время
-{% endblock %}
-
-
-{% block script %} 
-<script type="module" src="{% static 'js/header.js' %}"></script>
-<script type="module" src="{% static 'js/price.js' %}"></script>
-<script type="module" src="{% static 'js/ask-form.js' %}"></script>
-<script type="module" src="{% static 'js/footer.js' %}"></script>
-{% endblock script %} 
-
-{% block content %} 
-<div class="price-page">
-    <div id="header"></div>
-    <div class="section section--inpage">
-      <div class="container price">
-        <div class="price__header">Услуги и цены</div>
-        <div class="directions"></div>
-
-        <div class="services"></div>
-      </div>
-    </div>
-    <div id="ask-form"></div>
-    <div id="footer"></div>
-  </div>
+{% extends 'base.html' %} {% load static %} {% block title %} Стоимость приема у специалистов медицинского центра ПроЗдоровье {% endblock %} {% block meta_title %} Стоимость приема у специалистов медицинского центра ПроЗдоровье {% endblock %} {% block description %} Смотрите актуальный прайс лист услуг медицинского центра ПроЗдоровье.🏥 Вы можете записаться онлайн на нашем сайте на любое удобное время {% endblock %} {% block meta_description %} Смотрите актуальный прайс лист услуг медицинского центра ПроЗдоровье.🏥 Вы можете записаться онлайн на нашем сайте на любое удобное время {% endblock %} {% block script %}
+<script type=module src="{% static 'js/header.js' %}"></script>
+<script type=module src="{% static 'js/price.js' %}"></script>
+<script type=module src="{% static 'js/ask-form.js' %}"></script>
+<script type=module src="{% static 'js/footer.js' %}"></script>
+{% endblock script %} {% block content %}
+<div class=price-page>
+<div id=header></div>
+<div class="section section--inpage">
+<div class="container price">
+<div class=price__header>Услуги и цены</div>
+<div class=directions></div>
+<div class=services></div>
+</div>
+</div>
+<div id=ask-form></div>
+<div id=footer></div>
+</div>
 {% endblock %}
