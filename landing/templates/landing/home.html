@@ -5,6 +5,16 @@
 <script type=module src="{% static 'js/contact.js' %}"></script>
 <script type=module src="{% static 'js/footer.js' %}"></script>
 <script type=module src="{% static 'js/homepage.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const heroSection = document.querySelector(".section--hero");
+        if (heroSection) {
+            heroSection.style.backgroundImage = "url('/static/images/hero-bg-main.webp')";
+            heroSection.style.backgroundPosition = "center -330px";
+            heroSection.style.backgroundRepeat = "no-repeat";
+        }
+    });
+</script>
 {% endblock %} {% block content %}
 <!doctype html>
 <html lang=en>
