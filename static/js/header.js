@@ -1,4 +1,4 @@
-var header = ` <div class="section section--header">
+var header=` <div class="section section--header">
       <div class="header container">
         <a href="${window.origin}" class="header__logo">
           <img
@@ -42,13 +42,4 @@ var header = ` <div class="section section--header">
           </div>
         </div>
       </div>
-    </div>`;
-
-document.querySelector("#header").innerHTML = header;
-
-document
-  .querySelector(".header__hamburger")
-  .addEventListener("click", function () {
-    this.classList.toggle("active");
-    document.querySelector(".header__nav").classList.toggle("active");
-  });
+    </div>`;document.querySelector("#header").innerHTML=header,document.querySelector(".header__hamburger").addEventListener("click",function(){this.classList.toggle("active"),document.querySelector(".header__nav").classList.toggle("active")});

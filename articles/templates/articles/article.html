@@ -1,51 +1,39 @@
-{% extends 'base.html' %} 
-{% load static %}
-
-{% block title %}
-Центр современной остеопатии и мануальной медицины
-{% endblock %}
-
-{% block script %}
-<script type="module" crossorigin src="{% static 'js/header.js' %}"></script>
-<script type="module" crossorigin src="{% static 'js/booking.js' %}"></script>
-<script type="module" crossorigin src="{% static 'js/ask-form.js' %}"></script>
-<script type="module" crossorigin src="{% static 'js/footer.js' %}"></script>
+{% extends 'base.html' %} {% load static %} {% load article_tags %} {% block title %} Центр современной остеопатии и мануальной медицины {% endblock %} {% block script %}
+<script type=module crossorigin src="{% static 'js/header.js' %}"></script>
+<script type=module crossorigin src="{% static 'js/booking.js' %}"></script>
+<script type=module crossorigin src="{% static 'js/ask-form.js' %}"></script>
+<script type=module crossorigin src="{% static 'js/footer.js' %}"></script>
 {% endblock %} 
-
-{% block content %} 
-<div class="blog-item-page">
-    <div id="header"></div>
-
-    <div class="section section--inpage">
-      <div class="container blog-item">
-        <div class="blog-item__header">{{ article.title }}</div>
-
-        <div class="content">
-          <div class="content__main">
-            <img src="{{ article.image.url }}" class="content__img"> 
-            <div class="content__intro">
-              {{ article.intro }}
-            </div>
-            <div class="content__description">
-              {{ article.content }}
-            </div>
-          </div>
-          <div class="directions">
-            <div class="directions__title">Больше статей</div>
-            <div class="directions__list">
-              {% for a in rest_articles %}
-                <a href="{{ a.get_absolute_url }}" class="directions__button">{{ a.title }}</a>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="doctors"></div>
-    <div id="booking"></div>
-    <div id="ask-form"></div>
-
-    <div id="footer"></div>
-  </div>
+{% block content %}
+<div class=blog-item-page>
+<div id=header></div>
+<div class="section section--inpage">
+<div class="container blog-item">
+<div class=blog-item__header>{{ article.title }}</div>
+<div class=content>
+<div class=content__main>
+<img src="{{ article.image.url }}" class=content__img>
+<div class=content__intro>
+{{ article.intro }}
+</div>
+<div class=content__description>
+{{ article.content|markdown}}
+</div>
+</div>
+<div class=directions>
+<div class=directions__title>Больше статей</div>
+<div class=directions__list>
+{% for a in rest_articles %}
+<a href="{{ a.get_absolute_url }}" class=directions__button>{{ a.title }}</a>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id=doctors></div>
+<div id=booking></div>
+<div id=ask-form></div>
+<div id=footer></div>
+</div>
 {% endblock %}

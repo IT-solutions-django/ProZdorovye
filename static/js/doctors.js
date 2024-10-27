@@ -1,170 +1,36 @@
-import { getRoleForDirections } from './speciality_mapper.js';
+import{getRoleForDirections as t}from"./speciality_mapper.js";export async function printDoctors(e,i="Все направления",s=!0,a=!0){var c=window.innerWidth,l=` <div class="section section--doctors">
+  <div class="specialists-section container">
+    <div class="specialists-section__header">${e}</div>
+    <div class="specialists-section__categories" style="display: ${s?"block":"none"};">
+      <div class="categories-list" id="categoryButtons"></div>
+    </div>
+    <div class="specialists-list ${a?"embla":""}" id="specialistsList">
+      <div class="specialists-list__container ${a?"embla__container":""}"></div>
+      ${a?`
+        <button class="embla__button embla__button--prev" type="button">
+          <img src="${window.origin}/static/images/left.svg" alt="" />
+        </button>
+        <button class="embla__button embla__button--next" type="button">
+          <img src="${window.origin}/static/images/right.svg" alt="" />
+        </button>
+      `:""}
+    </div>
 
-
-export async function printDoctors(
-  currentTitle,
-  currentCategory = "Все направления",
-  filtersIsShown = true,
-  useSlider = true  
-) {
-  var screenWidth = window.innerWidth;
-  var doctors = ` <div class="section section--doctors">
-      <div class="specialists-section container">
-        <div class="specialists-section__header">${currentTitle}</div>
-        <div class="specialists-section__categories" style="display: ${
-          filtersIsShown ? "block" : "none"
-        };">
-          <div class="categories-list" id="categoryButtons"></div>
-        </div>
-        <div class="specialists-list ${
-          useSlider ? "embla" : ""
-        }" id="specialistsList">
-          <div class="specialists-list__container ${
-            useSlider ? "embla__container" : ""
-          }"></div>
-          ${
-            useSlider
-              ? `
-            <button class="embla__button embla__button--prev" type="button">
-              <img src="${window.origin}/static/images/left.svg" alt="" />
-            </button>
-            <button class="embla__button embla__button--next" type="button">
-              <img src="${window.origin}/static/images/right.svg" alt="" />
-            </button>
-          `
-              : ""
-          }
-        </div>
-  
+  </div>
+</div>`;document.querySelector("#doctors").innerHTML=l;let o;try{let r=await fetch(`${window.location.origin}/doctors/api/doctors`);if(!r.ok)throw Error("Ошибка");o=await r.json()}catch(n){console.error("Ошибка:",n)}let d=o,v;try{let p=await fetch(`${window.location.origin}/services/api/specialities`);if(!p.ok)throw Error("Ошибка");v=await p.json()}catch(u){console.error("Ошибка:",u)}let b=v;function g(e=i){let s=document.querySelector(".specialists-list__container"),l="Все направления"===e?d:d.filter(t=>t.categories.includes(e));if(s.innerHTML=l.map(e=>{let i=t(e.categories);return`
+    <a href="${e.url}" class="specialist-card">
+      <div class="specialist-card__image">
+        <img src="${e.image}" alt="${e.name}" />
       </div>
-    </div>`;
-
-  document.querySelector("#doctors").innerHTML = doctors;
-
-  let specialists_from_ajax;
-  try {
-    const response = await fetch(`${window.location.origin}/doctors/api/doctors`); 
-    if (!response.ok) {
-      throw new Error('Ошибка');
-    }
-    specialists_from_ajax = await response.json();
-  } catch (error) {
-    console.error('Ошибка:', error);
-  }
-  const specialists = specialists_from_ajax;
-
-  let categories_from_ajax;
-  try {
-    const response = await fetch(`${window.location.origin}/services/api/specialities`); 
-    if (!response.ok) {
-      throw new Error('Ошибка');
-    }
-    categories_from_ajax = await response.json();
-  } catch (error) {
-    console.error('Ошибка:', error);
-  }
-  const categories = categories_from_ajax;
-  categories.unshift('Все направления');
-
-  function renderCategories() {
-    const categoryButtons = document.getElementById("categoryButtons");
-    categoryButtons.innerHTML = categories
-      .map(
-        (category) => `
-      <div class="category-button${
-        category === currentCategory ? " active" : ""
-      }" data-category="${category}">
-        ${category}
+      <div class="specialist-card__info">
+        <div class="specialist-card__name">${e.name}</div>
+        <div class="specialist-card__role">${i}</div>
+        <div class="specialist-card__experience">Стаж c ${e.experience} г.</div>
+        <button class="specialist-card__btn">Записаться</button>
       </div>
-    `
-      )
-      .join("");
-  }
-
-  function renderSpecialists(filterCategory = currentCategory) {
-    const specialistsListContainer = document.querySelector(
-      ".specialists-list__container"
-    );
-
-    let filteredSpecialists =
-      filterCategory === "Все направления"
-        ? specialists
-        : specialists.filter((specialist) =>
-            specialist.categories.includes(filterCategory)
-          );
-
-    specialistsListContainer.innerHTML = filteredSpecialists
-      .map((specialist) => {
-        const role = getRoleForDirections(specialist.categories);
-
-        return `
-        <a href="${specialist.url}" class="specialist-card">
-          <div class="specialist-card__image">
-            <img src="${specialist.image}" alt="${specialist.name}" />
-          </div>
-          <div class="specialist-card__info">
-            <div class="specialist-card__name">${specialist.name}</div>
-            <div class="specialist-card__role">${role}</div>
-            <div class="specialist-card__experience">Стаж c ${specialist.experience} г.</div>
-            <button class="specialist-card__btn">Записаться</button>
-          </div>
-        </a>
-      `
-      }
-      )
-      .join("");
-
-    if (useSlider) {
-      const emblaNode = document.getElementById("specialistsList");
-      const emblaApi = EmblaCarousel(emblaNode, {
-        loop: false,
-        slidesToScroll: screenWidth > 1200 ? 3 : "auto",
-      });
-
-      const prevButton = document.querySelector(
-        "#specialistsList .embla__button--prev"
-      );
-      const nextButton = document.querySelector(
-        "#specialistsList .embla__button--next"
-      );
-
-      const setButtonStates = () => {
-        prevButton.classList.toggle(
-          "embla__button--disabled",
-          !emblaApi.canScrollPrev()
-        );
-        nextButton.classList.toggle(
-          "embla__button--disabled",
-          !emblaApi.canScrollNext()
-        );
-      };
-
-      prevButton.addEventListener("click", emblaApi.scrollPrev);
-      nextButton.addEventListener("click", emblaApi.scrollNext);
-
-      emblaApi.on("select", setButtonStates);
-      emblaApi.on("init", setButtonStates);
-    }
-  }
-
-  function updateActiveCategory(clickedButton) {
-    document.querySelectorAll(".category-button").forEach((button) => {
-      button.classList.remove("active");
-    });
-    clickedButton.classList.add("active");
-  }
-
-  function addCategoryEventListeners() {
-    document.querySelectorAll(".category-button").forEach((button) => {
-      button.addEventListener("click", (e) => {
-        const category = e.target.getAttribute("data-category");
-        updateActiveCategory(e.target);
-        renderSpecialists(category);
-      });
-    });
-  }
-
-  renderCategories();
-  renderSpecialists(currentCategory);
-  addCategoryEventListeners();
-}
+    </a>
+  `}).join(""),a){let o=document.getElementById("specialistsList"),r=EmblaCarousel(o,{loop:!1,slidesToScroll:c>1200?3:"auto"}),n=document.querySelector("#specialistsList .embla__button--prev"),v=document.querySelector("#specialistsList .embla__button--next"),p=()=>{n.classList.toggle("embla__button--disabled",!r.canScrollPrev()),v.classList.toggle("embla__button--disabled",!r.canScrollNext())};n.addEventListener("click",r.scrollPrev),v.addEventListener("click",r.scrollNext),r.on("select",p),r.on("init",p)}}b.unshift("Все направления"),!function t(){let e=document.getElementById("categoryButtons");e.innerHTML=b.map(t=>`
+  <div class="category-button${t===i?" active":""}" data-category="${t}">
+    ${t}
+  </div>
+`).join("")}(),g(i),document.querySelectorAll(".category-button").forEach(t=>{t.addEventListener("click",t=>{var e;let i=t.target.getAttribute("data-category");e=t.target,document.querySelectorAll(".category-button").forEach(t=>{t.classList.remove("active")}),e.classList.add("active"),g(i)})})}

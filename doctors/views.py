@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
+from datetime import datetime
 from .models import Speciality, Doctor
 
 
@@ -9,6 +10,7 @@ class DoctorView(View):
 
     def get(self, request, doctor_slug: str): 
         doctor = Doctor.objects.get(slug=doctor_slug)
+        doctor.experience = datetime.now().year - doctor.hire_year
 
         profession = ', '.join(
             speciality.profession.name 
