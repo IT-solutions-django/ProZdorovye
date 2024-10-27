@@ -9,21 +9,24 @@
 <meta name=description content="{% block description %}{% endblock %}">
 <meta property=og:title content="{% block meta_title %}{% endblock %}">
 <meta property=og:description content="{% block meta_description %}{% endblock %}">
-<link rel=preconnect href=https://fonts.googleapis.com>
-<link rel=preconnect href=https://fonts.gstatic.com>
-<link rel=apple-touch-icon sizes=180x180 href="{% static 'images/apple-touch-icon.png' %}">
-<link rel=icon type=image/png sizes=32x32 href="{% static 'images/favicon-32x32.png' %}">
-<link rel=icon type=image/png sizes=16x16 href="{% static 'images/favicon-16x16.png' %}">
-<link rel=manifest href="{% static 'images/site.webmanifest' %}">
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel=stylesheet>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:wght@300..800&display=swap" rel=stylesheet>
-<script type=module src="{% static 'js/vendor/embla-carousel.min.js' %}"></script>
-<script type=module src="{% static 'js/vendor/Imask.min.js' %}"></script>
-<script src="{% static 'js/uhpv/jquery.min.js' %}"></script>
-<script src="{% static 'js/uhpv/uhpv-full.min.js' %}"></script>
-<script type=module src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-<link rel="preload" href="{% static 'css/vendor/bootstrap.min.css' %}" as="style" onload="this.rel='stylesheet'">
-<link rel="preload" href="{% static 'css/styles.css' %}" as="style" onload="this.rel='stylesheet'">
+<link rel="preload" href="{% static 'images/favicon-32x32.png' %}" as="image">
+<link rel="preload" href="{% static 'images/apple-touch-icon.png' %}" as="image">
+<link rel="icon" type="image/svg+xml" href="https://osteomeddv-2024-09.web.app/vite.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<link href="{% static 'css/vendor/bootstrap.min.css' %}" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="{% static 'css/vendor/bootstrap.min.css' %}" rel="stylesheet"></noscript>
+<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+<script src="{% static 'js/uhpv/jquery.min.js' %}" defer></script>
+<script src="{% static 'js/uhpv/uhpv-full.min.js' %}" defer></script>
+<script type="module" src="{% static 'js/vendor/embla-carousel.min.js' %}" async></script>
+<script type="module" src="{% static 'js/vendor/Imask.min.js' %}" async></script>
+<script type="module" src="{% static 'js/vendor/bootstrap.min.js' %}" defer></script>
 {% block script %} {% endblock script %}
 </head>
 <body>
