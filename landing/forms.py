@@ -5,7 +5,7 @@ from .models import Request, Question
 class RequestForm(forms.ModelForm): 
     class Meta:
         model = Request
-        fields = ['name', 'phone', 'email', 'is_open']
+        fields = ['name', 'phone', 'email']
         labels = {
             'name': 'Имя',
             'phone': 'Телефон',

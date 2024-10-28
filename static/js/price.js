@@ -1,94 +1,11 @@
-let directions = []; // Масив направлений
-let services = []; // Массив услуг
-
-async function fetchDirections() {
-  try {
-    const response = await fetch(`${window.origin}/services/api/specialities/`);
-    const data = await response.json();
-
-    directions = data;
-    directions.unshift('Все направления');
-    renderDirections(directions);
-  }
-  catch (error) {
-    console.error('Ошибка при загрузке данных:', error);
-  }
-}
-
-async function fetchServices() {
-  try {
-    const response = await fetch(`${window.origin}/prices/api/prices/`);
-    const data = await response.json();
-
-    services = data;
-    renderServices(services);
-  }
-  catch (error) {
-    console.error('Ошибка при загрузке данных:', error);
-  }
-}
-  
-  // Функция для отрисовки направлений
-  function renderDirections() {
-    const directionsContainer = document.querySelector(".directions");
-    directionsContainer.innerHTML = ""; // Очищаем контейнер перед новой отрисовкой
-  
-    directions.forEach((direction, index) => {
-      const directionItem = `
-          <div class="directions__item ${index === 0 ? "active" : ""}">
-            ${direction}
-          </div>
-        `;
-      directionsContainer.innerHTML += directionItem;
-    });
-  
-    // Добавляем обработчики событий для кнопок направлений
-    document.querySelectorAll(".directions__item").forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const selectedDirection = event.target.innerText.trim();
-  
-        // Удаляем класс active у предыдущего выбранного элемента
-        document
-          .querySelector(".directions__item.active")
-          .classList.remove("active");
-  
-        // Добавляем класс active к новому выбранному элементу
-        event.target.classList.add("active");
-  
-        // Фильтруем и отрисовываем услуги по выбранному направлению
-        const filteredServices = filterServicesByDirection(selectedDirection);
-        renderServices(filteredServices);
-      });
-    });
-  }
-  
-  // Функция для фильтрации услуг по направлению
-  function filterServicesByDirection(direction) {
-    if (direction === "Все направления") return services;
-    return services.filter((service) => service.direction === direction);
-  }
-  
-  // Функция для отрисовки услуг
-  function renderServices(services) {
-    const servicesContainer = document.querySelector(".services");
-    servicesContainer.innerHTML = ""; // Очищаем контейнер перед новой отрисовкой
-  
-    services.forEach((service) => {
-      const serviceItem = `
-          <div class="services__item" data-id="${service.id}">
-            <div class="services__name">${service.name}, ${service.doctor},   ${service.duration} мин</div>
-            <div class="services__price">${service.price} ₽</div>
-            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
-          </div>
-        `;
-      servicesContainer.innerHTML += serviceItem;
-    });
-  }
-  
-  // Инициализация
-  document.addEventListener("DOMContentLoaded", () => {
-    fetchDirections();
-  
-    // Отрисовываем все услуги при загрузке страницы
-    fetchServices();
-  });
+let directions=[],services=[];async function fetchDirections(){try{let e=await fetch(`${window.origin}/services/api/specialities/`),i=await e.json();(directions=i).unshift("Все направления"),renderDirections(directions)}catch(r){console.error("Ошибка при загрузке данных:",r)}}async function fetchServices(){try{let e=await fetch(`${window.origin}/prices/api/prices/`),i=await e.json();services=i,renderServices(services)}catch(r){console.error("Ошибка при загрузке данных:",r)}}function renderDirections(){let e=document.querySelector(".directions");e.innerHTML="",directions.forEach((i,r)=>{let t=`
+  <div class="directions__item ${0===r?"active":""}">
+    ${i}
+  </div>
+`;e.innerHTML+=t}),document.querySelectorAll(".directions__item").forEach(e=>{e.addEventListener("click",e=>{let i=e.target.innerText.trim();document.querySelector(".directions__item.active").classList.remove("active"),e.target.classList.add("active");let r=filterServicesByDirection(i);renderServices(r)})})}function filterServicesByDirection(e){return"Все направления"===e?services:services.filter(i=>i.direction===e)}function renderServices(e){let i=document.querySelector(".services");i.innerHTML="",e.forEach(e=>{let r=`
+  <div class="services__item" data-id="${e.id}">
+    <div class="services__name">${e.name}, ${e.doctor},   ${e.duration} мин</div>
+    <div class="services__price">${e.price} ₽</div>
+    <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
+  </div>
+`;i.innerHTML+=r})}document.addEventListener("DOMContentLoaded",()=>{fetchDirections(),fetchServices()});

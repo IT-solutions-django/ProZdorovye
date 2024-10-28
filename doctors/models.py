@@ -28,6 +28,12 @@ class Doctor(models.Model):
         return f'{self.first_name} {self.last_name} {self.patronymic}'
     
     def save(self, *args, **kwargs):
+        if self.pk:  
+            old_photo = Doctor.objects.filter(pk=self.pk).first().photo
+            if old_photo and self.photo and old_photo.name == self.photo.name:
+                super(Doctor, self).save(*args, **kwargs)
+                return
+
         initials = f"{self.first_name[0]}-{self.patronymic[0]}-{self.last_name}".lower()
         self.slug = slugify(unidecode(initials))
 

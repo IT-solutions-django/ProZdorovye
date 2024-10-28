@@ -4,11 +4,11 @@ from .models import Request, Question
 
 @admin.register(Request)
 class RequestAdmin(admin.ModelAdmin): 
-    list_display = ['name', 'phone', 'email', 'is_open']
+    list_display = ['name', 'phone', 'email', 'is_closed']
     search_fields = ['name', 'email']
 
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin): 
-    list_display = ['name', 'phone', 'email', 'text', 'is_open']
+    list_display = ['name', 'phone', 'email', 'text', 'is_closed']
     search_fields = ['name', 'address', 'text']

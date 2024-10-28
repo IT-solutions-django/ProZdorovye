@@ -1,87 +1,57 @@
-{% extends 'base.html' %} 
-{% load static  %} 
-
-
-{% block title %}
-Центр современной остеопатии и мануальной медицины
+{% extends 'base.html' %} {% load static %} {% block title %} {{ speciality.name }} во Владивостоке в медицинском центре ПроЗдоровье {% endblock %} {% block meta_title %} {{ speciality.name }} во Владивостоке в медицинском центре ПроЗдоровье {% endblock %} {% block description %} Запишитесь на {{ speciality.name|lower }} в мед. центре ПроЗдоровье.🏥 Подробное описание услуги с ценами и расписанием. Высококвалифицированные специалисты готовы принять вас {% endblock %} {% block meta_description %} Запишитесь на {{ speciality.name|lower }} в мед. центре ПроЗдоровье.🏥 Подробное описание услуги с ценами и расписанием. Высококвалифицированные специалисты готовы принять вас {% endblock %} {% block script %}
+<script type=module src="{% static 'js/header.js' %}"></script>
+<script type=module src="{% static 'js/doctors.js' %}"></script>
+<script type=module src="{% static 'js/booking.js' %}"></script>
+<script type=module src="{% static 'js/ask-form.js' %}"></script>
+<script type=module src="{% static 'js/footer.js' %}"></script>
+{% endblock %} {% block content %}
+<div class=service-page>
+<div id=header></div>
+<div class="section section--inpage">
+<div class="container service">
+<div class=service__header>{{ speciality.name }}</div>
+<div class=content>
+<div class=content__main>
+<div class=content__intro>
+{{ speciality.short_description }}
+</div>
+<div class=content__description>
+{{ speciality.description }}
+</div>
+<div class=content__indications>
+<div class=content__indications-title>Основные показания</div>
+{% for symptom in speciality.symptoms.all %}
+<div class=content__indications-item>
+{{ symptom.text }}
+</div>
+{% endfor %}
+</div>
+</div>
+<div class=directions>
+<div class=directions__title>Все направления</div>
+<div class=directions__list>
+<a href="{{ s.get_absolute_url }}" class="directions__button directions__button--active">{{ speciality.name }}</a>
+{% for s in rest_specialities %}
+<a href="{{ s.get_absolute_url }}" class=directions__button>{{ s.name }}</a>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section section--inpage">
+<div class="container service">
+<div class=service-gallery>
+{% for photo in speciality.photos.all %}
+<img class=service-gallery__item src="{{ photo.image.url }}">
+{% endfor %}
+</div>
+</div>
+</div>
+<div id=doctors></div>
+<div id=booking></div>
+<div id=ask-form></div>
+<div id=footer></div>
+</div>
+<script type=module>import{printDoctors}from"{% static 'js/doctors.js' %}";document.addEventListener("DOMContentLoaded",(function(){printDoctors("Специалисты по направлению {{ speciality.name }}","{{ speciality.name }}",!1)}))</script>
 {% endblock %}
-
-
-{% block script %}
-<script type="module" src="{% static 'js/header.js' %}"></script>
-<script type="module" src="{% static 'js/doctors.js' %}"></script>
-<script type="module" src="{% static 'js/booking.js' %}"></script>
-<script type="module" src="{% static 'js/ask-form.js' %}"></script>
-<script type="module" src="{% static 'js/footer.js' %}"></script>
-{% endblock %}
-
-
-{% block content %}
-<div class="service-page">
-    <div id="header"></div>
-
-    <div class="section section--inpage">
-      <div class="container service">
-        <div class="service__header">{{ speciality.name }}</div>
-
-        <div class="content">
-          <div class="content__main">
-            <div class="content__intro">
-              {{ speciality.intro }}
-            </div>
-            <div class="content__description">
-              {{ speciality.description }}
-            </div>
-            <div class="content__indications">
-              <div class="content__indications-title">Основные показания</div>
-              {% for symptom in speciality.symptoms.all %}
-                <div class="content__indications-item">
-                  {{ symptom.text }}
-                </div>
-              {% endfor %}
-            </div>
-          </div>
-          <div class="directions">
-            <div class="directions__title">Все направления</div>
-            <div class="directions__list">
-              <a
-                href="{{ s.get_absolute_url }}"
-                class="directions__button directions__button--active"
-                >{{ speciality.name }}</a
-              >
-              {% for s in rest_specialities %}
-                <a href="{{ s.get_absolute_url }}" class="directions__button">{{ s.name }}</a>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section section--inpage">
-      <div class="container service">
-          <div class="service-gallery">
-            {% for photo in speciality.photos.all %}
-              <img class="service-gallery__item" src="{{ photo.image.url }}" />
-            {% endfor %}
-            </div>
-      </div>
-    </div>
-    <div id="doctors"></div>
-    <div id="booking"></div>
-    <div id="ask-form"></div>
-
-    <div id="footer"></div>
-  </div>
-
-  <script type="module">
-    import { printDoctors } from "{% static 'js/doctors.js' %}";
-
-    document.addEventListener("DOMContentLoaded", function () {
-      printDoctors(
-        "Специалисты по направлению {{ speciality.name }}",
-        "{{ speciality.name }}",
-        false
-      );
-    });
-  </script>
-{% endblock %} 

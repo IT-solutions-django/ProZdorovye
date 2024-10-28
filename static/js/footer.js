@@ -1,4 +1,4 @@
-var footer = `    <div class="section section--footer">
+var footer=`    <div class="section section--footer">
       <div class="footer container">
         <div class="footer__left">
           <div class="footer__services">
@@ -26,7 +26,7 @@ var footer = `    <div class="section section--footer">
                 Записаться на прием
               </button>
             </a>
-            <div class="footer__copyright">© 2024 osteomeddv.ru</div>
+            <div class="footer__copyright">\xa9 2024 osteomeddv.ru</div>
           </div>
           <div class="social-links">
             <a href="https://t.me/your-telegram-link" target="_blank">
@@ -39,6 +39,4 @@ var footer = `    <div class="section section--footer">
         </div>
       </div>
     </div>
-`;
-
-document.querySelector("#footer").innerHTML = footer;
+`;document.querySelector("#footer").innerHTML=footer;

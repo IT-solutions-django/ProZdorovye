@@ -1,23 +1,22 @@
-<form id="questionForm" class="questions__form" method="POST">
-    {% csrf_token %}
-    <div class="form__field">
-        {{ form.name }}
-        <label for="{{ form.name.id_for_label }}" class="form__label">{{ form.name.label }}</label>
-    </div>
-    <div class="questions__input-group questions__input-group--double">
-        <div class="form__field">
-            {{ form.phone }}
-            <label for="{{ form.phone.id_for_label }}" class="form__label">{{ form.phone.label }}</label>
-        </div>
-        <div class="form__field">
-            {{ form.email }}
-
-            <label for="{{ form.email.id_for_label }}" class="form__label">{{ form.email.label }}</label>
-        </div>
-    </div>
-    <div class="form__field">
-        {{ form.text }}
-        <label for="{{ form.text.id_for_label }}" class="form__label">{{ form.text.label }}</label>
-    </div>
-    <button type="submit" class="form__button button-osta">Отправить</button>
+<form id=questionForm class=questions__form method=POST>
+{% csrf_token %}
+<div class=form__field>
+{{ form.name }}
+<label for="{{ form.name.id_for_label }}" class=form__label>{{ form.name.label }}</label>
+</div>
+<div class="questions__input-group questions__input-group--double">
+<div class=form__field>
+{{ form.phone }}
+<label for="{{ form.phone.id_for_label }}" class=form__label>{{ form.phone.label }}</label>
+</div>
+<div class=form__field>
+{{ form.email }}
+<label for="{{ form.email.id_for_label }}" class=form__label>{{ form.email.label }}</label>
+</div>
+</div>
+<div class=form__field>
+{{ form.text }}
+<label for="{{ form.text.id_for_label }}" class=form__label>{{ form.text.label }}</label>
+</div>
+<button type=submit class="form__button button-osta">Отправить</button>
 </form>

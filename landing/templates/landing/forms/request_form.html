@@ -1,22 +1,21 @@
-<form id="contactForm" class="form" method="post"">
-    {% csrf_token %}
-    <div class="form__title">Подберем процедуру под ваш запрос</div>
-    <div class="form__field">
-        {{ form.name }}
-      <label for="{{ form.name.id_for_label }}" class="form__label">{{ form.name.label }}</label>
-    </div>
-    <div class="form__row">
-      <div class="form__field">
-        {{ form.phone }}
-        <label for="{{ form.phone.id_for_label }}" class="form__label">{{ form.phone.label }}</label>
-      </div>
-      <div class="form__field">
-        {{ form.email }}
-        <label for="{{ form.email.id_for_label }}" class="form__label">E-mail</label>
-      </div>
-    </div>
-    <button type="submit" class="form__button button-osta">
-      Заказать звонок
-    </button>
+<form id=contactForm class=form method=post>
+{% csrf_token %}
+<div class=form__title>Подберем процедуру под ваш запрос</div>
+<div class=form__field>
+{{ form.name }}
+<label for="{{ form.name.id_for_label }}" class=form__label>{{ form.name.label }}</label>
+</div>
+<div class=form__row>
+<div class=form__field>
+{{ form.phone }}
+<label for="{{ form.phone.id_for_label }}" class=form__label>{{ form.phone.label }}</label>
+</div>
+<div class=form__field>
+{{ form.email }}
+<label for="{{ form.email.id_for_label }}" class=form__label>E-mail</label>
+</div>
+</div>
+<button type=submit class="form__button button-osta">
+Заказать звонок
+</button>
 </form>
-
