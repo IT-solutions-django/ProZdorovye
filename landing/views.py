@@ -39,7 +39,7 @@ class HomeView(View):
 
 class SaveRequestView(View): 
     def post(self, request): 
-        form = RequestForm(request.POST) 
+        form: RequestForm = RequestForm(request.POST) 
         if form.is_valid(): 
             new_request = form.save() 
             
