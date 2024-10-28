@@ -11,6 +11,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'update_reviews': {
         'task': 'reviews.tasks.update_reviews_task',
-        'schedule': 30, 
+        'schedule': crontab(minute='*/30'), 
     },
 }
