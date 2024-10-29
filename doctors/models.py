@@ -10,8 +10,8 @@ from services.models import Speciality
 
 
 class Doctor(models.Model): 
-    first_name = models.CharField('Имя', max_length=50)
     last_name = models.CharField('Фамилия', max_length=50)
+    first_name = models.CharField('Имя', max_length=50)
     patronymic = models.CharField('Отчество', max_length=50)
     hire_year = models.SmallIntegerField('Год начала работы')
     description = models.TextField('Описание', null=True, blank=True) 
