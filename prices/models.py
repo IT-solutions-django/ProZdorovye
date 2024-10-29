@@ -4,7 +4,7 @@ from doctors.models import Doctor
 
 
 class ServiceType(models.Model): 
-    name = models.CharField('Название', max_length=50)
+    name = models.CharField('Название', max_length=250)
     price = models.DecimalField('Цена', decimal_places=2, max_digits=8)
     speciality = models.ForeignKey(verbose_name='Специализация', to=Speciality, on_delete=models.CASCADE, related_name='services')
     doctor = models.ForeignKey(verbose_name='Врач', to=Doctor, related_name='services', on_delete=models.CASCADE, null=True)
