@@ -36,7 +36,7 @@ class DoctorsAPIView(View):
         doctors = [
             {
                 'id': doctor.pk,
-                'name': f'{doctor.first_name} {doctor.last_name} {doctor.patronymic}', 
+                'name': f'{doctor.last_name} {doctor.first_name} {doctor.patronymic}', 
                 'url': doctor.get_absolute_url(),
                 'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
