@@ -48,6 +48,7 @@ class SpecialityPhoto(models.Model):
     class Meta:
         verbose_name = 'Фото специализации'
         verbose_name_plural = 'Фото специализации'
+        ordering = ['pk']
 
     def __str__(self):
         return self.image.name
@@ -82,3 +83,4 @@ class Symptom(models.Model):
     class Meta: 
         verbose_name = 'Симптом'
         verbose_name_plural = 'Симптомы'
+        ordering = ['pk']

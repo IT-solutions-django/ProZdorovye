@@ -23,6 +23,7 @@ class Doctor(models.Model):
     class Meta: 
         verbose_name = 'Врач'
         verbose_name_plural = 'Врачи'
+        ordering = ['pk']
 
     def __str__(self) -> str: 
         return f'{self.first_name} {self.last_name} {self.patronymic}'
