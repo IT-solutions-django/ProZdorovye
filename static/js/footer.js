@@ -29,10 +29,10 @@ var footer=`    <div class="section section--footer">
             <div class="footer__copyright">\xa9 2024 osteomeddv.ru</div>
           </div>
           <div class="social-links">
-            <a href="https://t.me/your-telegram-link" target="_blank">
+            <a href="https://t.me/pro_zdorovye_vl" target="_blank">
               <img src="${window.origin}/static/images/tg.svg" alt="Telegram" />
             </a>
-            <a href="https://wa.me/your-whatsapp-number" target="_blank">
+            <a href="https://wa.me/79149677552" target="_blank">
               <img src="${window.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
             </a>
           </div>
