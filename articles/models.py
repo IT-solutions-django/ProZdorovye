@@ -8,7 +8,7 @@ from services.models import Speciality
 
 
 class Article(models.Model): 
-    title = models.CharField('Название', max_length=100) 
+    title = models.CharField('Название', max_length=250) 
     intro = models.TextField('Введение', max_length=250, null=True)
     content = models.TextField('Содержание')
     created_at = models.DateTimeField('Дата и время публикации', auto_now_add=True)
