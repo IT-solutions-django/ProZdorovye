@@ -26,7 +26,7 @@ class Doctor(models.Model):
         ordering = ['pk']
 
     def __str__(self) -> str: 
-        return f'{self.first_name} {self.last_name} {self.patronymic}'
+        return f'{self.last_name} {self.first_name} {self.patronymic}'
     
     def save(self, *args, **kwargs):
         if self.pk:  
