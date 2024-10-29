@@ -19,10 +19,10 @@ function printYaMap(){ymaps.ready(function t(){screenWidth>1200?(a=12,e=[43.1494
               ${form_html}
             </div>
             <div class="social-links">
-              <a href="https://t.me/your-telegram-link" target="_blank">
+              <a href="https://t.me/pro_zdorovye_vl" target="_blank">
                 <img src="${window.origin}/static/images/tg.svg" alt="Telegram" />
               </a>
-              <a href="https://wa.me/your-whatsapp-number" target="_blank">
+              <a href="https://wa.me/79149677552" target="_blank">
                 <img src="${window.origin}/static/images/whatsapp.svg" alt="WhatsApp" />
               </a>
             </div>
