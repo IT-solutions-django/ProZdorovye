@@ -15,7 +15,7 @@ class Doctor(models.Model):
     patronymic = models.CharField('Отчество', max_length=50)
     hire_year = models.SmallIntegerField('Год начала работы')
     description = models.TextField('Описание', null=True, blank=True) 
-    photo = models.ImageField('Фото', upload_to='doctors', null=True)
+    photo = models.ImageField('Фото', upload_to='doctors', null=True, blank=True)
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
     prodoctorov_profile = models.TextField('Ссылка на профиль в ПроДокторов')
     slug = models.SlugField('Слаг', max_length=100, blank=True)
@@ -38,19 +38,21 @@ class Doctor(models.Model):
         initials = f"{self.first_name[0]}-{self.patronymic[0]}-{self.last_name}".lower()
         self.slug = slugify(unidecode(initials))
 
-        photo_name = os.path.splitext(os.path.basename(self.photo.name))[0].lower()  
-        img = Image.open(self.photo)
-        img_io = BytesIO()
-        img.save(img_io, format="WebP")
-        img_file = InMemoryUploadedFile(
-            file=img_io, 
-            field_name=None, 
-            name=f"{photo_name}.webp", 
-            content_type="image/webp", 
-            size=img_io.tell(), 
-            charset=None,
-        )
-        self.photo.save(f"{photo_name}.webp", img_file, save=False)
+        if self.photo: 
+            photo_name = os.path.splitext(os.path.basename(self.photo.name))[0].lower()  
+            img = Image.open(self.photo)
+            img_io = BytesIO()
+            img.save(img_io, format="WebP")
+            img_file = InMemoryUploadedFile(
+                file=img_io, 
+                field_name=None, 
+                name=f"{photo_name}.webp", 
+                content_type="image/webp", 
+                size=img_io.tell(), 
+                charset=None,
+            )
+            self.photo.save(f"{photo_name}.webp", img_file, save=False)
+            
         super(Doctor, self).save(*args, **kwargs)
 
     def get_absolute_url(self) -> str: 

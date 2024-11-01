@@ -13,9 +13,10 @@ class DoctorView(View):
         doctor.experience = datetime.now().year - doctor.hire_year
 
         profession = ', '.join(
-            speciality.profession.name 
-            for speciality in doctor.specialities.all()
-        ).lower().capitalize()
+            speciality.profession.name.capitalize()
+            if i == 0 else speciality.profession.name
+            for i, speciality in enumerate(doctor.specialities.all())
+        )
 
         context = {
             'doctor': doctor,
@@ -40,7 +41,7 @@ class DoctorsAPIView(View):
                 'url': doctor.get_absolute_url(),
                 'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
-                'image': doctor.photo.url,
+                'image': doctor.photo.url if doctor.photo else None,
                 'prodoctorov_profile': doctor.prodoctorov_profile,
             } 
             for doctor in Doctor.objects.all()
