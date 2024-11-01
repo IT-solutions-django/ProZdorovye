@@ -13,9 +13,10 @@ class DoctorView(View):
         doctor.experience = datetime.now().year - doctor.hire_year
 
         profession = ', '.join(
-            speciality.profession.name 
-            for speciality in doctor.specialities.all()
-        ).lower().capitalize()
+            speciality.profession.name.capitalize()
+            if i == 0 else speciality.profession.name
+            for i, speciality in enumerate(doctor.specialities.all())
+        )
 
         context = {
             'doctor': doctor,
