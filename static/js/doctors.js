@@ -20,7 +20,7 @@ import{getRoleForDirections as t}from"./speciality_mapper.js";export async funct
 </div>`;document.querySelector("#doctors").innerHTML=l;let o;try{let r=await fetch(`${window.location.origin}/doctors/api/doctors`);if(!r.ok)throw Error("Ошибка");o=await r.json()}catch(n){console.error("Ошибка:",n)}let d=o,v;try{let p=await fetch(`${window.location.origin}/services/api/specialities`);if(!p.ok)throw Error("Ошибка");v=await p.json()}catch(u){console.error("Ошибка:",u)}let b=v;function g(e=i){let s=document.querySelector(".specialists-list__container"),l="Все направления"===e?d:d.filter(t=>t.categories.includes(e));if(s.innerHTML=l.map(e=>{let i=t(e.categories);return`
     <a href="${e.url}" class="specialist-card">
       <div class="specialist-card__image">
-        <img src="${e.image}" alt="${e.name}" />
+        <img src="${e.image ? e.image : `${window.location.origin}/static/images/default.webp`}" alt="${e.name}" />
       </div>
       <div class="specialist-card__info">
         <div class="specialist-card__name">${e.name}</div>

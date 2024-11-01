@@ -40,7 +40,7 @@ class DoctorsAPIView(View):
                 'url': doctor.get_absolute_url(),
                 'experience': doctor.hire_year,
                 'categories': [s.name for s in doctor.specialities.all()], 
-                'image': doctor.photo.url,
+                'image': doctor.photo.url if doctor.photo else None,
                 'prodoctorov_profile': doctor.prodoctorov_profile,
             } 
             for doctor in Doctor.objects.all()

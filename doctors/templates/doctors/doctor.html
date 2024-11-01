@@ -38,7 +38,7 @@
 </div>
 </div>
 <div class=doctor-card__image-container>
-<img class=doctor-card__main-image src="{{ doctor.photo.url }}" alt="Фото доктора">
+<img class=doctor-card__main-image src="{% if doctor.photo %}{{ doctor.photo.url }}{% else %}{% static 'images/default.webp' %}{% endif %}" alt="Фото доктора">
 </div>
 </div>
 </div>
