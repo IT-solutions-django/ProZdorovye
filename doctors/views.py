@@ -9,14 +9,11 @@ class DoctorView(View):
     template_name = 'doctors/doctor.html'
 
     def get(self, request, doctor_slug: str): 
-        doctor = Doctor.objects.get(slug=doctor_slug)
+        doctor = Doctor.objects.prefetch_related('specialities__profession').get(slug=doctor_slug)
         doctor.experience = datetime.now().year - doctor.hire_year
 
-        profession = ', '.join(
-            speciality.profession.name.capitalize()
-            if i == 0 else speciality.profession.name
-            for i, speciality in enumerate(doctor.specialities.all())
-        )
+        profession_parts = [s.profession.name for s in doctor.specialities.all()]
+        profession = ', '.join([profession_parts[0]] + profession_parts[1:])
 
         context = {
             'doctor': doctor,
