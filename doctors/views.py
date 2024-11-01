@@ -13,7 +13,7 @@ class DoctorView(View):
         doctor.experience = datetime.now().year - doctor.hire_year
 
         profession_parts = [s.profession.name for s in doctor.specialities.all()]
-        profession = ', '.join([profession_parts[0]] + profession_parts[1:])
+        profession = ', '.join([profession_parts[0].capitalize()] + profession_parts[1:])
 
         context = {
             'doctor': doctor,
