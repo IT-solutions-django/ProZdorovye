@@ -2,9 +2,9 @@ let directions=[],services=[];async function fetchDirections(){try{(directions=a
   <div class="directions__item ${0===r?"active":""}">
     ${i}
   </div>
-`;e.innerHTML+=t}),document.querySelectorAll(".directions__item").forEach(e=>{e.addEventListener("click",e=>{let i=e.target.innerText.trim();document.querySelector(".directions__item.active").classList.remove("active"),e.target.classList.add("active");renderServices(filterServicesByDirection(i))})})}function filterServicesByDirection(e){return"Все направления"===e?services:services.filter(i=>i.direction===e)}function renderServices(e){let i=document.querySelector(".services");i.innerHTML="",e.forEach(e=>{let r=`
+`;e.innerHTML+=t}),document.querySelectorAll(".directions__item").forEach(e=>{e.addEventListener("click",e=>{let i=e.target.innerText.trim();document.querySelector(".directions__item.active").classList.remove("active"),e.target.classList.add("active"),renderServices(filterServicesByDirection(i))})})}function filterServicesByDirection(e){return"Все направления"===e?services:services.filter(i=>i.direction===e)}function renderServices(e){let i=document.querySelector(".services");i.innerHTML="",e.forEach(e=>{let r=`
   <div class="services__item" data-id="${e.id}">
-    <div class="services__name">${e.name}, ${e.doctor}, ${e.info}</div>
+    <div class="services__name">${e.name}, ${e.doctor}${e.info?`, ${e.info}`:""}</div>
     <div class="services__price">${e.price} ₽</div>
     <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
   </div>
