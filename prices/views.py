@@ -22,7 +22,7 @@ class PricesAPIView(View):
                 'id': service.pk,
                 'name': service.name, 
                 'direction': service.speciality.name,
-                'duration': service.duration, 
+                'info': service.info,
                 'price': service.price, 
                 'doctor': f'{service.doctor.last_name} {service.doctor.first_name} {service.doctor.patronymic}', # TODO: сделать привязку услуги к доктору
             } 
