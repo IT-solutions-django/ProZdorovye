@@ -24,7 +24,8 @@ class PricesAPIView(View):
                 'direction': service.speciality.name,
                 'info': service.info,
                 'price': service.price, 
-                'doctor': f'{service.doctor.last_name} {service.doctor.first_name} {service.doctor.patronymic}', # TODO: сделать привязку услуги к доктору
+                'doctor': f'{service.doctor.last_name} {service.doctor.first_name} {service.doctor.patronymic}', 
+                'is_displayed': service.is_displayed,
             } 
             for service in ServiceType.objects.all()
         ]

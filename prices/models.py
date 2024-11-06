@@ -9,6 +9,7 @@ class ServiceType(models.Model):
     speciality = models.ForeignKey(verbose_name='Специализация', to=Speciality, on_delete=models.CASCADE, related_name='services')
     info = models.CharField('Дополнительная информация', max_length=200, null=True, blank=True)
     price = models.CharField('Цена', max_length=50)
+    is_displayed = models.BooleanField('Отображается в общем списке', default=True)
 
     class Meta: 
         verbose_name = 'Тип услуги'
