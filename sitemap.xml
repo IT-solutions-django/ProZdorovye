@@ -1,122 +1,317 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
+﻿<?xml version="1.0" encoding="UTF-8"?>
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-  <loc>http://5.35.87.16/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>1.00</priority>
+	<loc>https://prozdorovie.site/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<!-- Хедер -->
+<url>
+	<loc>https://prozdorovie.site/doctors/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.9</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/osteopatiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/prices/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.9</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/massazh</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/contacts/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.9</priority>
+</url>
+<!-- Направления -->
+<url>
+	<loc>https://prozdorovie.site/services/osteopatiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/afk</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/massazh</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/psihologiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/afk</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/nevrologiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/nevrologiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/iglorefleksoterapiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/iglorefleksoterapiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/nutriciologiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/nutriciologiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/endokrinologiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/endokrinologiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/terapiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/terapiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/gomeopatiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/gomeopatiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/pediatriya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/pediatriya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/manualnaya-terapiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/psihologiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/joga</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/manualnaya-terapiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/pilates</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/joga</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/services/psihokineziologiya</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/pilates</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/blog/joga-polza-i-uprazhneniya-dlya-nachinayushih/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/services/mikrokineziologiya</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<!-- Статьи -->
+<url>
+	<loc>https://prozdorovie.site/blog/lechenie-sustavov-simptomy-lechenie-diagnostika/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/blog/nevrolog-chto-lechit-i-s-kakimi-simptomami-obrasha/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/blog/joga-polza-i-uprazhneniya-dlya-nachinayushih/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/blog/lechenie-sustavov-simptomy-lechenie-diagnostika/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/blog/nevrolog-chto-lechit-i-s-kakimi-simptomami-obrasha/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/blog/articles/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.80</priority>
+	<loc>https://prozdorovie.site/blog/articles/</loc>
+	<lastmod>2024-11-12T06:01:04+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/blog/lechenie-spiny-i-kolenej-u-osteopata-preimushestva/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.64</priority>
+	<loc>https://prozdorovie.site/blog/lechenie-spiny-i-sustavov-u-osteopata-preimushestv/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
 <url>
-  <loc>http://5.35.87.16/blog/vidy-massazha-lechebnyj-anticellyulitnyj-sportivny/</loc>
-  <lastmod>2024-10-25T05:40:59+00:00</lastmod>
-  <priority>0.64</priority>
+	<loc>https://prozdorovie.site/blog/vidy-massazha-lechebnyj-anticellyulitnyj-sportivny/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
 </url>
-
-
+<!-- Врачи -->
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/i-k-kim/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-a-shevchenko/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/m-a-iakovleva/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/k-k-krasnopeev/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/v-a-fedchenko/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/t-v-razdai-bedina/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-s-vybranovskii/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-v-rodionova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/v-v-iamaleev/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/d-a-moiseenko/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/e-a-zhigulina/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/e-v-petrova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/p-s-arvinder/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/i-e-dega/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-iu-kizim/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/v-a-klepikova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-a-reviakina/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-a-vasileva/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/v-a-nogai/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-a-popova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-a-vakhnina/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/n-v-sukhorukova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-v-maksimova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/e-iu-samoilova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-s-pipko/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-l-lazovskaia/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-v-kalinichenko/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-i-pavlovskaia/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-v-zaporozhskaia/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/s-m-kovalev/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/m-iu-khasina/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-g-krasnobaeva/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/o-e-grechinskaia/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-b-narkevich/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/a-v-motorova/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/m-a-iakushina/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
+<url>
+	<loc>https://prozdorovie.site/doctors/doctor/v-a-aliavin/</loc>
+	<lastmod>2024-11-12T06:01:12+01:00</lastmod>
+	<priority>0.6</priority>
+</url>
 </urlset>
