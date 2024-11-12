@@ -32,8 +32,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'http://*.91.210.169.78', 
     'http://*.5.35.87.16',
+    'https://*.prozdorovie.site',
     ]
 
 
