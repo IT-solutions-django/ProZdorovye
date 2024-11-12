@@ -19,11 +19,12 @@ class Doctor(models.Model):
     specialities = models.ManyToManyField(verbose_name='Специализации', to=Speciality, related_name='doctors')
     prodoctorov_profile = models.TextField('Ссылка на профиль в ПроДокторов')
     slug = models.SlugField('Слаг', max_length=100, blank=True)
+    display_priority = models.IntegerField('Приоритет показа')
 
     class Meta: 
         verbose_name = 'Врач'
         verbose_name_plural = 'Врачи'
-        ordering = ['pk']
+        ordering = ['display_priority']
 
     def __str__(self) -> str: 
         return f'{self.last_name} {self.first_name} {self.patronymic}'
@@ -57,3 +58,4 @@ class Doctor(models.Model):
 
     def get_absolute_url(self) -> str: 
         return reverse('doctors:doctor', args=[self.slug])
+
