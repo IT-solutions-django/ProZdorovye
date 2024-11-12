@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: http://5.35.87.16/sitemap.xml
+Sitemap: https://prozdorovie.site/sitemap.xml
