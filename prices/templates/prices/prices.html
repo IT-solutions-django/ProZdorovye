@@ -11,7 +11,7 @@
 <div class=price__header>Услуги и цены</div>
 <div class=directions></div>
 <div class=services></div>
-<a href="{% get_media_prefix %}/prices/Прайс.xlsx" class="button-osta button-osta--secondary price__download-all">Скачать все .xlsx</a>
+<a href="{{ price_file.file.url }}" class="button-osta button-osta--secondary price__download-all">Скачать все .xlsx</a>
 </div>
 </div>
 <div id=ask-form></div>
