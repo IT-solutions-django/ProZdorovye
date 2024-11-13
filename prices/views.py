@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View 
-from .models import ServiceType
+from .models import ServiceType, PricePDF
 
 
 class PricesView(View): 
@@ -9,8 +9,10 @@ class PricesView(View):
 
     def get(self, request): 
         services = ServiceType.objects.all()
+        price_file = PricePDF.get_instance()
         context = {
             'services': services, 
+            'price_file': price_file,
         }
         return render(request, self.template_name, context)
     
