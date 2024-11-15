@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+{% load static %} 
+
+{% block title %}
+Карта сайта ПроЗдоровье
+{% endblock %}
+{% block meta_title %}
+Карта сайта ПроЗдоровье
+{% endblock %}
+{% block description %}
+В мед. центре ПроЗдоровье вас ждут на прием профессиональные остеопаты, неврологи, эндокринологи и психотерапевты.🏥 Наши инструкторы по йоге и пилатесу приглашают записаться в группы или на индивидуальные занятия. ПроЗдоровье - здоровье начинается здесь!
+{% endblock %}
+{% block meta_description %}
+В мед. центре ПроЗдоровье вас ждут на прием профессиональные остеопаты, неврологи, эндокринологи и психотерапевты.🏥 Наши инструкторы по йоге и пилатесу приглашают записаться в группы или на индивидуальные занятия. ПроЗдоровье - здоровье начинается здесь!
+{% endblock %}
+
+
+{% block script %}
+<script type=module src="{% static 'js/header.js' %}"></script>
+<script type=module src="{% static 'js/footer.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div id=header></div>
+<div class="container" style="margin-top: 60px; margin-bottom: 20px;">
+    <div class="map-container">
+        <h1 class="map__header">Карта сайта</h1>
+            <ul>
+                <li class="map__bullet-1">
+                    <h5><a href="{% url 'services:speciality' speciality_slug='osteopatiya' %}">Услуги</a></h5>
+                    <ul>
+                        {% for speciality in specialities %}
+                            <li class="map__bullet-2"><a href="{{ speciality.get_absolute_url }}">{{ speciality.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="map__bullet-1">
+                    <h5><a href="{% url 'doctors:doctors' %}">Специалисты</a></h5>
+                    <ul>
+                        {% for doctor in doctors %}
+                            <li class="map__bullet-2"><a href="{{ doctor.get_absolute_url }}">{{ doctor.last_name }} {{ doctor.first_name}} {{ doctor.patronymic }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="map__bullet-1">
+                    <h5><a href="{% url 'prices:prices' %}">Цены</a></h5>
+                </li>
+                <li class="map__bullet-1">
+                    <h5><a href="{% url 'landing:contacts' %}">Контакты</a></h5>
+                </li>
+            </ul>
+        </div>
+</div>
+<div id=footer></div>
+{% endblock %}

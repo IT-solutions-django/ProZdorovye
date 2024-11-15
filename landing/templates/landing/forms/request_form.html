@@ -15,7 +15,14 @@
 <label for="{{ form.email.id_for_label }}" class=form__label>E-mail</label>
 </div>
 </div>
-<button type=submit class="form__button button-osta">
+<div class="form__field" style="height: 20px;">
+    <input type="checkbox" id="consent" name="consent" required>
+    <label for="consent" class="form__label" style="font-size: 14px;">
+        Нажимая на кнопку, Вы даете согласие на обработку своих персональных данных и соглашаетесь с 
+        <a id="userAgreementLink" href="{{ agreement_url }}" target="_blank">Пользовательским соглашением</a>.
+    </label>
+</div>
+<button type=submit class="form__button button-osta" style="margin-top: 20px;">
 Заказать звонок
 </button>
 </form>

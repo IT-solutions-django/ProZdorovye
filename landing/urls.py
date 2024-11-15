@@ -7,6 +7,7 @@ app_name = 'landing'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'), 
+    path('map/', MapView.as_view(), name='map'),
     path('contacts/', ContactsView.as_view(), name='contacts'), 
     path('request_saved/', RequestSavedView.as_view(), name='request_saved'),
 

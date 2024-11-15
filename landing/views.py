@@ -2,13 +2,13 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
-from django.core.mail import EmailMessage
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
 from ProZdorovye.settings import FEEDBACK_EMAIL
 from .forms import RequestForm, QuestionForm
 from .tasks import send_email_task
+from .models import UserAgreementPDF
 
 
 class MainView(View): 
@@ -96,12 +96,34 @@ class ContactsView(View):
 class RequestFormHtmlApi(View): 
     def get(self, request): 
         form = RequestForm()
-        form_html = render(request, 'landing/forms/request_form.html', {'form': form}).content.decode('utf-8')
+        agreement_url = UserAgreementPDF.get_instance().file.url
+        context = {
+            'form': form, 
+            'agreement_url': agreement_url,
+        }
+        print(agreement_url)
+        form_html = render(request, 'landing/forms/request_form.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
     
 
 class QuestionFormHtmlApi(View): 
     def get(self, request): 
         form = QuestionForm()
-        form_html = render(request, 'landing/forms/question_form.html', {'form': form}).content.decode('utf-8')
+        agreement_url = UserAgreementPDF.get_instance().file.url
+        context = {
+            'form': form, 
+            'agreement_url': agreement_url,
+        }
+        form_html = render(request, 'landing/forms/question_form.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
+    
+
+class MapView(View): 
+    def get(self, request): 
+        specialities = Speciality.objects.all()
+        doctors = Doctor.objects.all()
+        context = {
+            'specialities': specialities,
+            'doctors': doctors,
+        }
+        return render(request, 'landing/map.html', context)
