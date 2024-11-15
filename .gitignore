@@ -164,6 +164,7 @@ cython_debug/
 media/articles/*
 media/doctors/*
 media/specialities/*
+media/prices/
 
 celerybeat-schedule.bak
 celerybeat-schedule.dat
