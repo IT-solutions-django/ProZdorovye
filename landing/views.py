@@ -105,3 +105,14 @@ class QuestionFormHtmlApi(View):
         form = QuestionForm()
         form_html = render(request, 'landing/forms/question_form.html', {'form': form}).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
+    
+
+class MapView(View): 
+    def get(self, request): 
+        specialities = Speciality.objects.all()
+        doctors = Doctor.objects.all()
+        context = {
+            'specialities': specialities,
+            'doctors': doctors,
+        }
+        return render(request, 'landing/map.html', context)
