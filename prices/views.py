@@ -30,7 +30,7 @@ class PricesAPIView(View):
                 'price': service.price, 
                 'doctor': f'{service.doctor.last_name} {service.doctor.first_name} {service.doctor.patronymic}', 
                 'is_displayed': service.is_displayed,
-            } for service in ServiceType.objects.all()
+            } for service in ServiceType.objects.select_related('speciality', 'doctor').all()
         ]
         return JsonResponse(services, safe=False)
     
