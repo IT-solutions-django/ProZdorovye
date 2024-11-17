@@ -1240,6 +1240,10 @@ p {
     margin-bottom: 20px
 }
 
+.contact-details__address {
+    margin-bottom: 4px;
+}
+
 .contacts-card .contact-details__address {
     color: #666
 }
