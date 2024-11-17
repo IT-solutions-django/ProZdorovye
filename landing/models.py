@@ -74,3 +74,11 @@ class UserAgreementPDF(models.Model):
 def delete_file_on_object_delete(sender, instance, **kwargs):
     if instance.file:
         instance.file.delete(save=False)
+
+
+class LicensePage(models.Model): 
+    file = models.FileField('Страница', upload_to='license/')
+
+    class Meta: 
+        verbose_name = 'Страница лицензии'
+        verbose_name_plural = 'Страницы лицензии'

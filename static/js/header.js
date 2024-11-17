@@ -1,4 +1,4 @@
-var header=` <div class="section section--header">
+var header = ` <div class="section section--header">
       <div class="header container">
         <a href="${window.origin}" class="header__logo">
           <img
@@ -18,17 +18,25 @@ var header=` <div class="section section--header">
             alt=""
           />
         </button>
+
         <div class="header__nav">
           <div class="nav__links">
             <a href="${window.origin}/services/osteopatiya" class="nav__link">Услуги</a>
             <a href="${window.origin}/doctors" class="nav__link">Специалисты</a>
             <a href="${window.origin}/prices" class="nav__link">Цены</a>
-            <a href="${window.origin}/contacts" class="nav__link">Контакты</a>
+            <div class="nav__dropdown">
+              <button class="nav__dropdown-button nav__link">О компании</button>
+              <div class="nav__dropdown-content-wrapper">
+                <div class="nav__dropdown-content nav__link">
+                  <a href="${window.origin}/contacts" class="nav__link">Контакты</a>
+                  <a href="#" class="nav__link">Вакансии</a>
+                  <a href="#" class="nav__link">Юридическая информация</a>
+                  <a href="#" class="nav__link">Галерея</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <input class="header__service-input" placeholder="Поиск по сайту" type="text">
-          </div>
-          <div class="bvi-open" id="specialButton">
+          <div class="bvi-open" id="specialButton" style="display: none;">
             <img
               src="${window.origin}/static/images/eye.svg"
               alt="ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ"
@@ -43,6 +51,18 @@ var header=` <div class="section section--header">
               </button>
             </a>
           </div>
+
+          <div id="searchButton" class="header__search-button">
+          <img
+              src="${window.origin}/static/images/search.svg"
+              alt="Поиск"
+              title="Поиск"
+            />
+        </div>
+
         </div>
       </div>
-    </div>`;document.querySelector("#header").innerHTML=header,document.querySelector(".header__hamburger").addEventListener("click",function(){this.classList.toggle("active"),document.querySelector(".header__nav").classList.toggle("active")});
+    </div>`;
+document.querySelector("#header").innerHTML = header, document.querySelector(".header__hamburger").addEventListener("click", function() {
+    this.classList.toggle("active"), document.querySelector(".header__nav").classList.toggle("active")
+});

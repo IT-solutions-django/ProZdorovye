@@ -7,17 +7,18 @@ var footer=`    <div class="section section--footer">
               <a class="footer__link" href="${window.origin}/doctors">Специалисты</a>
               <a class="footer__link" href="${window.origin}/prices" >Цены</a>
               <a class="footer__link" href="${window.origin}/contacts">Контакты</a>
+              <a class="footer__link" href="${window.origin}/map">Карта сайта</a>
             </div>
-            <a href=""${window.origin}>
-              <div class="footer__logo">
-                <img
-                  class="footer__logo-image"
-                  src="${window.origin}/static/images/logo-footer.svg"
-                  alt="Logo"
-                />
-              </div>
-            </a>
           </div>
+          <a href=""${window.origin}>
+            <div class="footer__logo">
+              <img
+                class="footer__logo-image"
+                src="${window.origin}/static/images/logo-footer.svg"
+                alt="Logo"
+              />
+            </div>
+          </a>
         </div>
         <div class="footer__right">
           <div class="footer__info">
