@@ -1997,4 +1997,12 @@ p {
         max-width: none;
         max-height: none
     }
+    
+    .nav__dropdown-content-wrapper {
+        position: absolute;
+        padding-top: 12px;
+        left: 50%; 
+        transform: translateX(-50%); 
+    }
+    
 }
