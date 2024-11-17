@@ -1387,6 +1387,11 @@ p {
     color: var(--main-green)
 }
 
+.license-card {
+    display: inline-block;
+    padding: 0px 2px;
+}
+
 .social-links {
     margin-top: 32px;
     display: -webkit-inline-box;

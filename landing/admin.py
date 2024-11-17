@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Request, Question, UserAgreementPDF
+from .models import (
+    Request, 
+    Question, 
+    UserAgreementPDF, 
+    LicensePage
+)
 
 
 @admin.register(Request)
@@ -16,4 +21,9 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(UserAgreementPDF)
 class UserAgreementPDFAdmin(admin.ModelAdmin): 
+    list_display = ['pk', 'file']
+
+
+@admin.register(LicensePage)
+class LicensePageAdmin(admin.ModelAdmin): 
     list_display = ['pk', 'file']
