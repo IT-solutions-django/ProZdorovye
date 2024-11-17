@@ -403,7 +403,7 @@ p {
     border: none; 
     background-color: transparent;
     white-space: nowrap;
-    background-image: url('/static/images/Dropdown.svg');
+    background-image: url('/static/images/dropdown.svg');
     background-repeat: no-repeat;
     padding-right: 20px;
     background-position: right center; 
