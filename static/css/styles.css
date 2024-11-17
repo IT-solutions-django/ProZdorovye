@@ -1264,6 +1264,59 @@ p {
     margin-bottom: 20px
 }
 
+.form__field-message,
+.form__checkbox-label {
+    width: 135%;
+}
+
+.form__field-agreement {
+    display: flex;
+    position: relative;
+    gap: 10px;
+}
+
+.form__checkbox-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    width: 24px;
+    height: 24px;
+    input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+    &::before, 
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+    &::before {
+        background-color: white;
+        border-radius: 8px;
+    }
+    &:has(input:checked)::after {
+        content: "\2713";
+        color: black;
+        font-size: 16px; 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.form__checkbox-label {
+    font-size: 14px;
+    color: black;
+}
+
+.form__checkbox-label a {
+    text-decoration: none;
+    color: #00923A;
+}
+
 .form__label {
     position: absolute;
     top: 26px;
@@ -1900,6 +1953,11 @@ p {
 
     .form__field {
         margin-bottom: 12px
+    }
+
+    .form__field-message, 
+    .form__checkbox-label {
+        width: 100%;
     }
 
     #map {

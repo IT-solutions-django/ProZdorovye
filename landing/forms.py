@@ -32,5 +32,5 @@ class QuestionForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form__input'}),
             'phone': forms.TextInput(attrs={'class': 'form__input', 'minlength': 18}),
             'email': forms.EmailInput(attrs={'class': 'form__input'}),
-            'text': forms.Textarea(attrs={'class': 'form__input'}),
+            'text': forms.Textarea(attrs={'class': 'form__input', 'rows': 4}),
         }
