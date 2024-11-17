@@ -25,9 +25,6 @@ var header=` <div class="section section--header">
             <a href="${window.origin}/prices" class="nav__link">Цены</a>
             <a href="${window.origin}/contacts" class="nav__link">Контакты</a>
           </div>
-          <div>
-            <input class="header__service-input" placeholder="Поиск по сайту" type="text">
-          </div>
           <div class="bvi-open" id="specialButton">
             <img
               src="${window.origin}/static/images/eye.svg"
