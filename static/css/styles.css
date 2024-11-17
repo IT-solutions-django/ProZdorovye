@@ -1226,7 +1226,7 @@ p {
     display: flex;
     flex-direction: column;
     z-index: 10;
-    top: 90px
+    top: 20px
 }
 
 #map,
