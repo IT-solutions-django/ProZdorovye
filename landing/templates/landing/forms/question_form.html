@@ -19,11 +19,11 @@
 <label for="{{ form.text.id_for_label }}" class="form__label"->{{ form.text.label }}</label>
 </div>
 <div class="form__field form__field-agreement">
-    <div class="form__checkbox-wrap">
+    <div class="form__question-checkbox-wrap">
         <input type="checkbox" id="consent" name="consent" required>
     </div>
     <div class="form__checkbox-label">
-        <label for="consent" class="form__checkbox-label">
+        <label for="consent" class="form__question-checkbox-label">
             Нажимая на кнопку, Вы даете согласие на обработку своих персональных данных и соглашаетесь с 
             <a id="userAgreementLink" href="{{ agreement_url }}" target="_blank">Пользовательским соглашением</a>
         </label>
