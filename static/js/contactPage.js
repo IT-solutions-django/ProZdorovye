@@ -45,9 +45,9 @@ function loadYandexMapsScript() {
       printYaMap()
   }, document.head.appendChild(t)
 }
-async function fetchContactFormHtml() {
+async function fetchContactInfoHtml() {
   try {
-      let t = await fetch(`${window.origin}/api/get_request_form_html/`),
+      let t = await fetch(`${window.origin}/api/get_contact_info_html/`),
           a = await t.json();
       return a
   } catch (e) {
@@ -55,11 +55,11 @@ async function fetchContactFormHtml() {
   }
 }
 loadYandexMapsScript();
-
+const contact_info_html = await fetchContactInfoHtml();
 var screenWidth = window.innerWidth,
   contacts = `     
-  <div id="sectionContact" class="section section--contact" style="height: 1100px">
-    <div id="map" style="height: 1100px"></div>
+  <div id="sectionContact" class="section section--contact" style="height: 1080px">
+    <div id="map" style="height: 1080px"></div>
 
     <div class="contacts container">
       <div class="contacts-card">
@@ -78,27 +78,8 @@ var screenWidth = window.innerWidth,
               <div class="contact-details__address">ПН-ПТ 08:00-20:00; СБ-ВС 09:00-19:00</div>
               <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
             </div>
-            <div class="contact-details">
-              <div class="contact-details__address">Почтовый адрес: 690014, Приморский край, город Владивосток, Некрасовская ул., д. 90, помещ. 12 </div>
-            </div>
           </div>
-          <div class="contact-details">
-              <div class="form__title">
-                  Лицензии
-              </div>
-              <div class="license-card">
-                <img src="${window.origin}/static/images/License 1.png">
-              </div>
-              <div class="license-card">
-                <img src="${window.origin}/static/images/License 2.png">
-              </div>
-          </div>
-          <div>
-              <div class="form__title">
-                  Прием граждан по личным вопросам
-              </div>
-              <div class="contact-details__address">Директор: Ващенко Светлана Николаевна<br>каждый 1 й понедельник месяца с 16:00 до 18:00</div>
-          </div>
+          ${ contact_info_html }
           <div class="social-links">
             <a href="https://t.me/pro_zdorovye_vl" target="_blank">
               <img src="${window.origin}/static/images/tg.svg" alt="Telegram" />

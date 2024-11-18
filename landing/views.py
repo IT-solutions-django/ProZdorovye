@@ -8,7 +8,7 @@ from articles.models import Article
 from ProZdorovye.settings import FEEDBACK_EMAIL
 from .forms import RequestForm, QuestionForm
 from .tasks import send_email_task
-from .models import UserAgreementPDF
+from .models import UserAgreementPDF, ContactInfo, LicensePage
 
 
 class MainView(View): 
@@ -115,6 +115,18 @@ class QuestionFormHtmlApi(View):
             'agreement_url': agreement_url,
         }
         form_html = render(request, 'landing/forms/question_form.html', context).content.decode('utf-8')
+        return JsonResponse(form_html, safe=False)
+        
+
+class ContactInfoHtmlApi(View): 
+    def get(self, request): 
+        contact_info = ContactInfo.get_instance()
+        license_pages = LicensePage.objects.all()
+        context = {
+            'contact_info': contact_info, 
+            'license_pages': license_pages,
+        }
+        form_html = render(request, 'landing/forms/contact_info.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
     
 

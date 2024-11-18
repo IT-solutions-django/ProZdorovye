@@ -82,3 +82,32 @@ class LicensePage(models.Model):
     class Meta: 
         verbose_name = 'Страница лицензии'
         verbose_name_plural = 'Страницы лицензии'
+
+
+class ContactInfo(models.Model): 
+    address = models.TextField(
+        'Почтовый адрес', 
+    )
+
+    personal_questions_info = models.TextField(
+        'Приём граждан по личным вопросам', 
+    )
+
+    title = models.TextField(
+        'Контактная информация', 
+        help_text='Название вкладки в админ. панели',
+        default='Контактная информация'
+    )
+
+    def save(self, *args, **kwargs):
+        if self.__class__.objects.count():
+            self.pk = self.__class__.objects.first().pk
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def get_instance(cls) -> "ContactInfo":
+        instance, created = cls.objects.get_or_create(id=1)
+        return instance
+    
+    def __str__(self) -> str: 
+        return 'Контактная информация'
