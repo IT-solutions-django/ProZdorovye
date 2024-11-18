@@ -47,7 +47,7 @@ function loadYandexMapsScript() {
 }
 async function fetchContactInfoHtml() {
   try {
-      let t = await fetch(`${window.origin}/api/get_contact_info_html/`),
+      let t = await fetch(`${window.origin}/api/get_request_form_html/`),
           a = await t.json();
       return a
   } catch (e) {
