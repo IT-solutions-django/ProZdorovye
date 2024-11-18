@@ -57,8 +57,9 @@ async function fetchContactFormHtml() {
 loadYandexMapsScript();
 
 var screenWidth = window.innerWidth,
-  contacts = `   <div id="sectionContact" class="section section--contact">
-    <div id="map"></div>
+  contacts = `     
+  <div id="sectionContact" class="section section--contact" style="height: 1100px">
+    <div id="map" style="height: 1100px"></div>
 
     <div class="contacts container">
       <div class="contacts-card">
