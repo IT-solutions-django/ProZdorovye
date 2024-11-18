@@ -1,5 +1,5 @@
 <div class="contact-details">
-    <div class="contact-details__address">{{ contact_info.address }}</div>
+    <div class="contact-details__address">{{ contact_info.address|linebreaks }}</div>
   </div>
   <div class="contact-details">
       <div class="form__title">
@@ -17,5 +17,5 @@
       <div class="form__title">
           Прием граждан по личным вопросам
       </div>
-      <div class="contact-details__address">{{ contact_info.personal_questions_info }}</div>
+      <div class="contact-details__address">{{ contact_info.personal_questions_info|linebreaks }}</div>
   </div>
