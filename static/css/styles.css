@@ -168,7 +168,7 @@ p {
 }
 
 .button-osta--small {
-    padding: 12px 24px
+    padding: 12px 24px;
 }
 
 .button-osta--secondary {
@@ -371,13 +371,78 @@ p {
 }
 
 .header__search-button {
-    justify-content: center;
     height: 44px;
     width: 44px;
     border-radius: 12px;
     padding: 12px;
     background-color: #0000000A;
-;
+    z-index: 500000;
+    background-image: url("/static/images/search.svg");
+    background-repeat: no-repeat;
+    background-position: center; 
+    cursor: pointer;
+
+    margin-left: -32px;
+}
+
+.header__search {
+    position: absolute;
+    top: 20;
+    right: 0px;
+    z-index: 10000; 
+
+    display: flex;
+    align-items: center;
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+
+    box-shadow: 0 24px 30px 0 rgba(41, 80, 132, .13);
+}
+
+.header__search-input {
+    width: 100%;
+    height: 64px;
+    padding: 21px 0px 21px 30px;
+    border: none;
+    border-radius: 16px;
+    font-size: 16px;
+    outline: none;
+}
+
+.header__search.active {
+    position: absolute;
+    top: 20;
+    right: 0px;
+    z-index: 10000; 
+    width: 812px; 
+    border-radius: 16px; 
+}
+
+@media (max-width: 1100px) {
+    .header__search.active {
+        width: 790px; 
+    }
+}
+@media (max-width: 1072px) {
+    .header__search.active {
+        width: 772px; 
+    }
+}
+@media (max-width: 1055px) {
+    .header__search.active {
+        width: 750px; 
+    }
+}
+@media (max-width: 1032px) {
+    .header__search.active {
+        width: 727px; 
+    }
+}
+@media (max-width: 1014px) {
+    .header__search.active {
+        width: 709px; 
+    }
 }
 
 .embla__button--prev,
