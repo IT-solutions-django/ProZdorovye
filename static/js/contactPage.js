@@ -1,3 +1,14 @@
+import { L as LuminousGallery } from "./luminous-lightbox.js";
+
+// Для открытия фотографий на полный экран
+function initGallery() {
+  var galleryItems = document.querySelectorAll(".license-card a")
+  console.log(galleryItems)
+    if (galleryItems.length > 0) {
+        new LuminousGallery(galleryItems);
+    }
+}
+
 function printYaMap() {
   ymaps.ready(function t() {
       screenWidth > 1200 ? (a = 12, e = [43.149473, 131.815747]) : (a = 11, e = [43.150813, 131.931514]);
@@ -54,10 +65,63 @@ async function fetchContactInfoHtml() {
       console.error("Ошибка при загрузке данных:", e)
   }
 }
+
 loadYandexMapsScript();
 const contact_info_html = await fetchContactInfoHtml();
 var screenWidth = window.innerWidth,
-  contacts = `     
+  contacts = `  
+  <style type="text/css" class="lum-base-styles">
+  @keyframes lum-noop {
+    0% {
+      zoom:1
+    }
+  }
+  .lum-lightbox {
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .lum-lightbox.lum-open {
+    display: block;
+    z-index: 1000000
+  }
+
+  .lum-lightbox.lum-closing,
+  .lum-lightbox.lum-opening {
+    animation: lum-noop 1ms
+  }
+
+  .lum-lightbox-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden
+  }
+
+  .lum-lightbox-loader {
+    display: none
+  }
+
+  .lum-lightbox-inner img {
+    max-width: 100%;
+    max-height: 100%
+  }
+
+  .lum-lightbox-image-wrapper {
+    vertical-align: middle;
+    display: table-cell;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  </style>
+  
+
   <div id="sectionContact" class="section section--contact" style="height: 1080px">
     <div id="map" style="height: 1080px"></div>
 
@@ -91,17 +155,11 @@ var screenWidth = window.innerWidth,
         </div>
       </div>
     </div>
-  </div>`;
-document.querySelector("#contact").innerHTML = contacts;
-var phoneInput = document.getElementById("contactForm").querySelector("#id_phone"),
-  phoneMask = IMask(phoneInput, {
-      mask: "+{7} (000) 000 00 00"
-  });
+  </div>
 
-function validatePhoneNumber() {
-  let t = phoneInput.value.replace(/\D/g, "");
-  return t.length < 11 ? (phoneInput.setCustomValidity("Необходимо минимум 11 цифр"), !1) : (phoneInput.setCustomValidity(""), !0)
-}
-phoneInput.addEventListener("input", function() {
-  validatePhoneNumber()
-});
+  `;
+
+document.querySelector("#contact").innerHTML = contacts;
+initGallery()
+
+

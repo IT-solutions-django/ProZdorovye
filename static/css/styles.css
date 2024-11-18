@@ -1392,6 +1392,11 @@ p {
     padding: 0px 2px;
 }
 
+.license-card img {
+    max-height: 200px;
+    max-width: 150px;
+}
+
 .social-links {
     margin-top: 32px;
     display: -webkit-inline-box;

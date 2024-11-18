@@ -7,7 +7,9 @@
       </div>
       {% for page in license_pages %}
         <div class="license-card">
-            <img src="{{ page.file.url }}">
+            <a href="{{ page.file.url }}">
+                <img src="{{ page.file.url }}">
+            </a>
         </div>
       {% endfor %}
   </div>
