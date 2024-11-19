@@ -36,6 +36,12 @@ class Question(models.Model):
 class UserAgreementPDF(models.Model): 
     file = models.FileField('Файл', upload_to='prices')
 
+    title = models.TextField(
+         'Пользовательское соглашение', 
+        help_text='Название вкладки в админ. панели',
+        default='Пользовательское соглашение'
+    )
+
     class Meta: 
         verbose_name = 'Пользовательское соглашение'
         verbose_name_plural = 'Пользовательское соглашение'
@@ -138,3 +144,52 @@ class JuridicalInfo(models.Model):
     
     def __str__(self) -> str: 
         return 'Контактная информация'
+    
+
+class ProcessingDataAgreement(models.Model): 
+    file = models.FileField('Файл', upload_to='prices')
+
+    title = models.TextField(
+         'Согласие на обработку персональных данных', 
+        help_text='Название вкладки в админ. панели',
+        default='Согласие на обработку персональных данных'
+    )
+
+    class Meta: 
+        verbose_name = 'Согласие на обработку персональных данных'
+        verbose_name_plural = 'Согласие на обработку персональных данных'
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = ProcessingDataAgreement.objects.get(pk=self.pk)
+            if old_instance.file and old_instance.file != self.file:
+                if os.path.isfile(old_instance.file.path):
+                    old_instance.file.delete(save=False)
+        else: 
+            old_instance = ProcessingDataAgreement.objects.first() 
+            if old_instance and old_instance.file != self.file: 
+                if os.path.isfile(old_instance.file.path):
+                    old_instance.file.delete(save=False)
+
+        if ProcessingDataAgreement.objects.count():
+            self.pk = ProcessingDataAgreement.objects.first().pk
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.file:
+            self.file.delete(save=False)
+        super().delete(*args, **kwargs)
+
+    @classmethod
+    def get_instance(cls) -> "ProcessingDataAgreement":
+        instance = cls.objects.first()
+        return instance
+    
+    def __str__(self) -> str: 
+        return 'Согласие на обработку персональных данных'
+    
+
+@receiver(post_delete, sender=ProcessingDataAgreement)
+def delete_file_on_object_delete(sender, instance, **kwargs):
+    if instance.file:
+        instance.file.delete(save=False)

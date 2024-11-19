@@ -6,6 +6,7 @@ from .models import (
     LicensePage, 
     ContactInfo, 
     JuridicalInfo, 
+    ProcessingDataAgreement
 )
 
 
@@ -23,13 +24,18 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(UserAgreementPDF)
 class UserAgreementPDFAdmin(admin.ModelAdmin): 
-    list_display = ['pk', 'file']
+    list_display = ['title']
+
+
+@admin.register(ProcessingDataAgreement)
+class ProcessingDataAgreementAdmin(admin.ModelAdmin): 
+    list_display = ['title']
+    exclude = ['title']
 
 
 @admin.register(LicensePage)
 class LicensePageAdmin(admin.ModelAdmin): 
     list_display = ['pk', 'file']
-
 
 
 @admin.register(ContactInfo)
