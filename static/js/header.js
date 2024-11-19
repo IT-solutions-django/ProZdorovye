@@ -30,7 +30,7 @@ var header = ` <div class="section section--header">
                 <div class="nav__dropdown-content nav__link">
                   <a href="${window.origin}/contacts" class="nav__link">Контакты</a>
                   <a href="#" class="nav__link">Вакансии</a>
-                  <a href="#" class="nav__link">Юридическая информация</a>
+                  <a href="${window.origin}/juridical" class="nav__link">Юридическая информация</a>
                   <a href="#" class="nav__link">Галерея</a>
                 </div>
               </div>
@@ -56,7 +56,9 @@ var header = ` <div class="section section--header">
           </div>
 
           <div class="header__search">
-            <input type="text" class="header__search-input" placeholder="Поиск по сайту" />
+            <form action="${window.origin}/prices/search" method="GET" class="header__search-form">
+              <input type="text" maxlength=50 name="query" class="header__search-input" placeholder="Поиск по сайту" />
+            </form>
           </div>
 
         </div>

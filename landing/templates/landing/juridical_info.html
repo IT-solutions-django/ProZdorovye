@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% load static %} {% load article_tags %} {% block title %} Юридическая информация о
+Владивостоке в медицинском центре ПроЗдоровье {% endblock %} {% block meta_title %} Юридическая информация о
+Владивостоке в медицинском центре ПроЗдоровье {% endblock %} {% block description %} Запишитесь на в мед. центре ПроЗдоровье.🏥 Подробное описание услуги с ценами и расписанием.
+Высококвалифицированные специалисты готовы принять вас {% endblock %} {% block meta_description %} Запишитесь на в мед. центре ПроЗдоровье.🏥 Подробное описание услуги с ценами и расписанием.
+Высококвалифицированные специалисты готовы принять вас {% endblock %} {% block script %}
+<script type=module src="{% static 'js/header.js' %}"></script>
+<script type=module src="{% static 'js/booking.js' %}"></script>
+<script type=module src="{% static 'js/ask-form.js' %}"></script>
+<script type=module src="{% static 'js/footer.js' %}"></script>
+{% endblock %} {% block content %}
+<div class=service-page>
+    <div id=header></div>
+    <div class="section section--inpage">
+        <div class="container service juridical">
+            <div class=service__header>Юридическая информация</div>
+            <div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">Полное наименование медицинской организации</p>
+                    <p class="juridical__info">
+                        {{ juridical_info.orgainzation_full_name }}
+                    </p>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">Адрес юридического лица </p>
+                    <p class="juridical__info">
+                        {{ juridical_info.address }}
+                    </p>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">ОГРН</p>
+                    <p class="juridical__info">
+                        {{ juridical_info.ogrn }}
+                    </p>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">Наименование зарегистрировавшего органа</p>
+                    <p class="juridical__info">
+                        {{ juridical_info.registered_authority_name }}
+                    </p>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">Дата государственной регистрации</p>
+                    <p class="juridical__info">
+                        {{ juridical_info.registering_date }}
+                    </p>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">ИНН</p>
+                    <p class="juridical__info">
+                        {{ juridical_info.inn }}
+                    </p>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">Сведения об учредителях</p>
+                    <div class="juridical__info">
+                        <p>
+                            {{ juridical_info.founders_info|linebreaks }}
+                        </p>
+                    </div>
+                </div>
+                <div class="juridical__paragraph">
+                    <p class="juridical__label">Сведения о лицензии на осуществление медицинской деятельности</p>
+                    <div class="juridical__info">
+                        <p>
+                            {{ juridical_info.license_info|linebreaks }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id=booking></div>
+    <div id=ask-form></div>
+    <div id=footer></div>
+</div>
+{% endblock %}

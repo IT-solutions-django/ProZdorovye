@@ -35,22 +35,18 @@ class PricesAPIView(View):
         return JsonResponse(services, safe=False)
     
 
-class ServiceSearchAPIView(View): 
-    def get(self, request, query): 
-        services = ServiceType.objects.annotate(
-            similarity=TrigramSimilarity('name', query)
-        ).filter(similarity__gt=0.1).order_by('-similarity')
+class ServiceSearchView(View): 
+    def get(self, request): 
+        query = request.GET.get('query')
+        if not query: 
+            services = ServiceType.objects.all()
+        else:
+            services = ServiceType.objects.annotate(
+                similarity=TrigramSimilarity('name', query)
+            ).filter(similarity__gt=0.1).order_by('-similarity') 
 
-        results = [
-            {
-                'id': service.pk,
-                'name': service.name, 
-                'direction': service.speciality.name,
-                'info': service.info,
-                'price': service.price, 
-                'doctor': f'{service.doctor.last_name} {service.doctor.first_name} {service.doctor.patronymic}', 
-                'is_displayed': service.is_displayed,
-            } for service in services
-        ]
+        context = {
+            'services': services
+        }
 
-        return JsonResponse(results, safe=False)
+        return render(request, 'prices/search_results.html', context)

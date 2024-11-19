@@ -410,6 +410,10 @@ p {
     outline: none;
 }
 
+.header__search-form {
+    width: 100%; 
+  }
+
 .header__search.active {
     position: absolute;
     top: 20;
@@ -1388,6 +1392,12 @@ p {
     }
 }
 
+.form__question-checkbox-wrap input, 
+.form__contact-checkbox-wrap input {
+    width: 24px;
+    height: 24px;
+}
+
 .form__question-checkbox-label, 
 .form__contact-checkbox-label {
     font-size: 14px;
@@ -1490,8 +1500,10 @@ p {
 
 .footer__links {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-    margin-bottom: 32px
+    margin-bottom: 32px;
+
 }
 
 .footer__link {
@@ -1908,6 +1920,26 @@ p {
 
 #userAgreementLink {
     pointer-events: auto
+}
+
+.juridical {
+    margin-bottom: 90px;
+}
+
+.juridical__paragraph {
+    margin-bottom: 20px;
+}
+
+.juridical__label {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+.juridical__info {
+    font-size: 18px;
+    color: rgba(34, 34, 34, 1);
+    font-weight: 600;
 }
 
 @media (max-width:990px) {

@@ -5,10 +5,15 @@ from django.views import View
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
-from ProZdorovye.settings import FEEDBACK_EMAIL
 from .forms import RequestForm, QuestionForm
 from .tasks import send_email_task
-from .models import UserAgreementPDF, ContactInfo, LicensePage
+from .models import (
+    UserAgreementPDF, 
+    ContactInfo, 
+    LicensePage, 
+    JuridicalInfo,
+    ProcessingDataAgreement
+)
 
 
 class MainView(View): 
@@ -77,13 +82,6 @@ class SaveQuestionView(View):
 
             return JsonResponse({'status': 'ok'})
         return JsonResponse({'status': 'error'})
-
-
-class RequestSavedView(View): 
-    template_name = 'landing/request_saved.html' 
-
-    def get(self, request): 
-        return render(request, self.template_name)
     
 
 class ContactsView(View): 
@@ -96,12 +94,13 @@ class ContactsView(View):
 class RequestFormHtmlApi(View): 
     def get(self, request): 
         form = RequestForm()
-        agreement_url = UserAgreementPDF.get_instance().file.url
+        user_agreement_url = UserAgreementPDF.get_instance().file.url
+        processing_data_agreement_url = ProcessingDataAgreement.get_instance().file.url
         context = {
             'form': form, 
-            'agreement_url': agreement_url,
+            'processing_data_agreement_url': processing_data_agreement_url,
+            'user_agreement_url': user_agreement_url,
         }
-        print(agreement_url)
         form_html = render(request, 'landing/forms/request_form.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
     
@@ -109,10 +108,12 @@ class RequestFormHtmlApi(View):
 class QuestionFormHtmlApi(View): 
     def get(self, request): 
         form = QuestionForm()
-        agreement_url = UserAgreementPDF.get_instance().file.url
+        user_agreement_url = UserAgreementPDF.get_instance().file.url
+        processing_data_agreement_url = ProcessingDataAgreement.get_instance().file.url
         context = {
             'form': form, 
-            'agreement_url': agreement_url,
+            'processing_data_agreement_url': processing_data_agreement_url,
+            'user_agreement_url': user_agreement_url,
         }
         form_html = render(request, 'landing/forms/question_form.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
@@ -139,3 +140,12 @@ class MapView(View):
             'doctors': doctors,
         }
         return render(request, 'landing/map.html', context)
+    
+
+class JuridicalInfoView(View): 
+    def get(self, request): 
+        juridical_info = JuridicalInfo.get_instance()
+        context = {
+            'juridical_info': juridical_info
+        }
+        return render(request, 'landing/juridical_info.html', context)
