@@ -419,7 +419,7 @@ p {
     top: 20;
     right: 0px;
     z-index: 10000; 
-    width: 812px; 
+    width: 830px; 
     border-radius: 16px; 
 }
 
@@ -1943,7 +1943,6 @@ p {
 }
 
 @media (max-width:990px) {
-
     .benefit,
     .blog-list-page .content,
     .doctor-page .doctor-card,
@@ -2187,5 +2186,22 @@ p {
         left: 50%; 
         transform: translateX(-50%); 
     }
-    
+
+    .header__search {
+        position: absolute;
+        top: 10vh;
+    }
+
+    .header__search-form {
+        width: 100%; 
+      }
+
+      .header__search.active {
+        z-index: 10000; 
+        width: 100%; 
+    }
+
+    .header__search-button { 
+        margin-left: 0px;
+    }
 }
