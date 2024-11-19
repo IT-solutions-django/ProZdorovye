@@ -53,12 +53,11 @@ var header = ` <div class="section section--header">
           </div>
 
           <div id="searchButton" class="header__search-button">
-          <img
-              src="${window.origin}/static/images/search.svg"
-              alt="Поиск"
-              title="Поиск"
-            />
-        </div>
+          </div>
+
+          <div class="header__search">
+            <input type="text" class="header__search-input" placeholder="Поиск по сайту" />
+          </div>
 
         </div>
       </div>
@@ -66,3 +65,29 @@ var header = ` <div class="section section--header">
 document.querySelector("#header").innerHTML = header, document.querySelector(".header__hamburger").addEventListener("click", function() {
     this.classList.toggle("active"), document.querySelector(".header__nav").classList.toggle("active")
 });
+document.querySelector("#searchButton").addEventListener("click", function () {
+  const searchContainer = document.querySelector(".header__search");
+  searchContainer.classList.toggle("active");
+  
+  const input = document.querySelector(".header__search-input");
+  if (searchContainer.classList.contains("active")) {
+    input.focus(); 
+  } else {
+    input.blur();  
+  }
+});
+
+
+
+
+
+
+
+
+{/* <div id="searchButton" class="header__search-button">
+<img
+    src="${window.origin}/static/images/search.svg"
+    alt="Поиск"
+    title="Поиск"
+  />
+</div> */}

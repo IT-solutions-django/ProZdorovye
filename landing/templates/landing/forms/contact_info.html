@@ -1,0 +1,21 @@
+<div class="contact-details">
+    <div class="contact-details__address">{{ contact_info.address|linebreaks }}</div>
+  </div>
+  <div class="contact-details">
+      <div class="form__title">
+          Лицензии
+      </div>
+      {% for page in license_pages %}
+        <div class="license-card">
+            <a href="{{ page.file.url }}">
+                <img src="{{ page.file.url }}">
+            </a>
+        </div>
+      {% endfor %}
+  </div>
+  <div>
+      <div class="form__title">
+          Прием граждан по личным вопросам
+      </div>
+      <div class="contact-details__address">{{ contact_info.personal_questions_info|linebreaks }}</div>
+  </div>
