@@ -46,7 +46,8 @@ class ServiceSearchView(View):
             ).filter(similarity__gt=0.1).order_by('-similarity') 
 
         context = {
-            'services': services
+            'query': query,
+            'services': services, 
         }
 
         return render(request, 'prices/search_results.html', context)
