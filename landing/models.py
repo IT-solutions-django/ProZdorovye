@@ -99,6 +99,10 @@ class ContactInfo(models.Model):
         default='Контактная информация'
     )
 
+    class Meta: 
+        verbose_name = 'Контактные данные'
+        verbose_name_plural = 'Контактные данные'
+
     def save(self, *args, **kwargs):
         if self.__class__.objects.count():
             self.pk = self.__class__.objects.first().pk
