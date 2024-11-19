@@ -5,10 +5,14 @@ from django.views import View
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
-from ProZdorovye.settings import FEEDBACK_EMAIL
 from .forms import RequestForm, QuestionForm
 from .tasks import send_email_task
-from .models import UserAgreementPDF, ContactInfo, LicensePage
+from .models import (
+    UserAgreementPDF, 
+    ContactInfo, 
+    LicensePage, 
+    JuridicalInfo,
+)
 
 
 class MainView(View): 
@@ -77,13 +81,6 @@ class SaveQuestionView(View):
 
             return JsonResponse({'status': 'ok'})
         return JsonResponse({'status': 'error'})
-
-
-class RequestSavedView(View): 
-    template_name = 'landing/request_saved.html' 
-
-    def get(self, request): 
-        return render(request, self.template_name)
     
 
 class ContactsView(View): 
@@ -139,3 +136,12 @@ class MapView(View):
             'doctors': doctors,
         }
         return render(request, 'landing/map.html', context)
+    
+
+class JuridicalInfoView(View): 
+    def get(self, request): 
+        juridical_info = JuridicalInfo.get_instance()
+        context = {
+            'juridical_info': juridical_info
+        }
+        return render(request, 'landing/juridical_info.html', context)

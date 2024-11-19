@@ -4,7 +4,8 @@ from .models import (
     Question, 
     UserAgreementPDF, 
     LicensePage, 
-    ContactInfo
+    ContactInfo, 
+    JuridicalInfo, 
 )
 
 
@@ -34,4 +35,10 @@ class LicensePageAdmin(admin.ModelAdmin):
 @admin.register(ContactInfo)
 class ContactInfoAdmin(admin.ModelAdmin): 
     list_display = ['title', 'address', 'personal_questions_info']
+    exclude = ['title']
+
+
+@admin.register(JuridicalInfo)
+class JuridicalInfoAdmin(admin.ModelAdmin): 
+    list_display = ['title']
     exclude = ['title']

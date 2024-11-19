@@ -85,16 +85,10 @@ class LicensePage(models.Model):
 
 
 class ContactInfo(models.Model): 
-    address = models.TextField(
-        'Почтовый адрес', 
-    )
-
-    personal_questions_info = models.TextField(
-        'Приём граждан по личным вопросам', 
-    )
-
+    address = models.TextField('Почтовый адрес', )
+    personal_questions_info = models.TextField('Приём граждан по личным вопросам', )
     title = models.TextField(
-        'Контактная информация', 
+         'Контактная информация', 
         help_text='Название вкладки в админ. панели',
         default='Контактная информация'
     )
@@ -107,6 +101,35 @@ class ContactInfo(models.Model):
         if self.__class__.objects.count():
             self.pk = self.__class__.objects.first().pk
         super().save(*args, **kwargs)
+
+    @classmethod
+    def get_instance(cls) -> "ContactInfo":
+        instance, created = cls.objects.get_or_create(id=1)
+        return instance
+    
+    def __str__(self) -> str: 
+        return 'Контактная информация'
+    
+
+class JuridicalInfo(models.Model): 
+    orgainzation_full_name = models.CharField('Полное наименование медицинской организации', max_length=120)
+    address = models.CharField('Адрес юридического лица', max_length=200)
+    ogrn = models.SmallIntegerField('ОГРН')
+    registered_authority_name = models.CharField('Наименование зарегистрировавшего органа', max_length=200)
+    registering_date = models.CharField('Дата государственной регистрации', max_length=50)
+    inn = models.SmallIntegerField('ИНН')
+    founders_info = models.TextField('Сведения об учредителях')
+    license_info = models.TextField('Сведения о лицензии на осуществление медицинской деятельности')
+
+    title = models.TextField(
+         'Юридическая информация', 
+        help_text='Название вкладки в админ. панели',
+        default='Юридическая информация'
+    )
+
+    class Meta: 
+        verbose_name = 'Юридическая информация'
+        verbose_name_plural = 'Юридическая информация'
 
     @classmethod
     def get_instance(cls) -> "ContactInfo":

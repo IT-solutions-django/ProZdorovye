@@ -1914,6 +1914,30 @@ p {
     pointer-events: auto
 }
 
+.juridical {
+    margin-bottom: 90px;
+}
+
+.juridical__paragraph {
+    margin-bottom: 20px;
+}
+
+.juridical__label {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: rgba(34, 34, 34, 0.8);
+}
+
+.juridical__info {
+    font-size: 18px;
+    color: rgba(34, 34, 34, 1);
+    font-weight: 600;
+}
+
+.juridical__info p {
+    margin-bottom: 0;
+}
+
 @media (max-width:990px) {
 
     .benefit,
