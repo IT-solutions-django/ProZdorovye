@@ -57,7 +57,7 @@ var header = ` <div class="section section--header">
 
           <div class="header__search">
             <form action="${window.origin}/prices/search" method="GET" class="header__search-form">
-              <input type="text" name="query" class="header__search-input" placeholder="Поиск по сайту" />
+              <input type="text" maxlength=50 name="query" class="header__search-input" placeholder="Поиск по сайту" />
             </form>
           </div>
 
