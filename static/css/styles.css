@@ -1501,7 +1501,7 @@ p {
 .footer__links {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 2px;
     margin-bottom: 32px;
 
 }
@@ -1510,7 +1510,8 @@ p {
     color: #fff;
     text-decoration: none;
     -webkit-transition: .2s;
-    transition: .2s
+    transition: .2s;
+    margin-right: 16px;
 }
 
 .footer__link:hover {
@@ -2094,6 +2095,23 @@ p {
         -ms-flex-align: start;
         align-items: start;
         gap: 32px
+    }
+
+    .footer__links {
+        display: block;
+        /* display: flex; */
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .footer__link {
+        margin-right: 16px;
+    }
+
+    .footer__link-row {
+        display: block;
+        margin-bottom: 5px;
     }
 
     .footer__right {
