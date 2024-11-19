@@ -38,10 +38,12 @@ class PricesAPIView(View):
 class ServiceSearchView(View): 
     def get(self, request): 
         query = request.GET.get('query')
-        print(query)
-        services = ServiceType.objects.annotate(
-            similarity=TrigramSimilarity('name', query)
-        ).filter(similarity__gt=0.1).order_by('-similarity') 
+        if not query: 
+            services = ServiceType.objects.all()
+        else:
+            services = ServiceType.objects.annotate(
+                similarity=TrigramSimilarity('name', query)
+            ).filter(similarity__gt=0.1).order_by('-similarity') 
 
         context = {
             'services': services
