@@ -44,9 +44,12 @@ class ServiceSearchView(View):
             services = ServiceType.objects.annotate(
                 similarity=TrigramSimilarity('name', query)
             ).filter(similarity__gt=0.1).order_by('-similarity') 
+        price_file = PricePDF.get_instance()
 
         context = {
-            'services': services
+            'query': query,
+            'services': services, 
+            'price_file': price_file
         }
 
         return render(request, 'prices/search_results.html', context)

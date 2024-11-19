@@ -7,7 +7,10 @@
 <div id=header></div>
 <div class="section section--inpage">
 <div class="container price">
-<div class=price__header>Результаты поиска</div>
+<div class=search-results__header>Результаты поиска</div>
+<div>
+    <h5>по запросу: "{{ query }}"</h5>
+</div>
 <div class=services>
     {% for service in services %}
         <div class="services__item">

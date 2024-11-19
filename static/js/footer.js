@@ -3,11 +3,15 @@ var footer=`    <div class="section section--footer">
         <div class="footer__left">
           <div class="footer__services">
             <div class="footer__links">
-              <a class="footer__link" href="${window.origin}/services/osteopatiya">Услуги</a>
-              <a class="footer__link" href="${window.origin}/doctors">Специалисты</a>
-              <a class="footer__link" href="${window.origin}/prices" >Цены</a>
-              <a class="footer__link" href="${window.origin}/contacts">Контакты</a>
-              <a class="footer__link" href="${window.origin}/map">Карта сайта</a>
+              <div class="footer__link-row">
+                <a class="footer__link" href="${window.origin}/services/osteopatiya">Услуги</a>
+                <a class="footer__link" href="${window.origin}/doctors">Специалисты</a>
+                <a class="footer__link" href="${window.origin}/prices" >Цены</a>
+              </div>
+              <div>
+                <a class="footer__link" href="${window.origin}/contacts">Контакты</a>
+                <a class="footer__link" href="${window.origin}/map">Карта сайта</a>
+              </div>
             </div>
           </div>
           <a href=""${window.origin}>

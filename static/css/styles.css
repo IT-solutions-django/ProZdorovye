@@ -838,6 +838,15 @@ p {
     margin-bottom: 40px
 }
 
+.search-results__header {
+    font-family: Montserrat, system-ui;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 60px;
+    line-height: 68px;
+    margin-bottom: 12px
+}
+
 @media (max-width:990px) {
 
     .clinic-benefits,
@@ -1501,7 +1510,7 @@ p {
 .footer__links {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 2px;
     margin-bottom: 32px;
 
 }
@@ -1510,7 +1519,8 @@ p {
     color: #fff;
     text-decoration: none;
     -webkit-transition: .2s;
-    transition: .2s
+    transition: .2s;
+    margin-right: 16px;
 }
 
 .footer__link:hover {
@@ -1987,11 +1997,13 @@ p {
     .price-page .price__header,
     .reviews-section .reviews-header,
     .service-page .service__header,
-    .specialists-section__header {
+    .specialists-section__header, 
+    .search-results__header {
         font-size: 26px;
         line-height: 30px;
         margin-bottom: 20px
     }
+    
 
     .specialists-section .specialist-card {
         -webkit-box-flex: 0;
@@ -2094,6 +2106,22 @@ p {
         -ms-flex-align: start;
         align-items: start;
         gap: 32px
+    }
+
+    .footer__links {
+        display: block;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 32px;
+    }
+
+    .footer__link {
+        margin-right: 16px;
+    }
+
+    .footer__link-row {
+        display: block;
+        margin-bottom: 5px;
     }
 
     .footer__right {
