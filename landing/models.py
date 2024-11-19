@@ -120,10 +120,10 @@ class ContactInfo(models.Model):
 class JuridicalInfo(models.Model): 
     orgainzation_full_name = models.CharField('Полное наименование медицинской организации', max_length=120)
     address = models.CharField('Адрес юридического лица', max_length=200)
-    ogrn = models.SmallIntegerField('ОГРН')
+    ogrn = models.CharField('ОГРН', max_length=13)
     registered_authority_name = models.CharField('Наименование зарегистрировавшего органа', max_length=200)
     registering_date = models.CharField('Дата государственной регистрации', max_length=50)
-    inn = models.SmallIntegerField('ИНН')
+    inn = models.CharField('ИНН', max_length=10)
     founders_info = models.TextField('Сведения об учредителях')
     license_info = models.TextField('Сведения о лицензии на осуществление медицинской деятельности')
 
