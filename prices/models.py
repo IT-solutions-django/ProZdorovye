@@ -18,6 +18,7 @@ class ServiceType(models.Model):
     class Meta: 
         verbose_name = 'Тип услуги'
         verbose_name_plural = 'Типы услуг'
+        ordering = ['pk']
     
     def __str__(self) -> str: 
         return f'{self.speciality} | {self.name} {self.price}р'
