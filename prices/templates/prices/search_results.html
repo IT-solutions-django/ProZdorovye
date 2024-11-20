@@ -16,7 +16,7 @@
         <div class="services__item">
             <div class="services__name">{{ service.name }}, {{ service.doctor.last_name }} {{ service.doctor.first_name }} {{ service.doctor.patronymic }}{% if service.info %}, {{ service.info }}{% endif %}</div>
             <div class="services__price">{{ service.price }} ₽</div>
-            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
+            <a href="{% if service.booking_link %}{{ service.booking_link }}{% else %}https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333{% endif %}"" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
         </div>
     {% empty %}
         <div style="margin-bottom: 30px;">

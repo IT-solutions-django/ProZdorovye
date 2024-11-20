@@ -6,6 +6,6 @@ let directions=[],services=[];async function fetchDirections(){try{(directions=a
   <div class="services__item" data-id="${e.id}">
     <div class="services__name">${e.name}, ${e.doctor}${e.info?`, ${e.info}`:""}</div>
     <div class="services__price">${e.price} ₽</div>
-    <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" target="_blank" class="services__button" target="_blank">Записаться на прием</a>
+    <a href=${e.booking_link ? e.booking_link : "https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333"} target="_blank" class="services__button" target="_blank">Записаться на прием</a>
   </div>
 `;i.innerHTML+=r})}document.addEventListener("DOMContentLoaded",()=>{fetchDirections(),fetchServices()});
