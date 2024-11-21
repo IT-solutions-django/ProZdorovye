@@ -40,7 +40,7 @@ class LicensePageAdmin(admin.ModelAdmin):
 
 @admin.register(ContactInfo)
 class ContactInfoAdmin(admin.ModelAdmin): 
-    list_display = ['title', 'address', 'personal_questions_info']
+    list_display = ['title']
     exclude = ['title']
 
 
