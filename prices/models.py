@@ -26,6 +26,12 @@ class ServiceType(models.Model):
 
 class PricePDF(models.Model): 
     file = models.FileField('Прайс-лист', upload_to='prices')
+    
+    title = models.TextField(
+        'Прайс-лист', 
+        help_text='Название вкладки в админ. панели',
+        default='Прайс-лист'
+    )
 
     class Meta: 
         verbose_name = 'Прайс-лист'

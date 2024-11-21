@@ -10,4 +10,5 @@ class ServiceTypeAdmin(admin.ModelAdmin):
 
 @admin.register(PricePDF)
 class PricePDFAdmin(admin.ModelAdmin): 
-    list_display = ['pk', 'file']
+    list_display = ['title']
+    exclude = ['title']
