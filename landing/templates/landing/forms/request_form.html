@@ -1,34 +1,41 @@
+{% for filial in contact_info.filials.all %}
+    <div class="contact-details">
+        <div class="contact-details__address">{{ filial.address }}</div>
+        <a href="tel:{{ filial.solid_phone }}" class="contact-details__phone">{{ filial.phone }}</a>
+    </div>
+{% endfor %}
 <form id=contactForm class=form method=post>
-{% csrf_token %}
-<div class=form__title>Подберем процедуру под ваш запрос</div>
-<div class=form__field>
-{{ form.name }}
-<label for="{{ form.name.id_for_label }}" class=form__label>{{ form.name.label }}</label>
-</div>
-<div class=form__row>
-<div class=form__field>
-{{ form.phone }}
-<label for="{{ form.phone.id_for_label }}" class=form__label>{{ form.phone.label }}</label>
-</div>
-<div class=form__field>
-{{ form.email }}
-<label for="{{ form.email.id_for_label }}" class=form__label>E-mail</label>
-</div>
-</div>
-<div class="form__field form__field-agreement">
-    <div class="form__contact-checkbox-wrap">
-        <input type="checkbox" id="consent" name="consent" required>
+    {% csrf_token %}
+    <div class=form__title>Подберем процедуру под ваш запрос</div>
+    <div class=form__field>
+        {{ form.name }}
+        <label for="{{ form.name.id_for_label }}" class=form__label>{{ form.name.label }}</label>
     </div>
-    <div>
-        <label for="consent" class="form__contact-checkbox-label">
-            Нажимая на кнопку, Вы даете 
-            <a id="userAgreementLink" href="{{ processing_data_agreement_url }}" target="_blank">согласие на обработку своих персональных данных</a>
-            <!-- и соглашаетесь с 
+    <div class=form__row>
+        <div class=form__field>
+            {{ form.phone }}
+            <label for="{{ form.phone.id_for_label }}" class=form__label>{{ form.phone.label }}</label>
+        </div>
+        <div class=form__field>
+            {{ form.email }}
+            <label for="{{ form.email.id_for_label }}" class=form__label>E-mail</label>
+        </div>
+    </div>
+    <div class="form__field form__field-agreement">
+        <div class="form__contact-checkbox-wrap">
+            <input type="checkbox" id="consent" name="consent" required>
+        </div>
+        <div>
+            <label for="consent" class="form__contact-checkbox-label">
+                Нажимая на кнопку, Вы даете
+                <a id="userAgreementLink" href="{{ processing_data_agreement_url }}" target="_blank">согласие на
+                    обработку своих персональных данных</a>
+                <!-- и соглашаетесь с 
             <a id="userAgreementLink" href="{{ user_agreement_url }}" target="_blank">Пользовательским соглашением</a>. -->
-        </label>
+            </label>
+        </div>
     </div>
-</div>
-<button type=submit class="form__button button-osta">
-Заказать звонок
-</button>
+    <button type=submit class="form__button button-osta">
+        Заказать звонок
+    </button>
 </form>

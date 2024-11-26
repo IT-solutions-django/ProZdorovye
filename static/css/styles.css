@@ -1318,6 +1318,10 @@ p {
     margin-bottom: 20px
 }
 
+.contact-details p {
+    margin-bottom: 0px;
+}
+
 .contact-details__address {
     margin-bottom: 4px;
 }
@@ -2231,5 +2235,14 @@ p {
 
     .header__search-button { 
         margin-left: 0px;
+        z-index: 0;
+    }
+
+    .nav__dropdown-content-wrapper {
+        z-index: 1;
+    }
+
+    .nav__dropdown-button {
+        
     }
 }

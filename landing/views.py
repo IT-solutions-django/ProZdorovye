@@ -12,7 +12,8 @@ from .models import (
     ContactInfo, 
     LicensePage, 
     JuridicalInfo,
-    ProcessingDataAgreement
+    ProcessingDataAgreement, 
+    FilialInfo
 )
 
 
@@ -96,10 +97,12 @@ class RequestFormHtmlApi(View):
         form = RequestForm()
         user_agreement_url = UserAgreementPDF.get_instance().file.url
         processing_data_agreement_url = ProcessingDataAgreement.get_instance().file.url
+        contact_info = ContactInfo.get_instance()
         context = {
             'form': form, 
             'processing_data_agreement_url': processing_data_agreement_url,
             'user_agreement_url': user_agreement_url,
+            'contact_info': contact_info,
         }
         form_html = render(request, 'landing/forms/request_form.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)

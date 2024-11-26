@@ -6,7 +6,8 @@ from .models import (
     LicensePage, 
     ContactInfo, 
     JuridicalInfo, 
-    ProcessingDataAgreement
+    ProcessingDataAgreement, 
+    FilialInfo
 )
 
 
@@ -38,10 +39,18 @@ class LicensePageAdmin(admin.ModelAdmin):
     list_display = ['pk', 'file']
 
 
+class FilialInfoInline(admin.TabularInline): 
+    model = FilialInfo
+    extra = 0
+
+
 @admin.register(ContactInfo)
 class ContactInfoAdmin(admin.ModelAdmin): 
     list_display = ['title']
     exclude = ['title']
+    inlines = [
+        FilialInfoInline
+    ]
 
 
 @admin.register(JuridicalInfo)

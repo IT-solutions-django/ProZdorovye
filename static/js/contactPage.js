@@ -60,6 +60,7 @@ async function fetchContactInfoHtml() {
   try {
       let t = await fetch(`${window.origin}/api/get_contact_info_html/`),
           a = await t.json();
+          console.log(a)
       return a
   } catch (e) {
       console.error("Ошибка при загрузке данных:", e)
@@ -129,20 +130,6 @@ var screenWidth = window.innerWidth,
       <div class="contacts-card">
         <h1 class="contacts-card__header">Контакты</h1>
         <div class="contacts-card__content">
-          <div class="contacts-card__info">
-            <div class="contact-details">
-              <div class="contact-details__address">Некрасовская 90</div>
-              <div class="contact-details__address">ПН-ПТ 08:00-20:00; СБ-ВС 09:00-19:00</div>
-              <a href="tel:74232077055" class="contact-details__phone">+7 (423) 207-70-55</a>
-            </div>
-            <div class="contact-details">
-              <div class="contact-details__address">
-                Майора Филипова 11 корпус 2
-              </div>
-              <div class="contact-details__address">ПН-ПТ 08:00-20:00; СБ-ВС 09:00-19:00</div>
-              <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
-            </div>
-          </div>
           ${ contact_info_html }
           <div class="social-links">
             <a href="https://t.me/pro_zdorovye_vl" target="_blank">
