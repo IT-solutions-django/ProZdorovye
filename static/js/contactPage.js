@@ -127,7 +127,7 @@ var screenWidth = window.innerWidth,
 
     <div class="contacts container">
       <div class="contacts-card">
-        <div class="contacts-card__header">Контакты</div>
+        <h1 class="contacts-card__header">Контакты</h1>
         <div class="contacts-card__content">
           <div class="contacts-card__info">
             <div class="contact-details">
