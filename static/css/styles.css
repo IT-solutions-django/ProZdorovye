@@ -1318,6 +1318,10 @@ p {
     margin-bottom: 20px
 }
 
+.contact-details p {
+    margin-bottom: 0px;
+}
+
 .contact-details__address {
     margin-bottom: 4px;
 }

@@ -93,6 +93,7 @@ class LicensePage(models.Model):
 class ContactInfo(models.Model): 
     address = models.TextField('Почтовый адрес', )
     personal_questions_info = models.TextField('Приём граждан по личным вопросам', )
+
     title = models.TextField(
          'Контактная информация', 
         help_text='Название вкладки в админ. панели',
@@ -115,6 +116,19 @@ class ContactInfo(models.Model):
     
     def __str__(self) -> str: 
         return 'Контактная информация'
+    
+
+class FilialInfo(models.Model): 
+    address = models.TextField('Адрес филиала')
+    work_mode = models.TextField('Режим работы')
+    phone = models.CharField('Номер телефона', max_length=18)
+    solid_phone = models.CharField('Номер телефона (только цифры и "+")', max_length=11)
+
+    contact_info = models.ForeignKey(verbose_name='Контактная информация', to=ContactInfo, on_delete=models.CASCADE, related_name='filials')
+
+    class Meta: 
+        verbose_name = 'Филиал'
+        verbose_name_plural = 'Филиалы'
     
 
 class JuridicalInfo(models.Model): 

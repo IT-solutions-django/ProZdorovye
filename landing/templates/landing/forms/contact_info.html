@@ -1,3 +1,12 @@
+<div class="contacts-card__info">
+    {% for filial in contact_info.filials.all %}
+        <div class="contact-details">
+            <div class="contact-details__address">{{ filial.address|linebreaks }}</div>
+            <div class="contact-details__address">{{ filial.work_mode|linebreaks }}</div>
+            <a href="tel:74232077055" class="contact-details__phone">{{ filial.phone }}</a>
+        </div>
+    {% endfor %}
+</div>
 <div class="contact-details">
     <div class="contact-details__address">{{ contact_info.address|linebreaks }}</div>
   </div>

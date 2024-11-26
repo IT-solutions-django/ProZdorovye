@@ -67,16 +67,6 @@ var screenWidth = window.innerWidth,
         <div class="contacts-card__header">Контакты</div>
         <div class="contacts-card__content">
           <div class="contacts-card__info">
-            <div class="contact-details">
-              <div class="contact-details__address">Некрасовская 90</div>
-              <a href="tel:74232077055" class="contact-details__phone">+7 (423) 207-70-55</a>
-            </div>
-            <div class="contact-details">
-              <div class="contact-details__address">
-                Майора Филипова 11 корпус 2
-              </div>
-              <a href="tel:79149677552" class="contact-details__phone">+7 (914) 967-75-52</a>
-            </div>
             ${form_html}
           </div>
           <div class="social-links">
