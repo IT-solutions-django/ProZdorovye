@@ -38,7 +38,11 @@
                     <h5><a href="{% url 'prices:prices' %}">Цены</a></h5>
                 </li>
                 <li class="map__bullet-1">
-                    <h5><a href="{% url 'landing:contacts' %}">Контакты</a></h5>
+                    <h5><a href="{% url 'landing:contacts' %}">О компании</a></h5>
+                    <ul>
+                        <li class="map__bullet-2"><a href="{% url 'landing:contacts' %}">Контакты</a></li>
+                        <li class="map__bullet-2"><a href="{% url 'landing:juridical_info' %}">Юридическая информация</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
