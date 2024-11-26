@@ -35,6 +35,10 @@ urlpatterns = [
         'document_root': settings.BASE_DIR,
         'path': 'sitemap.xml',
     }),
+    re_path(r'^robots\.txt$', serve, {
+        'document_root': settings.BASE_DIR,
+        'path': 'robots.txt',
+    }),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
