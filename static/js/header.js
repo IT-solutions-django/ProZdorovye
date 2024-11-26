@@ -78,18 +78,3 @@ document.querySelector("#searchButton").addEventListener("click", function () {
     input.blur();  
   }
 });
-
-
-
-
-
-
-
-
-{/* <div id="searchButton" class="header__search-button">
-<img
-    src="${window.origin}/static/images/search.svg"
-    alt="Поиск"
-    title="Поиск"
-  />
-</div> */}
