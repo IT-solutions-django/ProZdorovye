@@ -31,7 +31,7 @@ var footer=`    <div class="section section--footer">
                 Записаться на прием
               </button>
             </a>
-            <div class="footer__copyright">\xa9 2024 prozdorovie.site</div>
+            <div class="footer__copyright">\xa9 2024 ProЗдоровье</div>
           </div>
           <div class="social-links">
             <a href="https://t.me/pro_zdorovye_vl" target="_blank">
