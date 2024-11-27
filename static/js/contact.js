@@ -98,7 +98,7 @@ const toastHtml = `
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
 <div id="toastRequestSent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast-header">
-    <img src="${window.origin}/static/images/favicon-16x16.png" class="rounded me-2" alt="...">
+    <img src="${window.origin}/static/images/favicon-16x16.png" class="rounded me-2" alt="Иконка">
     <strong class="me-auto">Форма была отправлена!</strong>
     <small>только что</small>
     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>

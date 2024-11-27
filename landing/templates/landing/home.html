@@ -42,15 +42,15 @@
 {{ speciality.intro }}
 </div>
 </div>
-<img class=service-slider__item-icon src="{{ speciality.icon.url }}">
+<img class=service-slider__item-icon src="{{ speciality.icon.url }}" alt="Иконка">
 </a>
 {% endif %} {% endfor %}
 </div>
 <button class="embla__button embla__button--prev" type=button>
-<img src="{% static 'images/left.svg' %}" alt="">
+<img src="{% static 'images/left.svg' %}" alt="Влево">
 </button>
 <button class="embla__button embla__button--next" type=button>
-<img src="{% static 'images/right.svg' %}" alt="">
+<img src="{% static 'images/right.svg' %}" alt="Вправо">
 </button>
 </div>
 </div>
@@ -106,13 +106,13 @@
 <div class="clinic-image__thumbs embla" id=thumbCarousel>
 <div class=embla__container>
 <div class=embla__slide>
-<img class="clinic-image__thumbs-image clinic-image__thumbs-image--active" src="{% static 'images/clinic/1.webp' %}">
+<img class="clinic-image__thumbs-image clinic-image__thumbs-image--active" src="{% static 'images/clinic/1.webp' %}" alt="Фото клиники">
 </div>
 <div class=embla__slide>
-<img class=clinic-image__thumbs-image src="{% static 'images/clinic/2.webp' %}">
+<img class=clinic-image__thumbs-image src="{% static 'images/clinic/2.webp' %}" alt="Фото клиники">
 </div>
 <div class=embla__slide>
-<img class=clinic-image__thumbs-image src="{% static 'images/clinic/3.webp' %}">
+<img class=clinic-image__thumbs-image src="{% static 'images/clinic/3.webp' %}" alt="Фото клиники">
 </div>
 </div>
 </div>
@@ -120,28 +120,28 @@
 <div class="clinic-image embla" id=mainCarousel>
 <div class=embla__container>
 <div class=embla__slide>
-<img class=clinic-image src="{% static 'images/clinic/1.webp' %}">
+<img class=clinic-image src="{% static 'images/clinic/1.webp' %}" alt="Фото клиники">
 </div>
 <div class=embla__slide>
-<img class=clinic-image src="{% static 'images/clinic/2.webp' %}">
+<img class=clinic-image src="{% static 'images/clinic/2.webp' %}" alt="Фото клиники">
 </div>
 <div class=embla__slide>
-<img class=clinic-image src="{% static 'images/clinic/3.webp' %}">
+<img class=clinic-image src="{% static 'images/clinic/3.webp' %}" alt="Фото клиники">
 </div>
 </div>
 </div>
 </div>
 <div class="clinic-benefits container">
 <div class=benefit>
-<img class=benefit__icon src="{% static 'images/diamont.svg' %}">
+<img class=benefit__icon src="{% static 'images/diamont.svg' %}" alt="Иконка">
 <div class=benefit__title>Индивидуальный подход</div>
 </div>
 <div class=benefit>
-<img class=benefit__icon src="{% static 'images/sert.svg' %}">
+<img class=benefit__icon src="{% static 'images/sert.svg' %}" alt="Иконка">
 <div class=benefit__title>Высокая квалификация специалистов</div>
 </div>
 <div class=benefit>
-<img class=benefit__icon src="{% static 'images/lamp.svg' %}">
+<img class=benefit__icon src="{% static 'images/lamp.svg' %}" alt="Иконка">
 <div class=benefit__title>Использование современных технологий</div>
 </div>
 </div>
@@ -163,7 +163,7 @@
 {% for review in reviews|slice:"4" %}
 <div class=review-card>
 <div class=review-card__rating>
-<img class=review-card__rating-image src="{% static 'images/star.svg' %}" alt="5.0 рейтинг">
+<img class=review-card__rating-image src="{% static 'images/star.svg' %}" alt="Иконка">
 <div class=review-card__rating-score>{{ review.rate }}</div>
 <div class=review-card__rating-status>Отлично</div>
 </div>
@@ -178,13 +178,13 @@
 <div class=reviews-footer__all-reviews>Все отзывы</div>
 <div class=reviews-footer__see-all-list>
 <a href=https://prodoctorov.ru/vladivostok/lpu/47704-medicinskiy-centr-prozdorove/ target=_blank class=reviews-footer__see-all-item>
-<img src="{% static 'images/doctor.svg' %}">
+<img src="{% static 'images/doctor.svg' %}" alt="ПроДокторов">
 </a>
 <a href=https://2gis.ru/vladivostok/firm/70000001021276207 target=_blank class=reviews-footer__see-all-item>
-<img src="{% static 'images/2gis.svg' %}">
+<img src="{% static 'images/2gis.svg' %}" alt="2GIS">
 </a>
 <a href="https://yandex.ru/maps/org/prozdorovye/54915419883/?ll=131.950981%2C43.172179&z=17" target=_blank class=reviews-footer__see-all-item>
-<img src="{% static 'images/ya.svg' %}">
+<img src="{% static 'images/ya.svg' %}" alt="Яндекс">
 </a>
 </div>
 </div>
@@ -197,7 +197,7 @@
 {% for article in articles|slice:"3" %}
 <a class=article href="{{ article.get_absolute_url }}">
 {% if article.image %}
-<img class=article__image src="{{ article.image.url }}" alt=Фото>
+<img class=article__image src="{{ article.image.url }}" alt="Фото статьи">
 {% endif %}
 <div class=article__title>{{ article.title }}</div>
 <div class=article__text>
