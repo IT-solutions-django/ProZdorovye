@@ -8,10 +8,10 @@ import{getRoleForDirections as t}from"./speciality_mapper.js";export async funct
       <div class="specialists-list__container ${a?"embla__container":""}"></div>
       ${a?`
         <button class="embla__button embla__button--prev" type="button">
-          <img src="${window.origin}/static/images/left.svg" alt="" />
+          <img src="${window.origin}/static/images/left.svg" alt="Влево" />
         </button>
         <button class="embla__button embla__button--next" type="button">
-          <img src="${window.origin}/static/images/right.svg" alt="" />
+          <img src="${window.origin}/static/images/right.svg" alt="Вправо" />
         </button>
       `:""}
     </div>

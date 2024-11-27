@@ -19,7 +19,7 @@ var footer=`    <div class="section section--footer">
               <img
                 class="footer__logo-image"
                 src="${window.origin}/static/images/logo-footer.svg"
-                alt="Logo"
+                alt="Логотип"
               />
             </div>
           </a>

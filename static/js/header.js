@@ -4,18 +4,19 @@ var header = ` <div class="section section--header">
           <img
             class="header__logo-image"
             src="${window.origin}/static/images/logo-header.svg"
+            alt="Логотип"
           />
         </a>
         <button class="header__hamburger" aria-label="Toggle menu">
           <img
             class="header__hamburger--menu"
             src="${window.origin}/static/images/burger.svg"
-            alt=""
+            alt="Меню"
           />
           <img
             class="header__hamburger--close"
             src="${window.origin}/static/images/close.svg"
-            alt=""
+            alt="Закрыть"
           />
         </button>
 
