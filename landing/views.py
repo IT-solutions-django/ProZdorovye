@@ -152,3 +152,12 @@ class JuridicalInfoView(View):
             'juridical_info': juridical_info
         }
         return render(request, 'landing/juridical_info.html', context)
+    
+
+class PageNotFoundView(View): 
+    def get(self, request): 
+        specialities = Speciality.objects.all()
+        context = {
+            'specialities': specialities,
+        }
+        return render(request, 'landing/page_not_found.html', context)

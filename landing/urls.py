@@ -10,6 +10,7 @@ urlpatterns = [
     path('map/', MapView.as_view(), name='map'),
     path('contacts/', ContactsView.as_view(), name='contacts'), 
     path('juridical/', JuridicalInfoView.as_view(), name='juridical_info'), 
+    path('page-not-found/', PageNotFoundView.as_view(), name='page_not_found'),
 
     path('api/get_request_form_html/', RequestFormHtmlApi.as_view(), name='request_form_html'),
     path('api/get_question_form_html/', QuestionFormHtmlApi.as_view(), name='question_form_html'),
