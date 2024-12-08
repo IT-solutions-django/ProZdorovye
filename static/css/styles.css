@@ -1981,6 +1981,14 @@ p {
     color: white;
 }
 
+.not-found .content .service__header, 
+.not-found p {
+    margin-bottom: 0px;
+}
+.not-found .content__main {
+    gap: 40px;
+}
+
 @media (max-width:990px) {
     .benefit,
     .blog-list-page .content,
