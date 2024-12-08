@@ -2,6 +2,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
+from django.template import RequestContext
 from doctors.models import Speciality, Doctor
 from reviews.models import Review
 from articles.models import Article
@@ -161,3 +162,11 @@ class PageNotFoundView(View):
             'specialities': specialities,
         }
         return render(request, 'landing/page_not_found.html', context)
+    
+    
+def handler404(request, *args, **argv):
+    specialities = Speciality.objects.all()
+    context = {
+        'specialities': specialities,
+    }
+    return render(request, 'landing/page_not_found.html', context, status=404)
