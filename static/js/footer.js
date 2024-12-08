@@ -33,7 +33,7 @@ var footer=`    <div class="section section--footer">
             </a>
             <div class="footer__copyright">
               <p>\xa9 2024 ProЗдоровье</p>
-              <p>+7 (984) 197-70-55</p>
+              <a href="tel:+79841977055">+7 (984) 197-70-55</a>
             </div>
           </div>
           <div class="social-links">

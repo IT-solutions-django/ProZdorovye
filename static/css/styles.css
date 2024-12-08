@@ -1976,6 +1976,11 @@ p {
     max-width: 30%;
 }
 
+.footer__copyright a {
+    text-decoration: none;
+    color: white;
+}
+
 @media (max-width:990px) {
     .benefit,
     .blog-list-page .content,
