@@ -268,12 +268,21 @@ p {
 .section--booking {
     background-color: var(--main-green);
     color: #fff;
-    padding: 50px 0
+    padding: 50px 0;
+    background-image: url('/static/images/booking.webp');
+    background-position-x: right;
+    background-repeat: no-repeat;
 }
 
 @media (max-width:990px) {
     .section--booking {
         padding: 30px 0 10px
+    }
+    .section--booking {
+        background-color: var(--main-green);
+        color: #fff;
+        padding: 50px 0;
+        background-image: none;
     }
 }
 
@@ -2120,6 +2129,9 @@ p {
 
     .section--contact iframe {
         height: 200px !important
+    }
+    .section--contact {
+        height: 863px;
     }
 
     .form__title {
