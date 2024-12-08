@@ -120,11 +120,26 @@ var screenWidth = window.innerWidth,
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
   }
+
+  #sectionContact {
+    height: 1080px;
+  }
+  #sectionContact #map {
+    height: 1080px;
+  } 
+  @media (max-width:990px) {
+    #sectionContact {
+     height: 200px;
+    }
+    #sectionContact #map {
+      height: 200px;
+    }   
+  }
   </style>
   
 
-  <div id="sectionContact" class="section section--contact" style="height: 1080px">
-    <div id="map" style="height: 1080px"></div>
+  <div id="sectionContact" class="section section--contact">
+    <div id="map"></div>
 
     <div class="contacts container">
       <div class="contacts-card">
