@@ -17,3 +17,5 @@ urlpatterns = [
     path('api/save_request/', SaveRequestView.as_view(), name='save_request'),
     path('api/save_question/', SaveQuestionView.as_view(), name='save_question'),
 ]
+
+handler404 = 'landing.views.handler404'

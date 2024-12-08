@@ -1,6 +1,6 @@
 import{getRoleForDirections as t}from"./speciality_mapper.js";export async function printDoctors(e,i="Все направления",s=!0,a=!0){var c=window.innerWidth,l=` <div class="section section--doctors">
   <div class="specialists-section container">
-    <p class="specialists-section__header">${e}</p>
+    <h1 class="specialists-section__header">${e}</h1>
     <div class="specialists-section__categories" style="display: ${s?"block":"none"};">
       <div class="categories-list" id="categoryButtons"></div>
     </div>
