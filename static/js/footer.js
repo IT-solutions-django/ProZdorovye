@@ -31,7 +31,10 @@ var footer=`    <div class="section section--footer">
                 Записаться на прием
               </button>
             </a>
-            <div class="footer__copyright">\xa9 2024 ProЗдоровье</div>
+            <div class="footer__copyright">
+              <p>\xa9 2024 ProЗдоровье</p>
+              <p>+7 (984) 197-70-55</p>
+            </div>
           </div>
           <div class="social-links">
             <a href="https://t.me/pro_zdorovye_vl" target="_blank">
