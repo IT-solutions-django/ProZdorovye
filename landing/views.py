@@ -1,4 +1,5 @@
 
+import json
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
@@ -133,6 +134,15 @@ class ContactInfoHtmlApi(View):
         }
         form_html = render(request, 'landing/forms/contact_info.html', context).content.decode('utf-8')
         return JsonResponse(form_html, safe=False)
+    
+
+class PhoneNumberApi(View): 
+    def get(self, request): 
+        phone_number = ContactInfo.get_instance().filials.all().first().phone 
+        data = {
+            'phone': phone_number,
+        }
+        return JsonResponse(phone_number, safe=False)
     
 
 class MapView(View): 
