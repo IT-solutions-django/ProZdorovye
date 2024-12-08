@@ -1,4 +1,19 @@
-var footer=`    <div class="section section--footer">
+async function fetchQuestionFormHtml() {
+  try {
+      let response = await fetch(`${window.origin}/api/get_phone_number/`);
+      let data = await response.json();
+      return data;
+  } catch (error) {
+      console.error("Ошибка при загрузке данных:", error);
+      return null; // Вернем null, если возникла ошибка
+  }
+}
+
+async function renderFooter() {
+  const phone = await fetchQuestionFormHtml();
+  
+  const footer = `
+    <div class="section section--footer">
       <div class="footer container">
         <div class="footer__left">
           <div class="footer__services">
@@ -14,7 +29,7 @@ var footer=`    <div class="section section--footer">
               </div>
             </div>
           </div>
-          <a href=""${window.origin}>
+          <a href="${window.origin}">
             <div class="footer__logo">
               <img
                 class="footer__logo-image"
@@ -33,7 +48,7 @@ var footer=`    <div class="section section--footer">
             </a>
             <div class="footer__copyright">
               <p>\xa9 2024 ProЗдоровье</p>
-              <a href="tel:+79841977055">+7 (984) 197-70-55</a>
+              <a href="tel:${phone}">${phone}</a>
             </div>
           </div>
           <div class="social-links">
@@ -47,4 +62,10 @@ var footer=`    <div class="section section--footer">
         </div>
       </div>
     </div>
-`;document.querySelector("#footer").innerHTML=footer;
+  `;
+  
+  document.querySelector("#footer").innerHTML = footer;
+}
+
+// Вызов функции для рендера футера
+renderFooter();

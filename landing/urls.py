@@ -16,6 +16,7 @@ urlpatterns = [
     path('api/get_contact_info_html/', ContactInfoHtmlApi.as_view(), name='contact_info_html'),
     path('api/save_request/', SaveRequestView.as_view(), name='save_request'),
     path('api/save_question/', SaveQuestionView.as_view(), name='save_question'),
+    path('api/get_phone_number/', PhoneNumberApi.as_view(), name='get_phone_number'),
 ]
 
 handler404 = 'landing.views.handler404'
