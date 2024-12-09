@@ -127,14 +127,6 @@ var screenWidth = window.innerWidth,
   #sectionContact #map {
     height: 1080px;
   } 
-  @media (max-width:990px) {
-    #sectionContact {
-     height: 200px;
-    }
-    #sectionContact #map {
-      height: 200px;
-    }   
-  }
   </style>
   
 
