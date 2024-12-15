@@ -3,7 +3,7 @@
         <div class="contact-details">
             <div class="contact-details__address">{{ filial.address|linebreaks }}</div>
             <div class="contact-details__address">{{ filial.work_mode|linebreaks }}</div>
-            <a href="tel:74232077055" class="contact-details__phone">{{ filial.phone }}</a>
+            <a href="tel:{{ filial.phone }}" class="contact-details__phone">{{ filial.phone }}</a>
         </div>
     {% endfor %}
 </div>
