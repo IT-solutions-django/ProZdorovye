@@ -32,7 +32,9 @@
 <div class=directions__list>
 <a href="{{ s.get_absolute_url }}" class="directions__button directions__button--active">{{ speciality.name }}</a>
 {% for s in rest_specialities %}
-<a href="{{ s.get_absolute_url }}" class=directions__button>{{ s.name }}</a>
+    {% if s.is_displayed_on_homepage %} 
+        <a href="{{ s.get_absolute_url }}" class=directions__button>{{ s.name }}</a>
+    {% endif %}
 {% endfor %}
 </div>
 </div>

@@ -14,7 +14,8 @@ class Speciality(models.Model):
     description = models.TextField('Описание')
     icon = models.FileField('Иконка', upload_to='specialities', null=True)
     slug = models.SlugField('Слаг')
-    is_displayed = models.BooleanField('Отображается ли на главной странице', default=True)
+    is_displayed_on_homepage = models.BooleanField('Отображается ли на главной странице', default=True)
+    is_displayed = models.BooleanField('Отображается ли на сайте', default=True)
     
     class Meta: 
         ordering = ['pk']
