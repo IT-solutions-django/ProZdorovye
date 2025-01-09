@@ -22,7 +22,12 @@
                     <h5><a href="{% url 'services:speciality' speciality_slug='osteopatiya' %}">Услуги</a></h5>
                     <ul>
                         {% for speciality in specialities %}
-                            <li class="map__bullet-2"><a href="{{ speciality.get_absolute_url }}">{{ speciality.name }}</a></li>
+                            <li class="map__bullet-2"><a href="
+                            {% if speciality.is_displayed %}
+                                {{ speciality.get_absolute_url }}
+                            {% else %}
+                                {{ specialities.0.get_absolute_url }}
+                            {% endif %}">{{ speciality.name }}</a></li>
                         {% endfor %}
                     </ul>
                 </li>

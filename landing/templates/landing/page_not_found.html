@@ -28,7 +28,12 @@
                 <div class="clinic-services container">
                     <div class="clinic-services__list">
                         {% for speciality in specialities %}
-                            <a href="{{ speciality.get_absolute_url }}" class="service-button-blue">{{ speciality.name }}</a>
+                            <a href="
+                            {% if speciality.is_displayed %}
+                                {{ speciality.get_absolute_url }}
+                            {% else %}
+                                {{ specialities.0.get_absolute_url }}
+                            {% endif %}" class="service-button-blue">{{ speciality.name }}</a>
                         {% endfor %}
                     </div>
                 </div>

@@ -1,8 +1,10 @@
-{% extends 'base.html' %} {% load static %} 
-{% block title %} Медицинский центр ПроЗдоровье - центр лечения боли и остеопатии {% endblock %} 
-{% block meta_title %} Медицинский центр ПроЗдоровье - центр лечения боли и остеопатии {% endblock %} 
-{% block description %} Медицинский центр "ПроЗдоровье" - профессиональный индивидуальный комплексный подход к вашему Здоровью {% endblock %} 
-{% block meta_description %} Медицинский центр "ПроЗдоровье" - профессиональный индивидуальный комплексный подход к вашему Здоровью {% endblock %} 
+{% extends 'base.html' %} {% load static %}
+{% block title %} Медицинский центр ПроЗдоровье - центр лечения боли и остеопатии {% endblock %}
+{% block meta_title %} Медицинский центр ПроЗдоровье - центр лечения боли и остеопатии {% endblock %}
+{% block description %} Медицинский центр "ПроЗдоровье" - профессиональный индивидуальный комплексный подход к вашему
+Здоровью {% endblock %}
+{% block meta_description %} Медицинский центр "ПроЗдоровье" - профессиональный индивидуальный комплексный подход к
+вашему Здоровью {% endblock %}
 {% block script %}
 <script type=module src="{% static 'js/header.js' %}"></script>
 <script type=module src="{% static 'js/doctors.js' %}"></script>
@@ -15,211 +17,230 @@
 <html lang=en>
 <div id=header></div>
 <div class="section section--hero">
-<div class="promo container">
-<div class=promo__info>
-<h1 class=promo__title>
-Путь
-<br>
-к здоровью <br>начинается
-<br>
-<span class="promo__title promo__title--highlight">здесь</span>
-</h1>
-<div class=promo__description>
-Опытные врачи и современные методы лечения
-<br>
-для поддержания вашего здоровья и благополучия
-</div>
-</div>
-<div class=promo__actions>
-<a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" class=button-osta target=_blank>Записаться на прием</a>
-<a href=#sectionContact class="button-osta button-osta--secondary">Задать вопрос</a>
-</div>
-</div>
-<div class="service-slider container embla" id=service-list-slider>
-<div class=embla__container>
-{% for speciality in specialities %} {% if speciality.is_displayed %}
-<a href="{{ speciality.get_absolute_url }}" class="service-slider__item embla__slide">
-<div class=service-slider__item-info>
-<div class=service-slider__item-title>
-{{ speciality.display_name|linebreaks }}
-</div>
-<div class=service-slider__item-subtitle>
-{{ speciality.intro }}
-</div>
-</div>
-<img class=service-slider__item-icon src="{{ speciality.icon.url }}" alt="Иконка">
-</a>
-{% endif %} {% endfor %}
-</div>
-<button class="embla__button embla__button--prev" type=button>
-<img src="{% static 'images/left.svg' %}" alt="Влево">
-</button>
-<button class="embla__button embla__button--next" type=button>
-<img src="{% static 'images/right.svg' %}" alt="Вправо">
-</button>
-</div>
+    <div class="promo container">
+        <div class=promo__info>
+            <h1 class=promo__title>
+                Путь
+                <br>
+                к здоровью <br>начинается
+                <br>
+                <span class="promo__title promo__title--highlight">здесь</span>
+            </h1>
+            <div class=promo__description>
+                Опытные врачи и современные методы лечения
+                <br>
+                для поддержания вашего здоровья и благополучия
+            </div>
+        </div>
+        <div class=promo__actions>
+            <a href="https://booking.medflex.ru/?user=5c4da05a2aec068f47734a86101c9333" class=button-osta
+                target=_blank>Записаться на прием</a>
+            <a href=#sectionContact class="button-osta button-osta--secondary">Задать вопрос</a>
+        </div>
+    </div>
+    <div class="service-slider container embla" id=service-list-slider>
+        <div class=embla__container>
+            {% for speciality in specialities %}
+                {% if speciality.is_displayed_on_homepage %}
+                    <a href="
+                    {% if speciality.is_displayed %}
+                        {{ speciality.get_absolute_url }}
+                    {% else %}
+                        {{ specialities.0.get_absolute_url }}
+                    {% endif %}" class="service-slider__item embla__slide">
+                        <div class=service-slider__item-info>
+                            <div class=service-slider__item-title>
+                                {{ speciality.display_name|linebreaks }}
+                            </div>
+                            <div class=service-slider__item-subtitle>
+                                {{ speciality.intro }}
+                            </div>
+                        </div>
+                        <img class=service-slider__item-icon src="{{ speciality.icon.url }}" alt="Иконка">
+                    </a>
+                {% endif %} 
+            {% endfor %}
+        </div>
+        <button class="embla__button embla__button--prev" type=button>
+            <img src="{% static 'images/left.svg' %}" alt="Влево">
+        </button>
+        <button class="embla__button embla__button--next" type=button>
+            <img src="{% static 'images/right.svg' %}" alt="Вправо">
+        </button>
+    </div>
 </div>
 <div class="section section--stat">
-<div class="stats-list container">
-<div class=stats-item>
-<div class=stats-item__number>14 000+</div>
-<div class=stats-item__divider></div>
-<div class=stats-item__description>
-Пациентов, прошедших успешное лечение в нашей клинике
-</div>
-</div>
-<div class=stats-item>
-<div class=stats-item__number>15+</div>
-<div class=stats-item__divider></div>
-<div class=stats-item__description>
-Лет опыта работы<br>
-наших специалистов
-</div>
-</div>
-<div class=stats-item>
-<div class=stats-item__number>40+</div>
-<div class=stats-item__divider></div>
-<div class=stats-item__description>
-Специалистов<br>
-в штате клиники
-</div>
-</div>
-<div class=stats-item>
-<div class=stats-item__number>94%</div>
-<div class=stats-item__divider></div>
-<div class=stats-item__description>
-Пациентов приходят по рекомендациям
-</div>
-</div>
-<div class=stats-item>
-<div class=stats-item__number>2</div>
-<div class=stats-item__divider></div>
-<div class=stats-item__description>
-Филиала с удобным<br>
-местоположением
-</div>
-</div>
-</div>
+    <div class="stats-list container">
+        <div class=stats-item>
+            <div class=stats-item__number>14 000+</div>
+            <div class=stats-item__divider></div>
+            <div class=stats-item__description>
+                Пациентов, прошедших успешное лечение в нашей клинике
+            </div>
+        </div>
+        <div class=stats-item>
+            <div class=stats-item__number>15+</div>
+            <div class=stats-item__divider></div>
+            <div class=stats-item__description>
+                Лет опыта работы<br>
+                наших специалистов
+            </div>
+        </div>
+        <div class=stats-item>
+            <div class=stats-item__number>40+</div>
+            <div class=stats-item__divider></div>
+            <div class=stats-item__description>
+                Специалистов<br>
+                в штате клиники
+            </div>
+        </div>
+        <div class=stats-item>
+            <div class=stats-item__number>94%</div>
+            <div class=stats-item__divider></div>
+            <div class=stats-item__description>
+                Пациентов приходят по рекомендациям
+            </div>
+        </div>
+        <div class=stats-item>
+            <div class=stats-item__number>2</div>
+            <div class=stats-item__divider></div>
+            <div class=stats-item__description>
+                Филиала с удобным<br>
+                местоположением
+            </div>
+        </div>
+    </div>
 </div>
 <div class="section section--clinic-info">
-<div class="clinic-info container">
-<div class=clinic-description>
-<div class=clinic-description__title>О Клинике</div>
-<div class=clinic-description__text>
-Мы – многопрофильная медицинская клиника, предоставляющая широкий спектр услуг для поддержания здоровья и благополучия. Наша команда специалистов использует современные методы диагностики и лечения, обеспечивая индивидуальный подход и высокое качество медицинской помощи.
-</div>
-<div class="clinic-image__thumbs embla" id=thumbCarousel>
-<div class=embla__container>
-<div class=embla__slide>
-<img class="clinic-image__thumbs-image clinic-image__thumbs-image--active" src="{% static 'images/clinic/1.webp' %}" alt="Фото клиники">
-</div>
-<div class=embla__slide>
-<img class=clinic-image__thumbs-image src="{% static 'images/clinic/2.webp' %}" alt="Фото клиники">
-</div>
-<div class=embla__slide>
-<img class=clinic-image__thumbs-image src="{% static 'images/clinic/3.webp' %}" alt="Фото клиники">
-</div>
-</div>
-</div>
-</div>
-<div class="clinic-image embla" id=mainCarousel>
-<div class=embla__container>
-<div class=embla__slide>
-<img class=clinic-image src="{% static 'images/clinic/1.webp' %}" alt="Фото клиники">
-</div>
-<div class=embla__slide>
-<img class=clinic-image src="{% static 'images/clinic/2.webp' %}" alt="Фото клиники">
-</div>
-<div class=embla__slide>
-<img class=clinic-image src="{% static 'images/clinic/3.webp' %}" alt="Фото клиники">
-</div>
-</div>
-</div>
-</div>
-<div class="clinic-benefits container">
-<div class=benefit>
-<img class=benefit__icon src="{% static 'images/diamont.svg' %}" alt="Иконка">
-<div class=benefit__title>Индивидуальный подход</div>
-</div>
-<div class=benefit>
-<img class=benefit__icon src="{% static 'images/sert.svg' %}" alt="Иконка">
-<div class=benefit__title>Высокая квалификация специалистов</div>
-</div>
-<div class=benefit>
-<img class=benefit__icon src="{% static 'images/lamp.svg' %}" alt="Иконка">
-<div class=benefit__title>Использование современных технологий</div>
-</div>
-</div>
-<div class="clinic-services container">
-<div class=clinic-services__title>Услуги клиники</div>
-<div class=clinic-services__list>
-{% for speciality in specialities %}
-<a href="{{ speciality.get_absolute_url }}" class=service-button>{{ speciality.name }}</a>
-{% endfor %}
-</div>
-</div>
+    <div class="clinic-info container">
+        <div class=clinic-description>
+            <div class=clinic-description__title>О Клинике</div>
+            <div class=clinic-description__text>
+                Мы – многопрофильная медицинская клиника, предоставляющая широкий спектр услуг для поддержания здоровья
+                и благополучия. Наша команда специалистов использует современные методы диагностики и лечения,
+                обеспечивая индивидуальный подход и высокое качество медицинской помощи.
+            </div>
+            <div class="clinic-image__thumbs embla" id=thumbCarousel>
+                <div class=embla__container>
+                    <div class=embla__slide>
+                        <img class="clinic-image__thumbs-image clinic-image__thumbs-image--active"
+                            src="{% static 'images/clinic/1.webp' %}" alt="Фото клиники">
+                    </div>
+                    <div class=embla__slide>
+                        <img class=clinic-image__thumbs-image src="{% static 'images/clinic/2.webp' %}"
+                            alt="Фото клиники">
+                    </div>
+                    <div class=embla__slide>
+                        <img class=clinic-image__thumbs-image src="{% static 'images/clinic/3.webp' %}"
+                            alt="Фото клиники">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clinic-image embla" id=mainCarousel>
+            <div class=embla__container>
+                <div class=embla__slide>
+                    <img class=clinic-image src="{% static 'images/clinic/1.webp' %}" alt="Фото клиники">
+                </div>
+                <div class=embla__slide>
+                    <img class=clinic-image src="{% static 'images/clinic/2.webp' %}" alt="Фото клиники">
+                </div>
+                <div class=embla__slide>
+                    <img class=clinic-image src="{% static 'images/clinic/3.webp' %}" alt="Фото клиники">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clinic-benefits container">
+        <div class=benefit>
+            <img class=benefit__icon src="{% static 'images/diamont.svg' %}" alt="Иконка">
+            <div class=benefit__title>Индивидуальный подход</div>
+        </div>
+        <div class=benefit>
+            <img class=benefit__icon src="{% static 'images/sert.svg' %}" alt="Иконка">
+            <div class=benefit__title>Высокая квалификация специалистов</div>
+        </div>
+        <div class=benefit>
+            <img class=benefit__icon src="{% static 'images/lamp.svg' %}" alt="Иконка">
+            <div class=benefit__title>Использование современных технологий</div>
+        </div>
+    </div>
+    <div class="clinic-services container">
+        <div class=clinic-services__title>Услуги клиники</div>
+        <div class=clinic-services__list>
+            {% for speciality in specialities %}
+            <a href="{{ speciality.get_absolute_url }}" class=service-button>{{ speciality.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
 </div>
 <div id=booking></div>
 <div id=doctors></div>
 <div class="section section--reviews">
-<div class="reviews-section container">
-<div class=reviews-header>Отзывы</div>
-<div class=reviews-list>
-{% for review in reviews|slice:"4" %}
-<div class=review-card>
-<div class=review-card__rating>
-<img class=review-card__rating-image src="{% static 'images/star.svg' %}" alt="Иконка">
-<div class=review-card__rating-score>{{ review.rate }}</div>
-<div class=review-card__rating-status>Отлично</div>
-</div>
-<div class=review-card__text>
-{{ review.content }}
-</div>
-<div class=review-card__date>Приём был {{ review.created_at|date:"d.m.Y" }}</div>
-</div>
-{% endfor %}
-</div>
-<div class=reviews-footer>
-<div class=reviews-footer__all-reviews>Все отзывы</div>
-<div class=reviews-footer__see-all-list>
-<a href=https://prodoctorov.ru/vladivostok/lpu/47704-medicinskiy-centr-prozdorove/ target=_blank class=reviews-footer__see-all-item>
-<img src="{% static 'images/doctor.svg' %}" alt="ПроДокторов">
-</a>
-<a href=https://2gis.ru/vladivostok/firm/70000001021276207 target=_blank class=reviews-footer__see-all-item>
-<img src="{% static 'images/2gis.svg' %}" alt="2GIS">
-</a>
-<a href="https://yandex.ru/maps/org/prozdorovye/54915419883/?ll=131.950981%2C43.172179&z=17" target=_blank class=reviews-footer__see-all-item>
-<img src="{% static 'images/ya.svg' %}" alt="Яндекс">
-</a>
-</div>
-</div>
-</div>
+    <div class="reviews-section container">
+        <div class=reviews-header>Отзывы</div>
+        <div class=reviews-list>
+            {% for review in reviews|slice:"4" %}
+            <div class=review-card>
+                <div class=review-card__rating>
+                    <img class=review-card__rating-image src="{% static 'images/star.svg' %}" alt="Иконка">
+                    <div class=review-card__rating-score>{{ review.rate }}</div>
+                    <div class=review-card__rating-status>Отлично</div>
+                </div>
+                <div class=review-card__text>
+                    {{ review.content }}
+                </div>
+                <div class=review-card__date>Приём был {{ review.created_at|date:"d.m.Y" }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class=reviews-footer>
+            <div class=reviews-footer__all-reviews>Все отзывы</div>
+            <div class=reviews-footer__see-all-list>
+                <a href=https://prodoctorov.ru/vladivostok/lpu/47704-medicinskiy-centr-prozdorove/ target=_blank
+                    class=reviews-footer__see-all-item>
+                    <img src="{% static 'images/doctor.svg' %}" alt="ПроДокторов">
+                </a>
+                <a href=https://2gis.ru/vladivostok/firm/70000001021276207 target=_blank
+                    class=reviews-footer__see-all-item>
+                    <img src="{% static 'images/2gis.svg' %}" alt="2GIS">
+                </a>
+                <a href="https://yandex.ru/maps/org/prozdorovye/54915419883/?ll=131.950981%2C43.172179&z=17"
+                    target=_blank class=reviews-footer__see-all-item>
+                    <img src="{% static 'images/ya.svg' %}" alt="Яндекс">
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="section section--blog">
-<div class="blog container">
-<div class=blog__header>О вашем здоровье</div>
-<div class=blog__content>
-{% for article in articles|slice:"3" %}
-<a class=article href="{{ article.get_absolute_url }}">
-{% if article.image %}
-<img class=article__image src="{{ article.image.url }}" alt="Фото статьи">
-{% endif %}
-<div class=article__title>{{ article.title }}</div>
-<div class=article__text>
-<p>
-{{ article.content }}
-</p>
-</div>
-<div class=article__date>{{ article.created_at|date:"d.m.Y" }}</div>
-</a>
-{% endfor %}
-</div>
-<div class=blog__footer>
-<a href="{% url 'articles:articles_list' %}" class="blog__see-all button-osta">Все статьи</a>
-</div>
-</div>
+    <div class="blog container">
+        <div class=blog__header>О вашем здоровье</div>
+        <div class=blog__content>
+            {% for article in articles|slice:"3" %}
+            <a class=article href="{{ article.get_absolute_url }}">
+                {% if article.image %}
+                <img class=article__image src="{{ article.image.url }}" alt="Фото статьи">
+                {% endif %}
+                <div class=article__title>{{ article.title }}</div>
+                <div class=article__text>
+                    <p>
+                        {{ article.content }}
+                    </p>
+                </div>
+                <div class=article__date>{{ article.created_at|date:"d.m.Y" }}</div>
+            </a>
+            {% endfor %}
+        </div>
+        <div class=blog__footer>
+            <a href="{% url 'articles:articles_list' %}" class="blog__see-all button-osta">Все статьи</a>
+        </div>
+    </div>
 </div>
 <div id=contact></div>
 <div id=footer></div>
-<script type=module>import{printDoctors}from"{% static 'js/doctors.js' %}";document.addEventListener("DOMContentLoaded",(function(){printDoctors("Наши специалисты","Все направления")}))</script>
-{% endblock %}</html>
+<script
+    type=module>import{printDoctors}from"{% static 'js/doctors.js' %}";document.addEventListener("DOMContentLoaded",(function(){printDoctors("Наши специалисты","Все направления")}))</script>
+{% endblock %}
+
+</html>
