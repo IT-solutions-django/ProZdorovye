@@ -169,7 +169,9 @@
         <div class=clinic-services__title>Услуги клиники</div>
         <div class=clinic-services__list>
             {% for speciality in specialities %}
-            <a href="{{ speciality.get_absolute_url }}" class=service-button>{{ speciality.name }}</a>
+            {% if speciality.is_displayed %}
+                <a href="{{ speciality.get_absolute_url }}" class=service-button>{{ speciality.name }}</a>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
