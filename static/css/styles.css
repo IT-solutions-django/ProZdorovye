@@ -1148,7 +1148,7 @@ p {
     margin-bottom: 12px
 }
 .specialist-card__name {
-    max-width: 100vw !important;
+    max-width: calc(100vw - 12px) !important;
 }
 
 .specialists-section .specialist-card__role {
