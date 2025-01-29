@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %} 
+{% load article_tags %} 
 
 {% block title %} Блог - Медицинский центр ПроЗдоровье {% endblock %} 
 {% block meta_title %} Блог - Медицинский центр ПроЗдоровье {% endblock %} 
@@ -24,7 +25,7 @@
 <div class=article__title>{{ article.title }}</div>
 <div class=article__text>
 <p>
-{{ article.content }}
+{{ article.content|remove_markdown_chars }}
 </p>
 </div>
 <div class=article__date>{{ article.created_at|date:"d.m.Y" }}</div>

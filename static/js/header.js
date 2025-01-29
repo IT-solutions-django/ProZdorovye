@@ -30,9 +30,8 @@ var header = ` <div class="section section--header">
               <div class="nav__dropdown-content-wrapper">
                 <div class="nav__dropdown-content nav__link">
                   <a href="${window.origin}/contacts" class="nav__link">Контакты</a>
-                  <!-- <a href="#" class="nav__link">Вакансии</a> -->
+                  <a href="${window.origin}/blog/articles/" class="nav__link">Блог</a>
                   <a href="${window.origin}/juridical" class="nav__link">Юридическая информация</a>
-                  <!-- <a href="#" class="nav__link">Галерея</a> -->
                 </div>
               </div>
             </div>
