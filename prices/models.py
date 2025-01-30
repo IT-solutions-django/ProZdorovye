@@ -12,7 +12,7 @@ class ServiceType(models.Model):
     speciality = models.ForeignKey(verbose_name='Специализация', to=Speciality, on_delete=models.CASCADE, related_name='services')
     info = models.CharField('Дополнительная информация', max_length=200, null=True, blank=True)
     price = models.CharField('Цена', max_length=50)
-    booking_link = models.CharField('Ссылка на запись', null=True, blank=True)
+    booking_link = models.CharField('Ссылка на запись', null=True, blank=True, max_length=500)
     is_displayed = models.BooleanField('Отображается в общем списке', default=True)
 
     class Meta: 
