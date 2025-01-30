@@ -24,9 +24,4 @@ class Migration(migrations.Migration):
         #     name='booking_link',
         #     field=models.CharField(blank=True, max_length=500, null=True, verbose_name='Ссылка на запись'),
         # ),
-        migrations.AlterField(
-            model_name='servicetype',
-            name='booking_link',
-            field=models.CharField(max_length=500, blank=True, null=True, verbose_name='Ссылка на запись'),
-        ),
     ]
