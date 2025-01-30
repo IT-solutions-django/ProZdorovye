@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
             name='servicetype',
             options={'ordering': ['pk'], 'verbose_name': 'Тип услуги', 'verbose_name_plural': 'Типы услуг'},
         ),
-        migrations.AddField(
-            model_name='pricepdf',
-            name='title',
-            field=models.TextField(default='Прайс-лист', help_text='Название вкладки в админ. панели', verbose_name='Прайс-лист'),
-        ),
+        # migrations.AddField(
+        #     model_name='pricepdf',
+        #     name='title',
+        #     field=models.TextField(default='Прайс-лист', help_text='Название вкладки в админ. панели', verbose_name='Прайс-лист'),
+        # ),
         migrations.AddField(
             model_name='servicetype',
             name='booking_link',
