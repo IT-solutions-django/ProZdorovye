@@ -19,9 +19,14 @@ class Migration(migrations.Migration):
         #     name='title',
         #     field=models.TextField(default='Прайс-лист', help_text='Название вкладки в админ. панели', verbose_name='Прайс-лист'),
         # ),
-        migrations.AddField(
+        # migrations.AddField(
+        #     model_name='servicetype',
+        #     name='booking_link',
+        #     field=models.CharField(blank=True, max_length=500, null=True, verbose_name='Ссылка на запись'),
+        # ),
+        migrations.AlterField(
             model_name='servicetype',
             name='booking_link',
-            field=models.CharField(blank=True, max_length=500, null=True, verbose_name='Ссылка на запись'),
+            field=models.CharField(max_length=500, blank=True, null=True, verbose_name='Ссылка на запись'),
         ),
     ]
