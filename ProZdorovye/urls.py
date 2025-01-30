@@ -29,6 +29,7 @@ urlpatterns = [
     path('services/', include('services.urls', namespace='services')),
     path('prices/', include('prices.urls', namespace='prices')),
     path('blog/', include('articles.urls', namespace='articles')),
+    path('vacancies/', include('vacancies.urls', namespace='vacancies')),
     path('', include('landing.urls', namespace='landing')),
     path('', MainView.as_view()),
     re_path(r'^sitemap\.xml$', serve, {
