@@ -27,14 +27,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-p30wx7&e0)%$_s4b#6=-o3s$_56o$rlh)966*n*87c-ncun%dc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'http://*.5.35.87.16',
     'https://*.prozdorovie.site',
-    ]
+]
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
 
     'landing',
     'doctors',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'services', 
     'prices',
     'articles',
+    'vacancies',
 ]
 
 MIDDLEWARE = [
@@ -100,11 +102,23 @@ DATABASES = {
     }
 }
 
-# Для локальной разработки
+# Для локальной разработки с Sqlite
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# Для локальной разработки с PostgreSQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ProZdorovye',
+#         'USER': 'admin', 
+#         'PASSWORD': "admin", 
+#         'HOST': "127.0.0.1", 
+#         'PORT': "5432" 
 #     }
 # }
 
@@ -185,4 +199,4 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
-FEEDBACK_EMAIL = 'testemailaddress.test@yandex.ru'
+FEEDBACK_EMAIL = 'Alter-center@mail.ru'
