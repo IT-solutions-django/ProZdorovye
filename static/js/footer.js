@@ -26,6 +26,7 @@ async function renderFooter() {
               <div>
                 <a class="footer__link" href="${window.origin}/contacts">Контакты</a>
                 <a class="footer__link" href="${window.origin}/map">Карта сайта</a>
+                <a class="footer__link" href="${window.origin}/privacy-policy/">Политика конфиденциальности</a>
               </div>
             </div>
           </div>

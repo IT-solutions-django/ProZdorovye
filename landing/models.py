@@ -37,14 +37,14 @@ class UserAgreementPDF(models.Model):
     file = models.FileField('Файл', upload_to='prices')
 
     title = models.TextField(
-         'Пользовательское соглашение', 
+         'Политика конфиденциальности', 
         help_text='Название вкладки в админ. панели',
-        default='Пользовательское соглашение'
+        default='Политика конфиденциальности'
     )
 
     class Meta: 
-        verbose_name = 'Пользовательское соглашение'
-        verbose_name_plural = 'Пользовательское соглашение'
+        verbose_name = 'Политика конфиденциальности'
+        verbose_name_plural = 'Политика конфиденциальности'
 
     def save(self, *args, **kwargs):
         if self.pk:
