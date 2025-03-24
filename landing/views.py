@@ -15,7 +15,7 @@ from .models import (
     LicensePage, 
     JuridicalInfo,
     ProcessingDataAgreement, 
-    FilialInfo
+    FilialInfo, 
 )
 
 
@@ -163,6 +163,12 @@ class JuridicalInfoView(View):
             'juridical_info': juridical_info
         }
         return render(request, 'landing/juridical_info.html', context)
+    
+
+class PrivacyPolicyView(View): 
+    def get(self, request): 
+        user_agreement_url = UserAgreementPDF.get_instance().file.url
+        return redirect(user_agreement_url)
     
 
 class PageNotFoundView(View): 
