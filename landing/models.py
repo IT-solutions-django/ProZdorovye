@@ -73,7 +73,7 @@ class UserAgreementPDF(models.Model):
         return instance
     
     def __str__(self) -> str: 
-        return 'Пользовательское соглашение'
+        return 'Политика конфиденциальности'
     
 
 @receiver(post_delete, sender=UserAgreementPDF)
