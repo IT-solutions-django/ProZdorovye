@@ -15,7 +15,7 @@ echo "Redis is up!"
 
 PGPASSWORD=$POSTGRES_PASSWORD psql -h db -U $POSTGRES_USER -d $POSTGRES_DB -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
 
-# python manage.py makemigrations
+python manage.py makemigrations
 python manage.py migrate
 python manage.py collectstatic --noinput
 
